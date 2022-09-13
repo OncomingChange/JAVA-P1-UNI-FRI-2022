@@ -1,0 +1,7 @@
+PP | posiljatelj3 | povratnica | 468 | naslovnik3 | 8150
+PP | posiljatelj4 | povratnica | 471 | naslovnik4 | 8150
+PP | posiljatelj6 | povratnica | 816 | naslovnik6 | 12850
+PP | posiljatelj11 | povratnica | 610 | naslovnik11 | 10500
+PP | posiljatelj12 | povratnica | 336 | naslovnik12 | 6975
+PP | posiljatelj13 | povratnica | 474 | naslovnik13 | 8150
+PP | posiljatelj15 | povratnica | 189 | naslovnik15 | 4625

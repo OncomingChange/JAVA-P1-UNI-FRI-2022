@@ -1,0 +1,19 @@
+true
+true
+true
+true
+true
+--------------------
+false
+true
+false
+true
+false
+--------------------
+Anja Antolinc -> 5
+Bojan Bevk -> 2
+ka -> 1
+kb -> 2
+kc -> 1
+kd -> 2
+ke -> 1

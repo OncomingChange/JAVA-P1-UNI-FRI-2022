@@ -1,0 +1,4 @@
+Danes
+je
+lep
+dan

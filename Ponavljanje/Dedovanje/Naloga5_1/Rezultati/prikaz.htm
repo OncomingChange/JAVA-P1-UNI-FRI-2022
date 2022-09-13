@@ -1,0 +1,796 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Prikaz rezultatov testiranja</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+            .tableBase { border-collapse: collapse; }
+            .tableBase > tbody > tr > td { border: 1px solid black; padding: 7px;}
+            .tableResults { table-layout: fixed; border-spacing: 0px; border-collapse: separate; }
+            table#nasredini { margin-left:auto; margin-right:auto; }
+            table tbody td.hoverOk {background-color:#9F9; border: 1px solid #63B563; width: 15px; color: black; text-align: center; }
+            .hoverOk:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #63B563; }
+            .hoverOk:hover td { background: transparent; }
+            .hoverOk > a:link, .hoverOk > a:visited, .hoverOk > a:hover, .hoverOk > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverErr {background-color:#FFBF00; border: 1px solid #CB9800; width: 15px; color: black; text-align: center; }
+            .hoverErr:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #CB9800; }
+            .hoverErr:hover td { background: transparent; }
+            .hoverErr > a:link, .hoverErr > a:visited, .hoverErr > a:hover, .hoverErr > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverRuntime {background-color:#FF9; border: 1px solid #D8D87E; width: 15px; color: black; text-align: center; }
+            .hoverRuntime:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #D8D87E; }
+            .hoverRuntime:hover td { background: transparent; }
+            .hoverRuntime > a:link, .hoverRuntime > a:visited, .hoverRuntime > a:hover, .hoverRuntime > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverCompile {background-color:#C00000; border: 1px solid #710B0B; width: 15px; color: black; text-align: center; }
+            .hoverCompile:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #710B0B; }
+            .hoverCompile:hover td { background: transparent; }
+            .hoverCompile > a:link, .hoverCompile > a:visited, .hoverCompile > a:hover, .hoverCompile > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverMissing {background-color:#F0F0F0; border: 1px solid #ABABAB; width: 15px; color: black; text-align: center; }
+            .hoverMissing:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #ABABAB; }
+            .hoverMissing:hover td { background: transparent; }
+            .hoverMissing > a:link, .hoverMissing > a:visited, .hoverMissing > a:hover, .hoverMissing > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverTimeout {background-color:#B9F; border: 1px solid #9070CE; width: 15px; color: black; text-align: center; }
+            .hoverTimeout:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #9070CE; }
+            .hoverTimeout:hover td { background: transparent; }
+            .hoverTimeout > a:link, .hoverTimeout > a:visited, .hoverTimeout > a:hover, .hoverTimeout > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverImage {background-color:#D0E0F0; border: 1px solid #a6b3c0; width: 15px; color: black; text-align: center; }
+            .hoverImage:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #a6b3c0; }
+            .hoverImage:hover td { background: transparent; }
+            .hoverImage > a:link, .hoverImage > a:visited, .hoverImage > a:hover, .hoverImage > a:active { color: black; font-size: 0.9em; }
+            .tableCommon { border-collapse: collapse; }
+            .tableOK > tbody > tr > td { border: 1px solid #63B563; padding: 7px;}
+            .tableError > tbody > tr > td { border: 1px solid #CB9800; padding: 7px;}
+            .tableRuntime > tbody > tr > td { border: 1px solid #D8D87E; padding: 7px;}
+            .tableCompiler > tbody > tr > td { border: 1px solid #710B0B; padding: 7px;}
+            .tableMissing > tbody > tr > td { border: 1px solid #ABABAB; padding: 7px;}
+            .tableTimeout > tbody > tr > td { border: 1px solid #9070CE; padding: 7px;}
+            .tableImage > tbody > tr > td { border: 1px solid #a6b3c0; padding: 7px;}
+            .tableSummary { table-layout: fixed; }
+            .texttt { font-family: DejaVu Sans Mono, monospace; font-size: 0.8em; }
+            table.diff > tbody > tr > td { border: none; font-family: DejaVu Sans Mono, monospace}
+            .diff_add { color: green; font-family: DejaVu Sans Mono, monospace; }
+            .diff_sub { color: blue; font-family: DejaVu Sans Mono, monospace; }
+            .diff_chg { color: red; font-family: DejaVu Sans Mono, monospace; }
+            a { color: blue; text-decoration: none; height: 100%; width: 100%; vertical-align: middle; }
+            a:link { color: blue; text-decoration: none; }
+            a:link { color: blue; text-decoration: none; }
+            a:hover { color: blue; text-decoration: underline; }
+            body, td { font: normal normal 100%/1.0 DejaVu Sans, sans-serif; }
+            h1 { font-weight: bold; font-size: 150%; }
+            h2 { font-weight: normal; font-size: 125%; border-top: 1px solid black; border-bottom: 1px solid black; background: #DEF; padding: 5px; margin-top: 36px; margin-bottom: 36px}
+            .container{ margin: 0px auto; width: 70%; min-width: 700px; margin-top: 1.8cm; margin-bottom: 1.8cm; }
+            .rwordb{ color: blue; font-weight: bold; }
+            .rwordv{ color:#8000ff; font-weight: bold; }
+            .vcomment{ color: green; }
+            .bcomment{ color: green; }
+            .niz{ color:#a31515; }
+            .stevilo{ color:#ff8000; }
+            tab { padding-left: 4em; }
+            #grad1 {
+                background: -webkit-linear-gradient(left, #E0E0E0 , white);
+                background: -o-linear-gradient(right, #E0E0E0, white);
+                background: -moz-linear-gradient(right, #E0E0E0, white);
+                background: linear-gradient(to right, #E0E0E0 , white);
+            }
+            #grad2 {
+                background: -webkit-linear-gradient(left, #9F9 , white);
+                background: -o-linear-gradient(right, #9F9, white);
+                background: -moz-linear-gradient(right, #9F9, white);
+                background: linear-gradient(to right, #9F9 , white);
+            }
+            .capSlika { display:block; height: 25px; margin:0 auto; font-size: 1.0em; text-align: left; }
+            .dborder { padding: 0px; border: 1px solid #CACACA; }
+            .capText { display: block; margin:0 auto; font-size: 0.9em; text-align: left; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <a name="top"></a>
+        <h1 id="grad2" style="padding: 10px; border: 0px solid black; color: #000000;">Rezultati preverjanja <span style="color: #700000;">Test.java</span> (10/10)</h1>
+        <div style="height: 20px"></div>
+        <a name="summary"></a>
+        <h2>Povzetek rezultatov</h2>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase1">1</a></td>
+                <td class="hoverOk"><a href="#testcase2">2</a></td>
+                <td class="hoverOk"><a href="#testcase3">3</a></td>
+                <td class="hoverOk"><a href="#testcase4">4</a></td>
+                <td class="hoverOk"><a href="#testcase5">5</a></td>
+                <td class="hoverOk"><a href="#testcase6">6</a></td>
+                <td class="hoverOk"><a href="#testcase7">7</a></td>
+                <td class="hoverOk"><a href="#testcase8">8</a></td>
+                <td class="hoverOk"><a href="#testcase9">9</a></td>
+                <td class="hoverOk"><a href="#testcase10">10</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <div style="height: 20px"></div>
+        <h2>Rezultati</h2>
+        <a name="testcase1"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            30&nbsp;50&nbsp;10&nbsp;3&nbsp;9<br/>
+7<br/>
+telegram&nbsp;Ana_Antolinc&nbsp;vsebina_telegrama_1<br/>
+priporocenoPismo&nbsp;Branko_Bizjak&nbsp;vsebina_pp_1&nbsp;150&nbsp;Cvetka_Cevc<br/>
+navadnoPismo&nbsp;Danica_Dobravc&nbsp;vsebina_np_1&nbsp;75<br/>
+telegram&nbsp;Eva_Erker&nbsp;zelo_dolga_VSEBINA_s_5t3v1lk4m1<br/>
+navadnoPismo&nbsp;Franci_Furman&nbsp;vsebina_np_2&nbsp;49<br/>
+navadnoPismo&nbsp;Gorazd_Gaber&nbsp;vsebina_np_2&nbsp;50<br/>
+priporocenoPismo&nbsp;Hinko_Hojc&nbsp;vsebina_pp_2&nbsp;50&nbsp;Iva_Intihar<br/>
+1<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            T&nbsp;|&nbsp;Ana_Antolinc&nbsp;|&nbsp;vsebina_telegrama_1&nbsp;|&nbsp;144<br/>PP&nbsp;|&nbsp;Branko_Bizjak&nbsp;|&nbsp;vsebina_pp_1&nbsp;|&nbsp;150&nbsp;|&nbsp;Cvetka_Cevc&nbsp;|&nbsp;180<br/>NP&nbsp;|&nbsp;Danica_Dobravc&nbsp;|&nbsp;vsebina_np_1&nbsp;|&nbsp;75&nbsp;|&nbsp;40<br/>T&nbsp;|&nbsp;Eva_Erker&nbsp;|&nbsp;zelo_dolga_VSEBINA_s_5t3v1lk4m1&nbsp;|&nbsp;198<br/>NP&nbsp;|&nbsp;Franci_Furman&nbsp;|&nbsp;vsebina_np_2&nbsp;|&nbsp;49&nbsp;|&nbsp;30<br/>NP&nbsp;|&nbsp;Gorazd_Gaber&nbsp;|&nbsp;vsebina_np_2&nbsp;|&nbsp;50&nbsp;|&nbsp;40<br/>PP&nbsp;|&nbsp;Hinko_Hojc&nbsp;|&nbsp;vsebina_pp_2&nbsp;|&nbsp;50&nbsp;|&nbsp;Iva_Intihar&nbsp;|&nbsp;120<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase2"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 2</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            30&nbsp;50&nbsp;10&nbsp;3&nbsp;9<br/>
+7<br/>
+telegram&nbsp;Ana_Antolinc&nbsp;vsebina_telegrama_1<br/>
+priporocenoPismo&nbsp;Branko_Bizjak&nbsp;vsebina_pp_1&nbsp;150&nbsp;Cvetka_Cevc<br/>
+navadnoPismo&nbsp;Danica_Dobravc&nbsp;vsebina_np_1&nbsp;75<br/>
+telegram&nbsp;Eva_Erker&nbsp;zelo_dolga_VSEBINA_s_5t3v1lk4m1<br/>
+navadnoPismo&nbsp;Franci_Furman&nbsp;vsebina_np_2&nbsp;49<br/>
+navadnoPismo&nbsp;Gorazd_Gaber&nbsp;vsebina_np_2&nbsp;50<br/>
+priporocenoPismo&nbsp;Hinko_Hojc&nbsp;vsebina_pp_2&nbsp;50&nbsp;Iva_Intihar<br/>
+2<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            T&nbsp;|&nbsp;Eva_Erker&nbsp;|&nbsp;zelo_dolga_VSEBINA_s_5t3v1lk4m1&nbsp;|&nbsp;198<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase3"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            30&nbsp;50&nbsp;10&nbsp;3&nbsp;9<br/>
+7<br/>
+telegram&nbsp;Ana_Antolinc&nbsp;vsebina_telegrama_1<br/>
+priporocenoPismo&nbsp;Branko_Bizjak&nbsp;vsebina_pp_1&nbsp;150&nbsp;Cvetka_Cevc<br/>
+navadnoPismo&nbsp;Danica_Dobravc&nbsp;vsebina_np_1&nbsp;75<br/>
+telegram&nbsp;Eva_Erker&nbsp;zelo_dolga_VSEBINA_s_5t3v1lk4m1<br/>
+navadnoPismo&nbsp;Franci_Furman&nbsp;vsebina_np_2&nbsp;49<br/>
+navadnoPismo&nbsp;Gorazd_Gaber&nbsp;vsebina_np_2&nbsp;50<br/>
+priporocenoPismo&nbsp;Hinko_Hojc&nbsp;vsebina_pp_2&nbsp;50&nbsp;Iva_Intihar<br/>
+3<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;Cvetka_Cevc&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;150&nbsp;|&nbsp;Branko_Bizjak&nbsp;|&nbsp;180<br/>PP&nbsp;|&nbsp;Iva_Intihar&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;50&nbsp;|&nbsp;Hinko_Hojc&nbsp;|&nbsp;120<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase4"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 4</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            56&nbsp;90&nbsp;13&nbsp;7&nbsp;96<br/>
+20<br/>
+priporocenoPismo&nbsp;naslovnik1&nbsp;YwdA&nbsp;709&nbsp;posiljatelj1<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;6jsbZohTd&nbsp;882<br/>
+navadnoPismo&nbsp;naslovnik3&nbsp;WUk&nbsp;658<br/>
+telegram&nbsp;naslovnik4&nbsp;6LjtkChg3YVcTtmz5q<br/>
+priporocenoPismo&nbsp;naslovnik5&nbsp;R&nbsp;50&nbsp;posiljatelj5<br/>
+navadnoPismo&nbsp;naslovnik6&nbsp;VVbdDzIVou1HqTfmz&nbsp;294<br/>
+priporocenoPismo&nbsp;naslovnik7&nbsp;t0KN8uMkay8&nbsp;440&nbsp;posiljatelj7<br/>
+navadnoPismo&nbsp;naslovnik8&nbsp;qN5k2T1kie4UHHF20Vr&nbsp;392<br/>
+navadnoPismo&nbsp;naslovnik9&nbsp;lD&nbsp;225<br/>
+telegram&nbsp;naslovnik10&nbsp;g<br/>
+navadnoPismo&nbsp;naslovnik11&nbsp;M0AHlEMf6PC8Y&nbsp;17<br/>
+priporocenoPismo&nbsp;naslovnik12&nbsp;yjMMr2&nbsp;35&nbsp;posiljatelj12<br/>
+telegram&nbsp;naslovnik13&nbsp;OOYNkfqeTGEg021AI<br/>
+navadnoPismo&nbsp;naslovnik14&nbsp;oKa&nbsp;700<br/>
+navadnoPismo&nbsp;naslovnik15&nbsp;hhpBYX3JQfE&nbsp;327<br/>
+telegram&nbsp;naslovnik16&nbsp;ow7xYV9Hb8g8<br/>
+navadnoPismo&nbsp;naslovnik17&nbsp;ikC7&nbsp;757<br/>
+telegram&nbsp;naslovnik18&nbsp;Bz1JYIq8h2S11<br/>
+telegram&nbsp;naslovnik19&nbsp;IEf6sZjidQ0kQ0Km<br/>
+navadnoPismo&nbsp;naslovnik20&nbsp;QZ5jaqwG3xuyvjU&nbsp;967<br/>
+1<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;naslovnik1&nbsp;|&nbsp;YwdA&nbsp;|&nbsp;709&nbsp;|&nbsp;posiljatelj1&nbsp;|&nbsp;1029<br/>NP&nbsp;|&nbsp;naslovnik2&nbsp;|&nbsp;6jsbZohTd&nbsp;|&nbsp;882&nbsp;|&nbsp;173<br/>NP&nbsp;|&nbsp;naslovnik3&nbsp;|&nbsp;WUk&nbsp;|&nbsp;658&nbsp;|&nbsp;147<br/>T&nbsp;|&nbsp;naslovnik4&nbsp;|&nbsp;6LjtkChg3YVcTtmz5q&nbsp;|&nbsp;1440<br/>PP&nbsp;|&nbsp;naslovnik5&nbsp;|&nbsp;R&nbsp;|&nbsp;50&nbsp;|&nbsp;posiljatelj5&nbsp;|&nbsp;392<br/>NP&nbsp;|&nbsp;naslovnik6&nbsp;|&nbsp;VVbdDzIVou1HqTfmz&nbsp;|&nbsp;294&nbsp;|&nbsp;95<br/>PP&nbsp;|&nbsp;naslovnik7&nbsp;|&nbsp;t0KN8uMkay8&nbsp;|&nbsp;440&nbsp;|&nbsp;posiljatelj7&nbsp;|&nbsp;756<br/>NP&nbsp;|&nbsp;naslovnik8&nbsp;|&nbsp;qN5k2T1kie4UHHF20Vr&nbsp;|&nbsp;392&nbsp;|&nbsp;108<br/>NP&nbsp;|&nbsp;naslovnik9&nbsp;|&nbsp;lD&nbsp;|&nbsp;225&nbsp;|&nbsp;82<br/>T&nbsp;|&nbsp;naslovnik10&nbsp;|&nbsp;g&nbsp;|&nbsp;96<br/>NP&nbsp;|&nbsp;naslovnik11&nbsp;|&nbsp;M0AHlEMf6PC8Y&nbsp;|&nbsp;17&nbsp;|&nbsp;56<br/>PP&nbsp;|&nbsp;naslovnik12&nbsp;|&nbsp;yjMMr2&nbsp;|&nbsp;35&nbsp;|&nbsp;posiljatelj12&nbsp;|&nbsp;392<br/>T&nbsp;|&nbsp;naslovnik13&nbsp;|&nbsp;OOYNkfqeTGEg021AI&nbsp;|&nbsp;1344<br/>NP&nbsp;|&nbsp;naslovnik14&nbsp;|&nbsp;oKa&nbsp;|&nbsp;700&nbsp;|&nbsp;147<br/>NP&nbsp;|&nbsp;naslovnik15&nbsp;|&nbsp;hhpBYX3JQfE&nbsp;|&nbsp;327&nbsp;|&nbsp;95<br/>T&nbsp;|&nbsp;naslovnik16&nbsp;|&nbsp;ow7xYV9Hb8g8&nbsp;|&nbsp;768<br/>NP&nbsp;|&nbsp;naslovnik17&nbsp;|&nbsp;ikC7&nbsp;|&nbsp;757&nbsp;|&nbsp;160<br/>T&nbsp;|&nbsp;naslovnik18&nbsp;|&nbsp;Bz1JYIq8h2S11&nbsp;|&nbsp;768<br/>T&nbsp;|&nbsp;naslovnik19&nbsp;|&nbsp;IEf6sZjidQ0kQ0Km&nbsp;|&nbsp;1248<br/>NP&nbsp;|&nbsp;naslovnik20&nbsp;|&nbsp;QZ5jaqwG3xuyvjU&nbsp;|&nbsp;967&nbsp;|&nbsp;186<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase5"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 5</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            43&nbsp;9&nbsp;48&nbsp;74&nbsp;22<br/>
+20<br/>
+priporocenoPismo&nbsp;naslovnik1&nbsp;kaDxFtDCYF9CyPdj1&nbsp;250&nbsp;posiljatelj1<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;0U9uwc3I8iI9vNj&nbsp;152<br/>
+navadnoPismo&nbsp;naslovnik3&nbsp;OtUszg&nbsp;500<br/>
+telegram&nbsp;naslovnik4&nbsp;Rb54FoTv3<br/>
+priporocenoPismo&nbsp;naslovnik5&nbsp;UcakOMZjRxPg&nbsp;46&nbsp;posiljatelj5<br/>
+navadnoPismo&nbsp;naslovnik6&nbsp;5HpbxF9FR&nbsp;396<br/>
+navadnoPismo&nbsp;naslovnik7&nbsp;osqypNyxDkPAB&nbsp;680<br/>
+priporocenoPismo&nbsp;naslovnik8&nbsp;F7wox1swC&nbsp;841&nbsp;posiljatelj8<br/>
+navadnoPismo&nbsp;naslovnik9&nbsp;S79nwJp&nbsp;592<br/>
+telegram&nbsp;naslovnik10&nbsp;R6Pxlf11dK7mEKGkAy0D<br/>
+priporocenoPismo&nbsp;naslovnik11&nbsp;42foCxeFHyMx&nbsp;89&nbsp;posiljatelj11<br/>
+telegram&nbsp;naslovnik12&nbsp;qzVIEoO<br/>
+navadnoPismo&nbsp;naslovnik13&nbsp;wJ&nbsp;980<br/>
+navadnoPismo&nbsp;naslovnik14&nbsp;N0Xg&nbsp;705<br/>
+telegram&nbsp;naslovnik15&nbsp;qkViaJdG1p5sOW<br/>
+navadnoPismo&nbsp;naslovnik16&nbsp;S9sofjzc2m&nbsp;619<br/>
+priporocenoPismo&nbsp;naslovnik17&nbsp;sylucFAfgsaMsTh&nbsp;629&nbsp;posiljatelj17<br/>
+navadnoPismo&nbsp;naslovnik18&nbsp;TEHDBnUZHxkylXFpOjlI&nbsp;34<br/>
+navadnoPismo&nbsp;naslovnik19&nbsp;deOvjFb&nbsp;850<br/>
+priporocenoPismo&nbsp;naslovnik20&nbsp;IDAgg7ZLsIFQVhsXKT&nbsp;760&nbsp;posiljatelj20<br/>
+2<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;naslovnik8&nbsp;|&nbsp;F7wox1swC&nbsp;|&nbsp;841&nbsp;|&nbsp;posiljatelj8&nbsp;|&nbsp;333518<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase6"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 6</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            91&nbsp;83&nbsp;47&nbsp;25&nbsp;34<br/>
+20<br/>
+navadnoPismo&nbsp;naslovnik1&nbsp;HARhnT1xql0&nbsp;872<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;iqxUU3iPsmTCVSzQYPE0&nbsp;706<br/>
+priporocenoPismo&nbsp;naslovnik3&nbsp;vwvEwa3mZfj&nbsp;468&nbsp;posiljatelj3<br/>
+priporocenoPismo&nbsp;naslovnik4&nbsp;vVbzz5nSmXJdtS2E&nbsp;471&nbsp;posiljatelj4<br/>
+telegram&nbsp;naslovnik5&nbsp;xIPBJP5ANT9BKsB4qm<br/>
+priporocenoPismo&nbsp;naslovnik6&nbsp;AtzlSmxGQ&nbsp;816&nbsp;posiljatelj6<br/>
+telegram&nbsp;naslovnik7&nbsp;91w<br/>
+navadnoPismo&nbsp;naslovnik8&nbsp;V0NNupzx&nbsp;313<br/>
+telegram&nbsp;naslovnik9&nbsp;FyoaBbDYWbsVohIGKep<br/>
+navadnoPismo&nbsp;naslovnik10&nbsp;JYq&nbsp;137<br/>
+priporocenoPismo&nbsp;naslovnik11&nbsp;TW3xLOD&nbsp;610&nbsp;posiljatelj11<br/>
+priporocenoPismo&nbsp;naslovnik12&nbsp;klH4mXAVLnZYCHpX&nbsp;336&nbsp;posiljatelj12<br/>
+priporocenoPismo&nbsp;naslovnik13&nbsp;FAzx2oMs&nbsp;474&nbsp;posiljatelj13<br/>
+telegram&nbsp;naslovnik14&nbsp;aBQodrVJK3jHVOBFcv<br/>
+priporocenoPismo&nbsp;naslovnik15&nbsp;7QdPEs3O&nbsp;189&nbsp;posiljatelj15<br/>
+navadnoPismo&nbsp;naslovnik16&nbsp;yQ1bYB9hiq&nbsp;88<br/>
+navadnoPismo&nbsp;naslovnik17&nbsp;BZemk88zwphWrd&nbsp;289<br/>
+navadnoPismo&nbsp;naslovnik18&nbsp;9nT7mO9wZ0Z&nbsp;172<br/>
+navadnoPismo&nbsp;naslovnik19&nbsp;rq21tlsgxgt7FFkK&nbsp;987<br/>
+navadnoPismo&nbsp;naslovnik20&nbsp;Q3mH&nbsp;24<br/>
+3<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;posiljatelj3&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;468&nbsp;|&nbsp;naslovnik3&nbsp;|&nbsp;8150<br/>PP&nbsp;|&nbsp;posiljatelj4&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;471&nbsp;|&nbsp;naslovnik4&nbsp;|&nbsp;8150<br/>PP&nbsp;|&nbsp;posiljatelj6&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;816&nbsp;|&nbsp;naslovnik6&nbsp;|&nbsp;12850<br/>PP&nbsp;|&nbsp;posiljatelj11&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;610&nbsp;|&nbsp;naslovnik11&nbsp;|&nbsp;10500<br/>PP&nbsp;|&nbsp;posiljatelj12&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;336&nbsp;|&nbsp;naslovnik12&nbsp;|&nbsp;6975<br/>PP&nbsp;|&nbsp;posiljatelj13&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;474&nbsp;|&nbsp;naslovnik13&nbsp;|&nbsp;8150<br/>PP&nbsp;|&nbsp;posiljatelj15&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;189&nbsp;|&nbsp;naslovnik15&nbsp;|&nbsp;4625<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase7"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 7</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            70&nbsp;57&nbsp;63&nbsp;2&nbsp;12<br/>
+50<br/>
+priporocenoPismo&nbsp;naslovnik1&nbsp;F&nbsp;289&nbsp;posiljatelj1<br/>
+telegram&nbsp;naslovnik2&nbsp;L6pRiH55sMRSg1YD<br/>
+navadnoPismo&nbsp;naslovnik3&nbsp;ElOQ&nbsp;109<br/>
+priporocenoPismo&nbsp;naslovnik4&nbsp;UDW1ANznO&nbsp;517&nbsp;posiljatelj4<br/>
+telegram&nbsp;naslovnik5&nbsp;xJoxGawS0CeBecWpN2<br/>
+navadnoPismo&nbsp;naslovnik6&nbsp;MIanLaDsTiWBk73A&nbsp;243<br/>
+priporocenoPismo&nbsp;naslovnik7&nbsp;hlaMCUlZKk5SKEoJ8ym&nbsp;234&nbsp;posiljatelj7<br/>
+navadnoPismo&nbsp;naslovnik8&nbsp;g4bur2dAJt&nbsp;690<br/>
+navadnoPismo&nbsp;naslovnik9&nbsp;UedNFhh&nbsp;610<br/>
+priporocenoPismo&nbsp;naslovnik10&nbsp;0q7bblDKzIE&nbsp;871&nbsp;posiljatelj10<br/>
+priporocenoPismo&nbsp;naslovnik11&nbsp;l8mooa&nbsp;7&nbsp;posiljatelj11<br/>
+telegram&nbsp;naslovnik12&nbsp;g7oGRFmI9lOsn<br/>
+navadnoPismo&nbsp;naslovnik13&nbsp;moyan7T6ruvR&nbsp;77<br/>
+priporocenoPismo&nbsp;naslovnik14&nbsp;B9dXByEX4zGrr&nbsp;574&nbsp;posiljatelj14<br/>
+telegram&nbsp;naslovnik15&nbsp;Q6BvXepnpl<br/>
+telegram&nbsp;naslovnik16&nbsp;B3LRmCtuNz265k<br/>
+navadnoPismo&nbsp;naslovnik17&nbsp;cr2A&nbsp;891<br/>
+telegram&nbsp;naslovnik18&nbsp;Wr6wlWxk8vbELU9EQIkj<br/>
+priporocenoPismo&nbsp;naslovnik19&nbsp;Ds50txn&nbsp;930&nbsp;posiljatelj19<br/>
+navadnoPismo&nbsp;naslovnik20&nbsp;LOb&nbsp;908<br/>
+priporocenoPismo&nbsp;naslovnik21&nbsp;8ISKMIJUQ0fBZyhsEYiL&nbsp;638&nbsp;posiljatelj21<br/>
+navadnoPismo&nbsp;naslovnik22&nbsp;G7ZQ9BuTsPDa7&nbsp;844<br/>
+priporocenoPismo&nbsp;naslovnik23&nbsp;j&nbsp;188&nbsp;posiljatelj23<br/>
+navadnoPismo&nbsp;naslovnik24&nbsp;Ab&nbsp;178<br/>
+navadnoPismo&nbsp;naslovnik25&nbsp;F&nbsp;130<br/>
+priporocenoPismo&nbsp;naslovnik26&nbsp;nQ2j5pxHO2ktX4x1wl9&nbsp;242&nbsp;posiljatelj26<br/>
+navadnoPismo&nbsp;naslovnik27&nbsp;Xh&nbsp;25<br/>
+priporocenoPismo&nbsp;naslovnik28&nbsp;YLrOUWs7nfcUiE9&nbsp;734&nbsp;posiljatelj28<br/>
+priporocenoPismo&nbsp;naslovnik29&nbsp;2bDPoGTgWBNItSrB8Qq&nbsp;792&nbsp;posiljatelj29<br/>
+telegram&nbsp;naslovnik30&nbsp;LndP5wsXvYuYepJxd<br/>
+priporocenoPismo&nbsp;naslovnik31&nbsp;wARK5NQS&nbsp;125&nbsp;posiljatelj31<br/>
+navadnoPismo&nbsp;naslovnik32&nbsp;4I0OIzu0w1iP3&nbsp;670<br/>
+telegram&nbsp;naslovnik33&nbsp;mXOiuhyQ3yWOo6Yh0<br/>
+priporocenoPismo&nbsp;naslovnik34&nbsp;L6O5P5x&nbsp;901&nbsp;posiljatelj34<br/>
+telegram&nbsp;naslovnik35&nbsp;P8JkwQYje6b9GLTf25<br/>
+navadnoPismo&nbsp;naslovnik36&nbsp;CDNwaGbXdw3hpHB&nbsp;471<br/>
+navadnoPismo&nbsp;naslovnik37&nbsp;IYsL&nbsp;566<br/>
+navadnoPismo&nbsp;naslovnik38&nbsp;H8YfbXJXjJ6Z&nbsp;654<br/>
+priporocenoPismo&nbsp;naslovnik39&nbsp;PdF&nbsp;364&nbsp;posiljatelj39<br/>
+navadnoPismo&nbsp;naslovnik40&nbsp;YtnDK0l4P&nbsp;642<br/>
+navadnoPismo&nbsp;naslovnik41&nbsp;g&nbsp;422<br/>
+priporocenoPismo&nbsp;naslovnik42&nbsp;1&nbsp;120&nbsp;posiljatelj42<br/>
+priporocenoPismo&nbsp;naslovnik43&nbsp;p&nbsp;745&nbsp;posiljatelj43<br/>
+telegram&nbsp;naslovnik44&nbsp;G0LjVDAGHEC<br/>
+priporocenoPismo&nbsp;naslovnik45&nbsp;3pDdAYv9R65UAOVQNZu&nbsp;229&nbsp;posiljatelj45<br/>
+navadnoPismo&nbsp;naslovnik46&nbsp;4QXnvUBx&nbsp;925<br/>
+priporocenoPismo&nbsp;naslovnik47&nbsp;qjDyWK3DgVMywdXVUn67&nbsp;586&nbsp;posiljatelj47<br/>
+navadnoPismo&nbsp;naslovnik48&nbsp;Qky51ug6&nbsp;369<br/>
+navadnoPismo&nbsp;naslovnik49&nbsp;E3lc&nbsp;150<br/>
+priporocenoPismo&nbsp;naslovnik50&nbsp;w1Gl&nbsp;30&nbsp;posiljatelj50<br/>
+1<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;naslovnik1&nbsp;|&nbsp;F&nbsp;|&nbsp;289&nbsp;|&nbsp;posiljatelj1&nbsp;|&nbsp;770<br/>T&nbsp;|&nbsp;naslovnik2&nbsp;|&nbsp;L6pRiH55sMRSg1YD&nbsp;|&nbsp;144<br/>NP&nbsp;|&nbsp;naslovnik3&nbsp;|&nbsp;ElOQ&nbsp;|&nbsp;109&nbsp;|&nbsp;133<br/>PP&nbsp;|&nbsp;naslovnik4&nbsp;|&nbsp;UDW1ANznO&nbsp;|&nbsp;517&nbsp;|&nbsp;posiljatelj4&nbsp;|&nbsp;1274<br/>T&nbsp;|&nbsp;naslovnik5&nbsp;|&nbsp;xJoxGawS0CeBecWpN2&nbsp;|&nbsp;192<br/>NP&nbsp;|&nbsp;naslovnik6&nbsp;|&nbsp;MIanLaDsTiWBk73A&nbsp;|&nbsp;243&nbsp;|&nbsp;322<br/>PP&nbsp;|&nbsp;naslovnik7&nbsp;|&nbsp;hlaMCUlZKk5SKEoJ8ym&nbsp;|&nbsp;234&nbsp;|&nbsp;posiljatelj7&nbsp;|&nbsp;644<br/>NP&nbsp;|&nbsp;naslovnik8&nbsp;|&nbsp;g4bur2dAJt&nbsp;|&nbsp;690&nbsp;|&nbsp;826<br/>NP&nbsp;|&nbsp;naslovnik9&nbsp;|&nbsp;UedNFhh&nbsp;|&nbsp;610&nbsp;|&nbsp;700<br/>PP&nbsp;|&nbsp;naslovnik10&nbsp;|&nbsp;0q7bblDKzIE&nbsp;|&nbsp;871&nbsp;|&nbsp;posiljatelj10&nbsp;|&nbsp;2030<br/>PP&nbsp;|&nbsp;naslovnik11&nbsp;|&nbsp;l8mooa&nbsp;|&nbsp;7&nbsp;|&nbsp;posiljatelj11&nbsp;|&nbsp;140<br/>T&nbsp;|&nbsp;naslovnik12&nbsp;|&nbsp;g7oGRFmI9lOsn&nbsp;|&nbsp;132<br/>NP&nbsp;|&nbsp;naslovnik13&nbsp;|&nbsp;moyan7T6ruvR&nbsp;|&nbsp;77&nbsp;|&nbsp;133<br/>PP&nbsp;|&nbsp;naslovnik14&nbsp;|&nbsp;B9dXByEX4zGrr&nbsp;|&nbsp;574&nbsp;|&nbsp;posiljatelj14&nbsp;|&nbsp;1400<br/>T&nbsp;|&nbsp;naslovnik15&nbsp;|&nbsp;Q6BvXepnpl&nbsp;|&nbsp;108<br/>T&nbsp;|&nbsp;naslovnik16&nbsp;|&nbsp;B3LRmCtuNz265k&nbsp;|&nbsp;120<br/>NP&nbsp;|&nbsp;naslovnik17&nbsp;|&nbsp;cr2A&nbsp;|&nbsp;891&nbsp;|&nbsp;1015<br/>T&nbsp;|&nbsp;naslovnik18&nbsp;|&nbsp;Wr6wlWxk8vbELU9EQIkj&nbsp;|&nbsp;204<br/>PP&nbsp;|&nbsp;naslovnik19&nbsp;|&nbsp;Ds50txn&nbsp;|&nbsp;930&nbsp;|&nbsp;posiljatelj19&nbsp;|&nbsp;2156<br/>NP&nbsp;|&nbsp;naslovnik20&nbsp;|&nbsp;LOb&nbsp;|&nbsp;908&nbsp;|&nbsp;1015<br/>PP&nbsp;|&nbsp;naslovnik21&nbsp;|&nbsp;8ISKMIJUQ0fBZyhsEYiL&nbsp;|&nbsp;638&nbsp;|&nbsp;posiljatelj21&nbsp;|&nbsp;1526<br/>NP&nbsp;|&nbsp;naslovnik22&nbsp;|&nbsp;G7ZQ9BuTsPDa7&nbsp;|&nbsp;844&nbsp;|&nbsp;952<br/>PP&nbsp;|&nbsp;naslovnik23&nbsp;|&nbsp;j&nbsp;|&nbsp;188&nbsp;|&nbsp;posiljatelj23&nbsp;|&nbsp;518<br/>NP&nbsp;|&nbsp;naslovnik24&nbsp;|&nbsp;Ab&nbsp;|&nbsp;178&nbsp;|&nbsp;259<br/>NP&nbsp;|&nbsp;naslovnik25&nbsp;|&nbsp;F&nbsp;|&nbsp;130&nbsp;|&nbsp;196<br/>PP&nbsp;|&nbsp;naslovnik26&nbsp;|&nbsp;nQ2j5pxHO2ktX4x1wl9&nbsp;|&nbsp;242&nbsp;|&nbsp;posiljatelj26&nbsp;|&nbsp;644<br/>NP&nbsp;|&nbsp;naslovnik27&nbsp;|&nbsp;Xh&nbsp;|&nbsp;25&nbsp;|&nbsp;70<br/>PP&nbsp;|&nbsp;naslovnik28&nbsp;|&nbsp;YLrOUWs7nfcUiE9&nbsp;|&nbsp;734&nbsp;|&nbsp;posiljatelj28&nbsp;|&nbsp;1652<br/>PP&nbsp;|&nbsp;naslovnik29&nbsp;|&nbsp;2bDPoGTgWBNItSrB8Qq&nbsp;|&nbsp;792&nbsp;|&nbsp;posiljatelj29&nbsp;|&nbsp;1778<br/>T&nbsp;|&nbsp;naslovnik30&nbsp;|&nbsp;LndP5wsXvYuYepJxd&nbsp;|&nbsp;192<br/>PP&nbsp;|&nbsp;naslovnik31&nbsp;|&nbsp;wARK5NQS&nbsp;|&nbsp;125&nbsp;|&nbsp;posiljatelj31&nbsp;|&nbsp;392<br/>NP&nbsp;|&nbsp;naslovnik32&nbsp;|&nbsp;4I0OIzu0w1iP3&nbsp;|&nbsp;670&nbsp;|&nbsp;763<br/>T&nbsp;|&nbsp;naslovnik33&nbsp;|&nbsp;mXOiuhyQ3yWOo6Yh0&nbsp;|&nbsp;168<br/>PP&nbsp;|&nbsp;naslovnik34&nbsp;|&nbsp;L6O5P5x&nbsp;|&nbsp;901&nbsp;|&nbsp;posiljatelj34&nbsp;|&nbsp;2030<br/>T&nbsp;|&nbsp;naslovnik35&nbsp;|&nbsp;P8JkwQYje6b9GLTf25&nbsp;|&nbsp;156<br/>NP&nbsp;|&nbsp;naslovnik36&nbsp;|&nbsp;CDNwaGbXdw3hpHB&nbsp;|&nbsp;471&nbsp;|&nbsp;574<br/>NP&nbsp;|&nbsp;naslovnik37&nbsp;|&nbsp;IYsL&nbsp;|&nbsp;566&nbsp;|&nbsp;637<br/>NP&nbsp;|&nbsp;naslovnik38&nbsp;|&nbsp;H8YfbXJXjJ6Z&nbsp;|&nbsp;654&nbsp;|&nbsp;763<br/>PP&nbsp;|&nbsp;naslovnik39&nbsp;|&nbsp;PdF&nbsp;|&nbsp;364&nbsp;|&nbsp;posiljatelj39&nbsp;|&nbsp;896<br/>NP&nbsp;|&nbsp;naslovnik40&nbsp;|&nbsp;YtnDK0l4P&nbsp;|&nbsp;642&nbsp;|&nbsp;763<br/>NP&nbsp;|&nbsp;naslovnik41&nbsp;|&nbsp;g&nbsp;|&nbsp;422&nbsp;|&nbsp;511<br/>PP&nbsp;|&nbsp;naslovnik42&nbsp;|&nbsp;1&nbsp;|&nbsp;120&nbsp;|&nbsp;posiljatelj42&nbsp;|&nbsp;392<br/>PP&nbsp;|&nbsp;naslovnik43&nbsp;|&nbsp;p&nbsp;|&nbsp;745&nbsp;|&nbsp;posiljatelj43&nbsp;|&nbsp;1778<br/>T&nbsp;|&nbsp;naslovnik44&nbsp;|&nbsp;G0LjVDAGHEC&nbsp;|&nbsp;120<br/>PP&nbsp;|&nbsp;naslovnik45&nbsp;|&nbsp;3pDdAYv9R65UAOVQNZu&nbsp;|&nbsp;229&nbsp;|&nbsp;posiljatelj45&nbsp;|&nbsp;644<br/>NP&nbsp;|&nbsp;naslovnik46&nbsp;|&nbsp;4QXnvUBx&nbsp;|&nbsp;925&nbsp;|&nbsp;1078<br/>PP&nbsp;|&nbsp;naslovnik47&nbsp;|&nbsp;qjDyWK3DgVMywdXVUn67&nbsp;|&nbsp;586&nbsp;|&nbsp;posiljatelj47&nbsp;|&nbsp;1400<br/>NP&nbsp;|&nbsp;naslovnik48&nbsp;|&nbsp;Qky51ug6&nbsp;|&nbsp;369&nbsp;|&nbsp;448<br/>NP&nbsp;|&nbsp;naslovnik49&nbsp;|&nbsp;E3lc&nbsp;|&nbsp;150&nbsp;|&nbsp;196<br/>PP&nbsp;|&nbsp;naslovnik50&nbsp;|&nbsp;w1Gl&nbsp;|&nbsp;30&nbsp;|&nbsp;posiljatelj50&nbsp;|&nbsp;140<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase8"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 8</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            66&nbsp;81&nbsp;20&nbsp;68&nbsp;15<br/>
+50<br/>
+priporocenoPismo&nbsp;naslovnik1&nbsp;JGP&nbsp;306&nbsp;posiljatelj1<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;ihwqm2KTHVAk&nbsp;207<br/>
+priporocenoPismo&nbsp;naslovnik3&nbsp;3AwZ6KHQ&nbsp;785&nbsp;posiljatelj3<br/>
+telegram&nbsp;naslovnik4&nbsp;avsRUeBTnb<br/>
+priporocenoPismo&nbsp;naslovnik5&nbsp;wyy3p8AKLsrwyOBo&nbsp;207&nbsp;posiljatelj5<br/>
+telegram&nbsp;naslovnik6&nbsp;PBzXa5vbo<br/>
+priporocenoPismo&nbsp;naslovnik7&nbsp;jon&nbsp;428&nbsp;posiljatelj7<br/>
+priporocenoPismo&nbsp;naslovnik8&nbsp;MhPBHGiQ&nbsp;886&nbsp;posiljatelj8<br/>
+priporocenoPismo&nbsp;naslovnik9&nbsp;9kvM4tdm&nbsp;727&nbsp;posiljatelj9<br/>
+priporocenoPismo&nbsp;naslovnik10&nbsp;bJG5utS5CCSL&nbsp;290&nbsp;posiljatelj10<br/>
+telegram&nbsp;naslovnik11&nbsp;5TxwR6LKj4YiHLx<br/>
+priporocenoPismo&nbsp;naslovnik12&nbsp;sIE6vHX&nbsp;858&nbsp;posiljatelj12<br/>
+navadnoPismo&nbsp;naslovnik13&nbsp;4&nbsp;842<br/>
+priporocenoPismo&nbsp;naslovnik14&nbsp;sYfmFoQOAjEMhNj&nbsp;13&nbsp;posiljatelj14<br/>
+priporocenoPismo&nbsp;naslovnik15&nbsp;S4FcGRF&nbsp;342&nbsp;posiljatelj15<br/>
+navadnoPismo&nbsp;naslovnik16&nbsp;6yqJrqlBPVIxss1ies5&nbsp;513<br/>
+navadnoPismo&nbsp;naslovnik17&nbsp;x3EaNI20c0HrcT9zrN&nbsp;481<br/>
+priporocenoPismo&nbsp;naslovnik18&nbsp;i1j785GoO8&nbsp;940&nbsp;posiljatelj18<br/>
+navadnoPismo&nbsp;naslovnik19&nbsp;kuEYYa0FO&nbsp;969<br/>
+telegram&nbsp;naslovnik20&nbsp;QBYjYWS7vRpupGB22DS1<br/>
+telegram&nbsp;naslovnik21&nbsp;XGYilMvY37o78D<br/>
+navadnoPismo&nbsp;naslovnik22&nbsp;RznwqX&nbsp;40<br/>
+navadnoPismo&nbsp;naslovnik23&nbsp;BieRVVVrF&nbsp;248<br/>
+navadnoPismo&nbsp;naslovnik24&nbsp;uOUs&nbsp;636<br/>
+priporocenoPismo&nbsp;naslovnik25&nbsp;B3&nbsp;419&nbsp;posiljatelj25<br/>
+priporocenoPismo&nbsp;naslovnik26&nbsp;n5U7OVRCIAmD&nbsp;13&nbsp;posiljatelj26<br/>
+telegram&nbsp;naslovnik27&nbsp;8I9YIgHwCTse7RS3oD<br/>
+priporocenoPismo&nbsp;naslovnik28&nbsp;LYdC1m&nbsp;566&nbsp;posiljatelj28<br/>
+priporocenoPismo&nbsp;naslovnik29&nbsp;0EGyn1dv4Po&nbsp;228&nbsp;posiljatelj29<br/>
+priporocenoPismo&nbsp;naslovnik30&nbsp;DOKyEO&nbsp;866&nbsp;posiljatelj30<br/>
+priporocenoPismo&nbsp;naslovnik31&nbsp;iQKXHOPIVoiQLI22X2&nbsp;659&nbsp;posiljatelj31<br/>
+navadnoPismo&nbsp;naslovnik32&nbsp;fxqGMMFQL5RU4UY8kNQZ&nbsp;40<br/>
+priporocenoPismo&nbsp;naslovnik33&nbsp;iZ&nbsp;709&nbsp;posiljatelj33<br/>
+navadnoPismo&nbsp;naslovnik34&nbsp;UEU&nbsp;858<br/>
+navadnoPismo&nbsp;naslovnik35&nbsp;n&nbsp;766<br/>
+telegram&nbsp;naslovnik36&nbsp;Gm6qdlvjn7BGneTAn<br/>
+telegram&nbsp;naslovnik37&nbsp;ZupczQofJaVSTDnjZFn<br/>
+priporocenoPismo&nbsp;naslovnik38&nbsp;ZLPBax&nbsp;508&nbsp;posiljatelj38<br/>
+priporocenoPismo&nbsp;naslovnik39&nbsp;iA&nbsp;418&nbsp;posiljatelj39<br/>
+navadnoPismo&nbsp;naslovnik40&nbsp;JUtqO3HHscOSM5&nbsp;981<br/>
+navadnoPismo&nbsp;naslovnik41&nbsp;EaYf2feSrKuZQtg8kr&nbsp;179<br/>
+navadnoPismo&nbsp;naslovnik42&nbsp;1s3BnrJlHF4U9o4x&nbsp;437<br/>
+priporocenoPismo&nbsp;naslovnik43&nbsp;1288If8WtBLjrA&nbsp;947&nbsp;posiljatelj43<br/>
+telegram&nbsp;naslovnik44&nbsp;GIMC4txmE85mEIyTK<br/>
+telegram&nbsp;naslovnik45&nbsp;tEr89crwXGFoTiH<br/>
+telegram&nbsp;naslovnik46&nbsp;sWKWeb1O<br/>
+navadnoPismo&nbsp;naslovnik47&nbsp;eeIzZHmQXDgW&nbsp;777<br/>
+telegram&nbsp;naslovnik48&nbsp;G<br/>
+navadnoPismo&nbsp;naslovnik49&nbsp;9Ja8UKdfzsC9h&nbsp;37<br/>
+telegram&nbsp;naslovnik50&nbsp;IQsapY3hht7m4X0TSC0T<br/>
+2<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;naslovnik18&nbsp;|&nbsp;i1j785GoO8&nbsp;|&nbsp;940&nbsp;|&nbsp;posiljatelj18&nbsp;|&nbsp;19448<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase9"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 9</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            74&nbsp;16&nbsp;14&nbsp;16&nbsp;38<br/>
+50<br/>
+priporocenoPismo&nbsp;naslovnik1&nbsp;uAbQpRVl6EHtCEi&nbsp;736&nbsp;posiljatelj1<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;Edk5NPdK9NEJZ5rIeTB&nbsp;201<br/>
+navadnoPismo&nbsp;naslovnik3&nbsp;aIslzd&nbsp;864<br/>
+priporocenoPismo&nbsp;naslovnik4&nbsp;c7827eDxWm7w&nbsp;29&nbsp;posiljatelj4<br/>
+navadnoPismo&nbsp;naslovnik5&nbsp;kB09XVf&nbsp;840<br/>
+telegram&nbsp;naslovnik6&nbsp;q0BMgexQM<br/>
+priporocenoPismo&nbsp;naslovnik7&nbsp;mO1MJKshAqXGxMUbHA&nbsp;386&nbsp;posiljatelj7<br/>
+priporocenoPismo&nbsp;naslovnik8&nbsp;C2yGhtKHUavaR&nbsp;386&nbsp;posiljatelj8<br/>
+priporocenoPismo&nbsp;naslovnik9&nbsp;zd&nbsp;949&nbsp;posiljatelj9<br/>
+navadnoPismo&nbsp;naslovnik10&nbsp;EvZY89OoKDRoN0y3&nbsp;259<br/>
+navadnoPismo&nbsp;naslovnik11&nbsp;d&nbsp;85<br/>
+priporocenoPismo&nbsp;naslovnik12&nbsp;T7WkSZRxNNjHYBnDs&nbsp;885&nbsp;posiljatelj12<br/>
+navadnoPismo&nbsp;naslovnik13&nbsp;t&nbsp;43<br/>
+telegram&nbsp;naslovnik14&nbsp;NC3tJf8BWkIOPdX<br/>
+navadnoPismo&nbsp;naslovnik15&nbsp;6pikiVHM&nbsp;386<br/>
+navadnoPismo&nbsp;naslovnik16&nbsp;KugpLp1OWj&nbsp;623<br/>
+priporocenoPismo&nbsp;naslovnik17&nbsp;1zdgkg&nbsp;843&nbsp;posiljatelj17<br/>
+navadnoPismo&nbsp;naslovnik18&nbsp;y3FBrZYexEcQejyKo&nbsp;594<br/>
+priporocenoPismo&nbsp;naslovnik19&nbsp;l&nbsp;622&nbsp;posiljatelj19<br/>
+navadnoPismo&nbsp;naslovnik20&nbsp;dL6jmm2vsvf8ojFS2hT&nbsp;277<br/>
+priporocenoPismo&nbsp;naslovnik21&nbsp;zBP1G&nbsp;492&nbsp;posiljatelj21<br/>
+telegram&nbsp;naslovnik22&nbsp;KI57iFWqMI<br/>
+priporocenoPismo&nbsp;naslovnik23&nbsp;ArbqhJ3Rfv&nbsp;480&nbsp;posiljatelj23<br/>
+priporocenoPismo&nbsp;naslovnik24&nbsp;rpp&nbsp;277&nbsp;posiljatelj24<br/>
+navadnoPismo&nbsp;naslovnik25&nbsp;i8wgVR1NIihVSaeJm1&nbsp;42<br/>
+priporocenoPismo&nbsp;naslovnik26&nbsp;4JUJ5KpWRRj0Iz8Pv2Yz&nbsp;906&nbsp;posiljatelj26<br/>
+navadnoPismo&nbsp;naslovnik27&nbsp;6PxF1ojBu&nbsp;669<br/>
+telegram&nbsp;naslovnik28&nbsp;rcFNFagIgljqF3VfNJlD<br/>
+telegram&nbsp;naslovnik29&nbsp;T<br/>
+telegram&nbsp;naslovnik30&nbsp;einTvPIBmzSiLPk<br/>
+priporocenoPismo&nbsp;naslovnik31&nbsp;iX2bgXayd4Ry1&nbsp;156&nbsp;posiljatelj31<br/>
+navadnoPismo&nbsp;naslovnik32&nbsp;up1YMyeE&nbsp;961<br/>
+telegram&nbsp;naslovnik33&nbsp;jS4oWnqrpilp<br/>
+navadnoPismo&nbsp;naslovnik34&nbsp;rtdp40RrC1Yd0jbiuQE&nbsp;647<br/>
+telegram&nbsp;naslovnik35&nbsp;SEuEncgDM76ZgpDRh<br/>
+priporocenoPismo&nbsp;naslovnik36&nbsp;6sEdEoCrljSRgVO&nbsp;620&nbsp;posiljatelj36<br/>
+priporocenoPismo&nbsp;naslovnik37&nbsp;bJ3Xvwqa2uDGLUWFy&nbsp;980&nbsp;posiljatelj37<br/>
+navadnoPismo&nbsp;naslovnik38&nbsp;VWhcPJ288&nbsp;872<br/>
+priporocenoPismo&nbsp;naslovnik39&nbsp;HjPTZLY4P6tsO3mjGfW&nbsp;706&nbsp;posiljatelj39<br/>
+telegram&nbsp;naslovnik40&nbsp;xNulU<br/>
+priporocenoPismo&nbsp;naslovnik41&nbsp;xJntObhjc1ti&nbsp;839&nbsp;posiljatelj41<br/>
+telegram&nbsp;naslovnik42&nbsp;N7XYGX<br/>
+navadnoPismo&nbsp;naslovnik43&nbsp;k0d&nbsp;123<br/>
+navadnoPismo&nbsp;naslovnik44&nbsp;LsaPP&nbsp;266<br/>
+navadnoPismo&nbsp;naslovnik45&nbsp;d7SNpDP&nbsp;698<br/>
+priporocenoPismo&nbsp;naslovnik46&nbsp;PvENIomveWHpBv7Xo&nbsp;78&nbsp;posiljatelj46<br/>
+priporocenoPismo&nbsp;naslovnik47&nbsp;cnDoa8&nbsp;387&nbsp;posiljatelj47<br/>
+navadnoPismo&nbsp;naslovnik48&nbsp;sB380zN5HjwQ&nbsp;660<br/>
+priporocenoPismo&nbsp;naslovnik49&nbsp;vRrD7N&nbsp;279&nbsp;posiljatelj49<br/>
+navadnoPismo&nbsp;naslovnik50&nbsp;T79&nbsp;870<br/>
+3<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;posiljatelj1&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;736&nbsp;|&nbsp;naslovnik1&nbsp;|&nbsp;11488<br/>PP&nbsp;|&nbsp;posiljatelj4&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;29&nbsp;|&nbsp;naslovnik4&nbsp;|&nbsp;1408<br/>PP&nbsp;|&nbsp;posiljatelj7&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;386&nbsp;|&nbsp;naslovnik7&nbsp;|&nbsp;6560<br/>PP&nbsp;|&nbsp;posiljatelj8&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;386&nbsp;|&nbsp;naslovnik8&nbsp;|&nbsp;6560<br/>PP&nbsp;|&nbsp;posiljatelj9&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;949&nbsp;|&nbsp;naslovnik9&nbsp;|&nbsp;14400<br/>PP&nbsp;|&nbsp;posiljatelj12&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;885&nbsp;|&nbsp;naslovnik12&nbsp;|&nbsp;13504<br/>PP&nbsp;|&nbsp;posiljatelj17&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;843&nbsp;|&nbsp;naslovnik17&nbsp;|&nbsp;12832<br/>PP&nbsp;|&nbsp;posiljatelj19&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;622&nbsp;|&nbsp;naslovnik19&nbsp;|&nbsp;9696<br/>PP&nbsp;|&nbsp;posiljatelj21&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;492&nbsp;|&nbsp;naslovnik21&nbsp;|&nbsp;7904<br/>PP&nbsp;|&nbsp;posiljatelj23&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;480&nbsp;|&nbsp;naslovnik23&nbsp;|&nbsp;7904<br/>PP&nbsp;|&nbsp;posiljatelj24&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;277&nbsp;|&nbsp;naslovnik24&nbsp;|&nbsp;4992<br/>PP&nbsp;|&nbsp;posiljatelj26&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;906&nbsp;|&nbsp;naslovnik26&nbsp;|&nbsp;13728<br/>PP&nbsp;|&nbsp;posiljatelj31&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;156&nbsp;|&nbsp;naslovnik31&nbsp;|&nbsp;3200<br/>PP&nbsp;|&nbsp;posiljatelj36&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;620&nbsp;|&nbsp;naslovnik36&nbsp;|&nbsp;9696<br/>PP&nbsp;|&nbsp;posiljatelj37&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;980&nbsp;|&nbsp;naslovnik37&nbsp;|&nbsp;14848<br/>PP&nbsp;|&nbsp;posiljatelj39&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;706&nbsp;|&nbsp;naslovnik39&nbsp;|&nbsp;11040<br/>PP&nbsp;|&nbsp;posiljatelj41&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;839&nbsp;|&nbsp;naslovnik41&nbsp;|&nbsp;12832<br/>PP&nbsp;|&nbsp;posiljatelj46&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;78&nbsp;|&nbsp;naslovnik46&nbsp;|&nbsp;2080<br/>PP&nbsp;|&nbsp;posiljatelj47&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;387&nbsp;|&nbsp;naslovnik47&nbsp;|&nbsp;6560<br/>PP&nbsp;|&nbsp;posiljatelj49&nbsp;|&nbsp;povratnica&nbsp;|&nbsp;279&nbsp;|&nbsp;naslovnik49&nbsp;|&nbsp;4992<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase10"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 10</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            70&nbsp;49&nbsp;32&nbsp;74&nbsp;36<br/>
+100<br/>
+telegram&nbsp;naslovnik1&nbsp;OME459wnCLms9d8<br/>
+navadnoPismo&nbsp;naslovnik2&nbsp;vdjmBS9E&nbsp;528<br/>
+navadnoPismo&nbsp;naslovnik3&nbsp;ZeRXq3p&nbsp;233<br/>
+telegram&nbsp;naslovnik4&nbsp;f0sc<br/>
+priporocenoPismo&nbsp;naslovnik5&nbsp;ps2Sa7f9fHo&nbsp;115&nbsp;posiljatelj5<br/>
+priporocenoPismo&nbsp;naslovnik6&nbsp;Qvo0Id5DtLzanzL&nbsp;126&nbsp;posiljatelj6<br/>
+priporocenoPismo&nbsp;naslovnik7&nbsp;M6iGwq0xtPdU&nbsp;266&nbsp;posiljatelj7<br/>
+telegram&nbsp;naslovnik8&nbsp;qB42Qmd0yoU<br/>
+navadnoPismo&nbsp;naslovnik9&nbsp;PZ6YGJG39rWX&nbsp;552<br/>
+priporocenoPismo&nbsp;naslovnik10&nbsp;gE78kaqSygI&nbsp;360&nbsp;posiljatelj10<br/>
+priporocenoPismo&nbsp;naslovnik11&nbsp;dYzi9tq8dwf0Ij7NiSO&nbsp;643&nbsp;posiljatelj11<br/>
+navadnoPismo&nbsp;naslovnik12&nbsp;GMKJZdyme8NgKfjfEH1&nbsp;166<br/>
+telegram&nbsp;naslovnik13&nbsp;k3ll6kuV1jIX3i<br/>
+navadnoPismo&nbsp;naslovnik14&nbsp;h1lUuA3bXRhJOx3gaYH&nbsp;840<br/>
+priporocenoPismo&nbsp;naslovnik15&nbsp;Upp4uA0gwD0s7J&nbsp;174&nbsp;posiljatelj15<br/>
+navadnoPismo&nbsp;naslovnik16&nbsp;jBgwsZ0VAavkQAS12qlo&nbsp;454<br/>
+priporocenoPismo&nbsp;naslovnik17&nbsp;PVHcJ&nbsp;606&nbsp;posiljatelj17<br/>
+navadnoPismo&nbsp;naslovnik18&nbsp;l9NCewqaK1p&nbsp;45<br/>
+telegram&nbsp;naslovnik19&nbsp;cf5Ulog<br/>
+navadnoPismo&nbsp;naslovnik20&nbsp;6vBVnbi7&nbsp;674<br/>
+priporocenoPismo&nbsp;naslovnik21&nbsp;OEv7qlfCGC&nbsp;250&nbsp;posiljatelj21<br/>
+priporocenoPismo&nbsp;naslovnik22&nbsp;Mbgi2fuvs9pi6L4slVy&nbsp;36&nbsp;posiljatelj22<br/>
+navadnoPismo&nbsp;naslovnik23&nbsp;p&nbsp;870<br/>
+navadnoPismo&nbsp;naslovnik24&nbsp;wYUESSjyLEt3k57&nbsp;858<br/>
+telegram&nbsp;naslovnik25&nbsp;YzUbi83tEd<br/>
+navadnoPismo&nbsp;naslovnik26&nbsp;Yv6JYyneyM5hrx&nbsp;688<br/>
+telegram&nbsp;naslovnik27&nbsp;of6EZYyXbOzj5lbBf<br/>
+navadnoPismo&nbsp;naslovnik28&nbsp;tKermaXHC&nbsp;372<br/>
+priporocenoPismo&nbsp;naslovnik29&nbsp;P8Mm7zUFnsfIEX&nbsp;959&nbsp;posiljatelj29<br/>
+telegram&nbsp;naslovnik30&nbsp;Zs6L<br/>
+navadnoPismo&nbsp;naslovnik31&nbsp;0g2iURW3lD4OafJyOcEV&nbsp;924<br/>
+priporocenoPismo&nbsp;naslovnik32&nbsp;MwHF1eZt07b9vYCp&nbsp;782&nbsp;posiljatelj32<br/>
+navadnoPismo&nbsp;naslovnik33&nbsp;MHV1UhOJkOkYx&nbsp;34<br/>
+navadnoPismo&nbsp;naslovnik34&nbsp;YhPzbtwcBEW0C&nbsp;219<br/>
+priporocenoPismo&nbsp;naslovnik35&nbsp;B0cdXffM&nbsp;392&nbsp;posiljatelj35<br/>
+navadnoPismo&nbsp;naslovnik36&nbsp;Mr5oqMUUPn773dy&nbsp;145<br/>
+navadnoPismo&nbsp;naslovnik37&nbsp;VoKqTNyAMrBu&nbsp;257<br/>
+navadnoPismo&nbsp;naslovnik38&nbsp;bR2ac44NjbgMyXWj1v2U&nbsp;642<br/>
+priporocenoPismo&nbsp;naslovnik39&nbsp;rlh2rqCOrxh&nbsp;13&nbsp;posiljatelj39<br/>
+telegram&nbsp;naslovnik40&nbsp;kaViQUr0mcK<br/>
+navadnoPismo&nbsp;naslovnik41&nbsp;b7h9YrgzpJNyBzr7&nbsp;222<br/>
+navadnoPismo&nbsp;naslovnik42&nbsp;bypzquxLH70N&nbsp;158<br/>
+navadnoPismo&nbsp;naslovnik43&nbsp;PCrDHpHAHa0EFIrNxI&nbsp;178<br/>
+priporocenoPismo&nbsp;naslovnik44&nbsp;s&nbsp;805&nbsp;posiljatelj44<br/>
+telegram&nbsp;naslovnik45&nbsp;f3J4oP<br/>
+telegram&nbsp;naslovnik46&nbsp;J<br/>
+telegram&nbsp;naslovnik47&nbsp;Uows<br/>
+telegram&nbsp;naslovnik48&nbsp;udKxltvkQRw7iKm5Rf<br/>
+telegram&nbsp;naslovnik49&nbsp;rM<br/>
+priporocenoPismo&nbsp;naslovnik50&nbsp;VIb5GqKxk1KM9TwZ&nbsp;81&nbsp;posiljatelj50<br/>
+priporocenoPismo&nbsp;naslovnik51&nbsp;YA65wksBblB&nbsp;698&nbsp;posiljatelj51<br/>
+navadnoPismo&nbsp;naslovnik52&nbsp;SYqsi5zP0EmUK&nbsp;286<br/>
+navadnoPismo&nbsp;naslovnik53&nbsp;BrUqfMCTL0&nbsp;668<br/>
+priporocenoPismo&nbsp;naslovnik54&nbsp;TI&nbsp;330&nbsp;posiljatelj54<br/>
+telegram&nbsp;naslovnik55&nbsp;NnF<br/>
+telegram&nbsp;naslovnik56&nbsp;B<br/>
+priporocenoPismo&nbsp;naslovnik57&nbsp;TztGINuh7fKS&nbsp;129&nbsp;posiljatelj57<br/>
+priporocenoPismo&nbsp;naslovnik58&nbsp;JO6HX&nbsp;109&nbsp;posiljatelj58<br/>
+telegram&nbsp;naslovnik59&nbsp;M39N<br/>
+telegram&nbsp;naslovnik60&nbsp;w3yH6JKgHkFxWFD1<br/>
+navadnoPismo&nbsp;naslovnik61&nbsp;z3t1zp5tV2Q&nbsp;514<br/>
+priporocenoPismo&nbsp;naslovnik62&nbsp;27JO9Mchcye07gnY4&nbsp;373&nbsp;posiljatelj62<br/>
+priporocenoPismo&nbsp;naslovnik63&nbsp;Pestc0abqwvBHD4jRhSc&nbsp;596&nbsp;posiljatelj63<br/>
+navadnoPismo&nbsp;naslovnik64&nbsp;qy&nbsp;91<br/>
+navadnoPismo&nbsp;naslovnik65&nbsp;enNpz7&nbsp;371<br/>
+navadnoPismo&nbsp;naslovnik66&nbsp;N&nbsp;218<br/>
+priporocenoPismo&nbsp;naslovnik67&nbsp;I2US2kK0jPlN0AZ29&nbsp;445&nbsp;posiljatelj67<br/>
+priporocenoPismo&nbsp;naslovnik68&nbsp;Cgw&nbsp;396&nbsp;posiljatelj68<br/>
+navadnoPismo&nbsp;naslovnik69&nbsp;dgg48nHAS&nbsp;343<br/>
+navadnoPismo&nbsp;naslovnik70&nbsp;zdlUSlV0Fs&nbsp;336<br/>
+telegram&nbsp;naslovnik71&nbsp;pP<br/>
+priporocenoPismo&nbsp;naslovnik72&nbsp;qeHWRkNfPuI&nbsp;930&nbsp;posiljatelj72<br/>
+priporocenoPismo&nbsp;naslovnik73&nbsp;qCIxnOIRd&nbsp;745&nbsp;posiljatelj73<br/>
+priporocenoPismo&nbsp;naslovnik74&nbsp;C&nbsp;103&nbsp;posiljatelj74<br/>
+navadnoPismo&nbsp;naslovnik75&nbsp;NUimNElbSWnKCas&nbsp;465<br/>
+priporocenoPismo&nbsp;naslovnik76&nbsp;OGTqWnZAlPuyZ&nbsp;108&nbsp;posiljatelj76<br/>
+telegram&nbsp;naslovnik77&nbsp;b20FY4GXS4w1kyusl<br/>
+telegram&nbsp;naslovnik78&nbsp;mm1<br/>
+telegram&nbsp;naslovnik79&nbsp;qOSrX<br/>
+navadnoPismo&nbsp;naslovnik80&nbsp;pKCA4s52YlgYiHO&nbsp;634<br/>
+telegram&nbsp;naslovnik81&nbsp;NKOekgJYAW9<br/>
+navadnoPismo&nbsp;naslovnik82&nbsp;Nh1oSK&nbsp;875<br/>
+priporocenoPismo&nbsp;naslovnik83&nbsp;KaFjTkbTOQE2ayECO&nbsp;933&nbsp;posiljatelj83<br/>
+priporocenoPismo&nbsp;naslovnik84&nbsp;o1crlg&nbsp;727&nbsp;posiljatelj84<br/>
+telegram&nbsp;naslovnik85&nbsp;KU8No0qV<br/>
+telegram&nbsp;naslovnik86&nbsp;Tl00P3jYtP4jrv<br/>
+priporocenoPismo&nbsp;naslovnik87&nbsp;XF&nbsp;182&nbsp;posiljatelj87<br/>
+telegram&nbsp;naslovnik88&nbsp;aipeJsKEnjY<br/>
+navadnoPismo&nbsp;naslovnik89&nbsp;uetvT167ROn39VpCNJB&nbsp;711<br/>
+priporocenoPismo&nbsp;naslovnik90&nbsp;0VbuOqWAfxE&nbsp;914&nbsp;posiljatelj90<br/>
+navadnoPismo&nbsp;naslovnik91&nbsp;EyLdZ&nbsp;910<br/>
+navadnoPismo&nbsp;naslovnik92&nbsp;6A72XCRdL3f5TtRSx&nbsp;65<br/>
+telegram&nbsp;naslovnik93&nbsp;j0IZVH5Bx6N8D<br/>
+navadnoPismo&nbsp;naslovnik94&nbsp;US&nbsp;299<br/>
+priporocenoPismo&nbsp;naslovnik95&nbsp;HOR5bKNYt&nbsp;815&nbsp;posiljatelj95<br/>
+navadnoPismo&nbsp;naslovnik96&nbsp;0npUiCHB6lvWK4H&nbsp;984<br/>
+navadnoPismo&nbsp;naslovnik97&nbsp;LcTAVR6MmSMGzpDUwW6&nbsp;477<br/>
+priporocenoPismo&nbsp;naslovnik98&nbsp;liAbECMWhd&nbsp;926&nbsp;posiljatelj98<br/>
+priporocenoPismo&nbsp;naslovnik99&nbsp;KG84oOMsAl&nbsp;142&nbsp;posiljatelj99<br/>
+navadnoPismo&nbsp;naslovnik100&nbsp;4O1wu&nbsp;834<br/>
+2<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            PP&nbsp;|&nbsp;naslovnik29&nbsp;|&nbsp;P8Mm7zUFnsfIEX&nbsp;|&nbsp;959&nbsp;|&nbsp;posiljatelj29&nbsp;|&nbsp;50172<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+
+        <div style="height: 30px"></div>
+
+        <table id="grad1" class="tableLegend tableSummary"
+          <tbody>
+            <tr>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #9F9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">ok</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FFBF00; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FF9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka med izvajanjem</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #C00000; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">se ne prevede</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #B9F; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">timeout (1000 ms)</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #D0E0F0; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">rezultat izrisa</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a name="bottom"></a>
+        </div>
+    </body>
+    <!-- java class tester version "1.5.8" -->
+    <!-- 22.8.2022 0:12.55 -->
+    <!-- DESKTOP-LT7IA9J, fe80::897e:e7c7:cf31:e91c%9 -->
+</html>

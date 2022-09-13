@@ -1,0 +1,5 @@
+izjema
+3
+izjema
+5
+izjema

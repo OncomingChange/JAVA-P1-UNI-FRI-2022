@@ -1,0 +1,20 @@
+PP | naslovnik1 | YwdA | 709 | posiljatelj1 | 1029
+NP | naslovnik2 | 6jsbZohTd | 882 | 173
+NP | naslovnik3 | WUk | 658 | 147
+T | naslovnik4 | 6LjtkChg3YVcTtmz5q | 1440
+PP | naslovnik5 | R | 50 | posiljatelj5 | 392
+NP | naslovnik6 | VVbdDzIVou1HqTfmz | 294 | 95
+PP | naslovnik7 | t0KN8uMkay8 | 440 | posiljatelj7 | 756
+NP | naslovnik8 | qN5k2T1kie4UHHF20Vr | 392 | 108
+NP | naslovnik9 | lD | 225 | 82
+T | naslovnik10 | g | 96
+NP | naslovnik11 | M0AHlEMf6PC8Y | 17 | 56
+PP | naslovnik12 | yjMMr2 | 35 | posiljatelj12 | 392
+T | naslovnik13 | OOYNkfqeTGEg021AI | 1344
+NP | naslovnik14 | oKa | 700 | 147
+NP | naslovnik15 | hhpBYX3JQfE | 327 | 95
+T | naslovnik16 | ow7xYV9Hb8g8 | 768
+NP | naslovnik17 | ikC7 | 757 | 160
+T | naslovnik18 | Bz1JYIq8h2S11 | 768
+T | naslovnik19 | IEf6sZjidQ0kQ0Km | 1248
+NP | naslovnik20 | QZ5jaqwG3xuyvjU | 967 | 186

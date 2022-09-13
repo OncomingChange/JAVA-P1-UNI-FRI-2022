@@ -1,0 +1,9 @@
+this: Gal Smole (M), 2009
+this.oce: Miha Smole (M), 1978
+this.oce.oce: Milan Smole (M), 1953
+this.oce.mati: Metka Smole (Z), 1953
+this.mati: Neža Smole (Z), 1980
+this.mati.oce: Zvone Kotnik (M), 1956
+this.mati.oce.oce: France Kotnik (M), 1932
+this.mati.oce.mati: Ivana Kotnik (Z), 1931
+this.mati.mati: Tanja Kotnik (Z), 1954

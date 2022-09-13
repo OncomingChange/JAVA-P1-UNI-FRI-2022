@@ -1,0 +1,7 @@
+[40, 50, 20, 30]
+[90, 70]
+[]
+[5]
+[8, 5, -2, 7, 0, 4, -3, -6, 1, 5, 3, 9, 2]
+[franci, eva, denis, cvetka, bojan, ana]
+[dan, lep, je, danes]

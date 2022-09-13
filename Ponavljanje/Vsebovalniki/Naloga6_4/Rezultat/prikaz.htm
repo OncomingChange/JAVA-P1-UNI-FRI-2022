@@ -1,0 +1,475 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Prikaz rezultatov testiranja</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+            .tableBase { border-collapse: collapse; }
+            .tableBase > tbody > tr > td { border: 1px solid black; padding: 7px;}
+            .tableResults { table-layout: fixed; border-spacing: 0px; border-collapse: separate; }
+            table#nasredini { margin-left:auto; margin-right:auto; }
+            table tbody td.hoverOk {background-color:#9F9; border: 1px solid #63B563; width: 15px; color: black; text-align: center; }
+            .hoverOk:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #63B563; }
+            .hoverOk:hover td { background: transparent; }
+            .hoverOk > a:link, .hoverOk > a:visited, .hoverOk > a:hover, .hoverOk > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverErr {background-color:#FFBF00; border: 1px solid #CB9800; width: 15px; color: black; text-align: center; }
+            .hoverErr:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #CB9800; }
+            .hoverErr:hover td { background: transparent; }
+            .hoverErr > a:link, .hoverErr > a:visited, .hoverErr > a:hover, .hoverErr > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverRuntime {background-color:#FF9; border: 1px solid #D8D87E; width: 15px; color: black; text-align: center; }
+            .hoverRuntime:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #D8D87E; }
+            .hoverRuntime:hover td { background: transparent; }
+            .hoverRuntime > a:link, .hoverRuntime > a:visited, .hoverRuntime > a:hover, .hoverRuntime > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverCompile {background-color:#C00000; border: 1px solid #710B0B; width: 15px; color: black; text-align: center; }
+            .hoverCompile:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #710B0B; }
+            .hoverCompile:hover td { background: transparent; }
+            .hoverCompile > a:link, .hoverCompile > a:visited, .hoverCompile > a:hover, .hoverCompile > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverMissing {background-color:#F0F0F0; border: 1px solid #ABABAB; width: 15px; color: black; text-align: center; }
+            .hoverMissing:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #ABABAB; }
+            .hoverMissing:hover td { background: transparent; }
+            .hoverMissing > a:link, .hoverMissing > a:visited, .hoverMissing > a:hover, .hoverMissing > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverTimeout {background-color:#B9F; border: 1px solid #9070CE; width: 15px; color: black; text-align: center; }
+            .hoverTimeout:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #9070CE; }
+            .hoverTimeout:hover td { background: transparent; }
+            .hoverTimeout > a:link, .hoverTimeout > a:visited, .hoverTimeout > a:hover, .hoverTimeout > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverImage {background-color:#D0E0F0; border: 1px solid #a6b3c0; width: 15px; color: black; text-align: center; }
+            .hoverImage:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #a6b3c0; }
+            .hoverImage:hover td { background: transparent; }
+            .hoverImage > a:link, .hoverImage > a:visited, .hoverImage > a:hover, .hoverImage > a:active { color: black; font-size: 0.9em; }
+            .tableCommon { border-collapse: collapse; }
+            .tableOK > tbody > tr > td { border: 1px solid #63B563; padding: 7px;}
+            .tableError > tbody > tr > td { border: 1px solid #CB9800; padding: 7px;}
+            .tableRuntime > tbody > tr > td { border: 1px solid #D8D87E; padding: 7px;}
+            .tableCompiler > tbody > tr > td { border: 1px solid #710B0B; padding: 7px;}
+            .tableMissing > tbody > tr > td { border: 1px solid #ABABAB; padding: 7px;}
+            .tableTimeout > tbody > tr > td { border: 1px solid #9070CE; padding: 7px;}
+            .tableImage > tbody > tr > td { border: 1px solid #a6b3c0; padding: 7px;}
+            .tableSummary { table-layout: fixed; }
+            .texttt { font-family: DejaVu Sans Mono, monospace; font-size: 0.8em; }
+            table.diff > tbody > tr > td { border: none; font-family: DejaVu Sans Mono, monospace}
+            .diff_add { color: green; font-family: DejaVu Sans Mono, monospace; }
+            .diff_sub { color: blue; font-family: DejaVu Sans Mono, monospace; }
+            .diff_chg { color: red; font-family: DejaVu Sans Mono, monospace; }
+            a { color: blue; text-decoration: none; height: 100%; width: 100%; vertical-align: middle; }
+            a:link { color: blue; text-decoration: none; }
+            a:link { color: blue; text-decoration: none; }
+            a:hover { color: blue; text-decoration: underline; }
+            body, td { font: normal normal 100%/1.0 DejaVu Sans, sans-serif; }
+            h1 { font-weight: bold; font-size: 150%; }
+            h2 { font-weight: normal; font-size: 125%; border-top: 1px solid black; border-bottom: 1px solid black; background: #DEF; padding: 5px; margin-top: 36px; margin-bottom: 36px}
+            .container{ margin: 0px auto; width: 70%; min-width: 700px; margin-top: 1.8cm; margin-bottom: 1.8cm; }
+            .rwordb{ color: blue; font-weight: bold; }
+            .rwordv{ color:#8000ff; font-weight: bold; }
+            .vcomment{ color: green; }
+            .bcomment{ color: green; }
+            .niz{ color:#a31515; }
+            .stevilo{ color:#ff8000; }
+            tab { padding-left: 4em; }
+            #grad1 {
+                background: -webkit-linear-gradient(left, #E0E0E0 , white);
+                background: -o-linear-gradient(right, #E0E0E0, white);
+                background: -moz-linear-gradient(right, #E0E0E0, white);
+                background: linear-gradient(to right, #E0E0E0 , white);
+            }
+            #grad2 {
+                background: -webkit-linear-gradient(left, #9F9 , white);
+                background: -o-linear-gradient(right, #9F9, white);
+                background: -moz-linear-gradient(right, #9F9, white);
+                background: linear-gradient(to right, #9F9 , white);
+            }
+            .capSlika { display:block; height: 25px; margin:0 auto; font-size: 1.0em; text-align: left; }
+            .dborder { padding: 0px; border: 1px solid #CACACA; }
+            .capText { display: block; margin:0 auto; font-size: 0.9em; text-align: left; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <a name="top"></a>
+        <h1 id="grad2" style="padding: 10px; border: 0px solid black; color: #000000;">Rezultati preverjanja <span style="color: #700000;">Naloga.java</span> (10/10)</h1>
+        <div style="height: 20px"></div>
+        <a name="summary"></a>
+        <h2>Povzetek rezultatov</h2>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase1">1</a></td>
+                <td class="hoverOk"><a href="#testcase2">2</a></td>
+                <td class="hoverOk"><a href="#testcase3">3</a></td>
+                <td class="hoverOk"><a href="#testcase4">4</a></td>
+                <td class="hoverOk"><a href="#testcase5">5</a></td>
+                <td class="hoverOk"><a href="#testcase6">6</a></td>
+                <td class="hoverOk"><a href="#testcase7">7</a></td>
+                <td class="hoverOk"><a href="#testcase8">8</a></td>
+                <td class="hoverOk"><a href="#testcase9">9</a></td>
+                <td class="hoverOk"><a href="#testcase10">10</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <div style="height: 20px"></div>
+        <h2>Rezultati</h2>
+        <a name="testcase1"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            8<br/>
+medtem&nbsp;ko&nbsp;je&nbsp;programski&nbsp;jezik&nbsp;java&nbsp;objektno&nbsp;usmerjen<br/>
+6<br/>
+je&nbsp;programski&nbsp;jezik&nbsp;C&nbsp;proceduralno&nbsp;usmerjen<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            java<br/>ko<br/>medtem<br/>objektno<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase2"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 2</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            6<br/>
+je&nbsp;programski&nbsp;jezik&nbsp;C&nbsp;proceduralno&nbsp;usmerjen<br/>
+8<br/>
+medtem&nbsp;ko&nbsp;je&nbsp;programski&nbsp;jezik&nbsp;java&nbsp;objektno&nbsp;usmerjen<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            C<br/>proceduralno<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase3"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            8<br/>
+medtem&nbsp;ko&nbsp;je&nbsp;programski&nbsp;jezik&nbsp;java&nbsp;objektno&nbsp;usmerjen<br/>
+1<br/>
+C<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            java<br/>je<br/>jezik<br/>ko<br/>medtem<br/>objektno<br/>programski<br/>usmerjen<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase4"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 4</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            1<br/>
+C<br/>
+8<br/>
+medtem&nbsp;ko&nbsp;je&nbsp;programski&nbsp;jezik&nbsp;java&nbsp;objektno&nbsp;usmerjen<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            C<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase5"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 5</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            30<br/>
+a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c<br/>
+30<br/>
+d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;d&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;c&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            b<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase6"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 6</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            79<br/>
+ab&nbsp;a&nbsp;babbba&nbsp;abaab&nbsp;aaaa&nbsp;baba&nbsp;b&nbsp;abbbb&nbsp;bb&nbsp;babaa&nbsp;abba&nbsp;aaabab&nbsp;aaab&nbsp;baa&nbsp;baa&nbsp;aab&nbsp;ba&nbsp;a&nbsp;babbb&nbsp;aaa&nbsp;a&nbsp;a&nbsp;aba&nbsp;b&nbsp;aa&nbsp;bbaa&nbsp;bbb&nbsp;bab&nbsp;abbb&nbsp;aa&nbsp;bbaa&nbsp;baaba&nbsp;bbab&nbsp;ab&nbsp;aaabb&nbsp;b&nbsp;abba&nbsp;aabaa&nbsp;aaba&nbsp;aba&nbsp;aba&nbsp;b&nbsp;aaaa&nbsp;bbaba&nbsp;aabba&nbsp;bab&nbsp;b&nbsp;aaabaa&nbsp;abbba&nbsp;b&nbsp;aa&nbsp;bbab&nbsp;b&nbsp;bbb&nbsp;bba&nbsp;ababa&nbsp;babbbb&nbsp;aba&nbsp;bbbbb&nbsp;aa&nbsp;aaaa&nbsp;ababba&nbsp;bab&nbsp;babaa&nbsp;b&nbsp;aabaa&nbsp;bbabbb&nbsp;b&nbsp;b&nbsp;a&nbsp;baaabb&nbsp;bbbb&nbsp;aabab&nbsp;aba&nbsp;b&nbsp;aaaabb&nbsp;ab&nbsp;aaaabb&nbsp;ba<br/>
+461<br/>
+a&nbsp;b&nbsp;ab&nbsp;bbba&nbsp;bbba&nbsp;babaa&nbsp;bbbaab&nbsp;bb&nbsp;aaabb&nbsp;aaa&nbsp;aa&nbsp;a&nbsp;a&nbsp;babb&nbsp;aaab&nbsp;aabb&nbsp;aaaa&nbsp;ababa&nbsp;babba&nbsp;a&nbsp;ababa&nbsp;babbab&nbsp;a&nbsp;ba&nbsp;baba&nbsp;aabab&nbsp;b&nbsp;bbab&nbsp;aab&nbsp;bbb&nbsp;aa&nbsp;abbbb&nbsp;aaabb&nbsp;ba&nbsp;baaa&nbsp;aab&nbsp;b&nbsp;ababba&nbsp;ababbb&nbsp;abbbb&nbsp;a&nbsp;bbb&nbsp;abbaaa&nbsp;bb&nbsp;abba&nbsp;a&nbsp;baaaaa&nbsp;aabb&nbsp;aaaab&nbsp;ab&nbsp;aa&nbsp;abbb&nbsp;baaaaa&nbsp;ab&nbsp;bb&nbsp;a&nbsp;babab&nbsp;bb&nbsp;aa&nbsp;ababba&nbsp;aa&nbsp;aab&nbsp;ababbb&nbsp;bab&nbsp;abab&nbsp;aaba&nbsp;b&nbsp;bbbaa&nbsp;b&nbsp;ababb&nbsp;aabaab&nbsp;a&nbsp;aaba&nbsp;bbbbb&nbsp;a&nbsp;aaaab&nbsp;aababb&nbsp;abbaab&nbsp;abbbba&nbsp;bbb&nbsp;bbb&nbsp;babb&nbsp;ba&nbsp;abbb&nbsp;ba&nbsp;a&nbsp;abaab&nbsp;ab&nbsp;abb&nbsp;a&nbsp;aabbba&nbsp;ab&nbsp;bab&nbsp;baab&nbsp;a&nbsp;babbaa&nbsp;aa&nbsp;bba&nbsp;aab&nbsp;a&nbsp;abaaa&nbsp;babb&nbsp;aaaabb&nbsp;babb&nbsp;abb&nbsp;b&nbsp;bbbb&nbsp;bbab&nbsp;aabbab&nbsp;a&nbsp;bbab&nbsp;bbab&nbsp;baaaba&nbsp;aa&nbsp;a&nbsp;aabbb&nbsp;bbbbab&nbsp;b&nbsp;aab&nbsp;baa&nbsp;aaba&nbsp;ab&nbsp;abb&nbsp;baba&nbsp;b&nbsp;a&nbsp;b&nbsp;baaba&nbsp;ababab&nbsp;ba&nbsp;aa&nbsp;bbaa&nbsp;a&nbsp;aa&nbsp;bb&nbsp;aabbb&nbsp;aaa&nbsp;aaa&nbsp;a&nbsp;ba&nbsp;b&nbsp;abbbb&nbsp;aaaa&nbsp;bab&nbsp;ababaa&nbsp;aaba&nbsp;aab&nbsp;baaba&nbsp;baabab&nbsp;ab&nbsp;a&nbsp;aab&nbsp;bbbbb&nbsp;aabb&nbsp;aa&nbsp;baa&nbsp;baabba&nbsp;aabab&nbsp;babba&nbsp;baaaa&nbsp;baa&nbsp;ba&nbsp;babbb&nbsp;babbb&nbsp;babbb&nbsp;a&nbsp;b&nbsp;bbaba&nbsp;baaa&nbsp;a&nbsp;aaba&nbsp;aba&nbsp;aaaaab&nbsp;bbbba&nbsp;a&nbsp;bb&nbsp;babaa&nbsp;ab&nbsp;aabb&nbsp;bb&nbsp;a&nbsp;baab&nbsp;ba&nbsp;b&nbsp;b&nbsp;bbb&nbsp;ab&nbsp;bbbaa&nbsp;bbbba&nbsp;b&nbsp;b&nbsp;baa&nbsp;aabba&nbsp;bbbba&nbsp;bbaa&nbsp;aaa&nbsp;bbbb&nbsp;bb&nbsp;abaabb&nbsp;b&nbsp;aab&nbsp;a&nbsp;baaaaa&nbsp;baba&nbsp;ab&nbsp;bbabaa&nbsp;a&nbsp;ab&nbsp;bbaaa&nbsp;babba&nbsp;b&nbsp;aa&nbsp;aaabab&nbsp;a&nbsp;aaaa&nbsp;baa&nbsp;aabab&nbsp;b&nbsp;bb&nbsp;bbbba&nbsp;bbab&nbsp;bbb&nbsp;bbbb&nbsp;aaaaa&nbsp;aaaa&nbsp;bbba&nbsp;abbbaa&nbsp;abbabb&nbsp;b&nbsp;b&nbsp;baaba&nbsp;bbb&nbsp;abbbb&nbsp;aaabab&nbsp;aabba&nbsp;aaab&nbsp;b&nbsp;a&nbsp;a&nbsp;abba&nbsp;b&nbsp;aaa&nbsp;baa&nbsp;a&nbsp;aaaba&nbsp;aaa&nbsp;ab&nbsp;baaaab&nbsp;bab&nbsp;b&nbsp;babaa&nbsp;baaaa&nbsp;aabaaa&nbsp;aabaab&nbsp;baaba&nbsp;ababa&nbsp;aaa&nbsp;abb&nbsp;a&nbsp;bb&nbsp;aba&nbsp;b&nbsp;aa&nbsp;ab&nbsp;b&nbsp;bbabb&nbsp;bbabba&nbsp;ababab&nbsp;bba&nbsp;abba&nbsp;bba&nbsp;aabaaa&nbsp;baa&nbsp;abbbaa&nbsp;abb&nbsp;baba&nbsp;baaab&nbsp;abbb&nbsp;babba&nbsp;aa&nbsp;b&nbsp;babbaa&nbsp;baa&nbsp;b&nbsp;b&nbsp;aabbb&nbsp;a&nbsp;b&nbsp;aba&nbsp;ab&nbsp;bbaaa&nbsp;baaa&nbsp;b&nbsp;aaa&nbsp;ba&nbsp;aaaa&nbsp;aaa&nbsp;a&nbsp;abbaa&nbsp;bbaa&nbsp;ababa&nbsp;bbba&nbsp;b&nbsp;abaaa&nbsp;b&nbsp;aaaba&nbsp;ba&nbsp;aba&nbsp;a&nbsp;bb&nbsp;a&nbsp;bb&nbsp;abb&nbsp;a&nbsp;bab&nbsp;aabaab&nbsp;ba&nbsp;aabba&nbsp;bab&nbsp;ba&nbsp;bab&nbsp;b&nbsp;bbbbba&nbsp;a&nbsp;babbba&nbsp;bba&nbsp;baaab&nbsp;bbabb&nbsp;bbabb&nbsp;baba&nbsp;abbaa&nbsp;b&nbsp;aaa&nbsp;bbb&nbsp;baba&nbsp;b&nbsp;aabbba&nbsp;ab&nbsp;aaaa&nbsp;bb&nbsp;ab&nbsp;aa&nbsp;ab&nbsp;baab&nbsp;aa&nbsp;ba&nbsp;aabba&nbsp;baa&nbsp;ab&nbsp;baaab&nbsp;aabba&nbsp;bbbaaa&nbsp;bb&nbsp;bbbaaa&nbsp;aaaa&nbsp;b&nbsp;ab&nbsp;aaa&nbsp;a&nbsp;ab&nbsp;aaba&nbsp;bababa&nbsp;babb&nbsp;bbbab&nbsp;aaaaab&nbsp;a&nbsp;b&nbsp;a&nbsp;bbaaaa&nbsp;ababb&nbsp;bab&nbsp;baabaa&nbsp;b&nbsp;bbbaa&nbsp;abb&nbsp;aabbb&nbsp;abb&nbsp;bab&nbsp;a&nbsp;aabab&nbsp;ba&nbsp;bbabb&nbsp;bbaaab&nbsp;aa&nbsp;aaab&nbsp;aabaaa&nbsp;aaa&nbsp;b&nbsp;aaa&nbsp;aaaabb&nbsp;ba&nbsp;baaabb&nbsp;bbaa&nbsp;abaa&nbsp;aa&nbsp;baabbb&nbsp;ab&nbsp;a&nbsp;a&nbsp;aabaa&nbsp;aababa&nbsp;ab&nbsp;bab&nbsp;bbb&nbsp;ab&nbsp;baa&nbsp;abbaa&nbsp;baa&nbsp;babba&nbsp;ba&nbsp;abba&nbsp;babab&nbsp;ba&nbsp;abbb&nbsp;aa&nbsp;ba&nbsp;babbb&nbsp;ba&nbsp;bb&nbsp;abbaa&nbsp;aabbba&nbsp;aba&nbsp;aabbbb&nbsp;baa&nbsp;b&nbsp;bbba&nbsp;baaa&nbsp;bbbbb&nbsp;b&nbsp;baab&nbsp;bb&nbsp;aaa&nbsp;bbaa&nbsp;ab&nbsp;a&nbsp;abbabb&nbsp;bba&nbsp;aabb&nbsp;abbba&nbsp;ab&nbsp;bb&nbsp;ba&nbsp;aa&nbsp;ba&nbsp;a&nbsp;b&nbsp;abab&nbsp;ba&nbsp;bbbaba&nbsp;ab&nbsp;abaaba&nbsp;a&nbsp;aaabaa&nbsp;bb&nbsp;aaab&nbsp;b&nbsp;bbaaaa&nbsp;a&nbsp;ab&nbsp;a&nbsp;aaa<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            babbbb<br/>bbabbb<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase7"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 7</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            595<br/>
+abaa&nbsp;b&nbsp;abbaaa&nbsp;ba&nbsp;aaaabb&nbsp;aaa&nbsp;ababab&nbsp;b&nbsp;baaa&nbsp;bab&nbsp;aa&nbsp;aaabb&nbsp;bbb&nbsp;ba&nbsp;a&nbsp;a&nbsp;abaaba&nbsp;baab&nbsp;abba&nbsp;abab&nbsp;aaaba&nbsp;bbabba&nbsp;abab&nbsp;aab&nbsp;aaa&nbsp;babaa&nbsp;bab&nbsp;bbb&nbsp;a&nbsp;babbab&nbsp;bbbbba&nbsp;aabab&nbsp;babaab&nbsp;bbaab&nbsp;ab&nbsp;baab&nbsp;abbabb&nbsp;aabbbb&nbsp;ba&nbsp;bbb&nbsp;a&nbsp;babaa&nbsp;b&nbsp;aaaaa&nbsp;a&nbsp;ab&nbsp;aaaaa&nbsp;a&nbsp;abbbab&nbsp;ab&nbsp;bbab&nbsp;aabbb&nbsp;b&nbsp;a&nbsp;baabba&nbsp;aa&nbsp;baaa&nbsp;abab&nbsp;babb&nbsp;ba&nbsp;aabba&nbsp;bbaab&nbsp;abbabb&nbsp;a&nbsp;ab&nbsp;bbbba&nbsp;aba&nbsp;aababb&nbsp;aaab&nbsp;aaaa&nbsp;a&nbsp;ba&nbsp;abb&nbsp;abb&nbsp;baaaa&nbsp;abbbb&nbsp;aaaab&nbsp;a&nbsp;bbaab&nbsp;aa&nbsp;ab&nbsp;aaba&nbsp;ab&nbsp;bbba&nbsp;bbaa&nbsp;aa&nbsp;bbbab&nbsp;babaa&nbsp;baab&nbsp;aa&nbsp;a&nbsp;ba&nbsp;abaa&nbsp;aba&nbsp;b&nbsp;aaab&nbsp;b&nbsp;ba&nbsp;bababb&nbsp;babbbb&nbsp;a&nbsp;bbaa&nbsp;bb&nbsp;ba&nbsp;b&nbsp;aababa&nbsp;abb&nbsp;ab&nbsp;bbbbb&nbsp;bbbbbb&nbsp;aa&nbsp;aa&nbsp;aabb&nbsp;bbaba&nbsp;aab&nbsp;aab&nbsp;bbbbb&nbsp;bab&nbsp;bbab&nbsp;aaa&nbsp;a&nbsp;aaaaab&nbsp;a&nbsp;aab&nbsp;abbab&nbsp;bbba&nbsp;abab&nbsp;abbaa&nbsp;ba&nbsp;baabab&nbsp;aa&nbsp;aab&nbsp;aaba&nbsp;b&nbsp;bbbaba&nbsp;bab&nbsp;b&nbsp;ababa&nbsp;b&nbsp;aaaba&nbsp;aaa&nbsp;a&nbsp;b&nbsp;baabab&nbsp;b&nbsp;bbbaab&nbsp;baaba&nbsp;ab&nbsp;baab&nbsp;bbabbb&nbsp;aabbbb&nbsp;bbbb&nbsp;bbbbb&nbsp;ab&nbsp;abaabb&nbsp;bbb&nbsp;aaa&nbsp;bbb&nbsp;baabbb&nbsp;aaaa&nbsp;a&nbsp;a&nbsp;bbba&nbsp;aaabb&nbsp;a&nbsp;ababab&nbsp;aa&nbsp;abb&nbsp;bba&nbsp;aa&nbsp;a&nbsp;bb&nbsp;ba&nbsp;abba&nbsp;a&nbsp;a&nbsp;bbba&nbsp;bb&nbsp;bb&nbsp;b&nbsp;bbaa&nbsp;b&nbsp;babb&nbsp;aa&nbsp;ba&nbsp;bab&nbsp;ababbb&nbsp;ba&nbsp;bba&nbsp;bb&nbsp;aaaa&nbsp;ba&nbsp;abbaab&nbsp;a&nbsp;abba&nbsp;abab&nbsp;abbaaa&nbsp;aaabb&nbsp;b&nbsp;abab&nbsp;aa&nbsp;abbbab&nbsp;baaaaa&nbsp;aab&nbsp;abb&nbsp;ab&nbsp;abba&nbsp;aaaabb&nbsp;ab&nbsp;ba&nbsp;baba&nbsp;baa&nbsp;bbb&nbsp;baa&nbsp;abbba&nbsp;b&nbsp;bbabbb&nbsp;bbaaa&nbsp;aa&nbsp;baabaa&nbsp;aaaaaa&nbsp;baabaa&nbsp;bbbbb&nbsp;abaabb&nbsp;aab&nbsp;aaa&nbsp;abbbab&nbsp;bbaba&nbsp;b&nbsp;abaaab&nbsp;a&nbsp;bab&nbsp;bbabb&nbsp;aabb&nbsp;aaaab&nbsp;bbb&nbsp;bbab&nbsp;babb&nbsp;babb&nbsp;bab&nbsp;bbbb&nbsp;bb&nbsp;aaa&nbsp;aaba&nbsp;bbaba&nbsp;babb&nbsp;b&nbsp;abaabb&nbsp;aaaba&nbsp;bab&nbsp;a&nbsp;ababaa&nbsp;ba&nbsp;ab&nbsp;babaa&nbsp;ababa&nbsp;bbaba&nbsp;babbab&nbsp;b&nbsp;abba&nbsp;aa&nbsp;aaba&nbsp;bb&nbsp;ababbb&nbsp;abbbb&nbsp;aaba&nbsp;bbab&nbsp;baab&nbsp;abbaaa&nbsp;ab&nbsp;baabba&nbsp;bbaaaa&nbsp;abb&nbsp;aabab&nbsp;bbabaa&nbsp;aaa&nbsp;baaabb&nbsp;bab&nbsp;bb&nbsp;b&nbsp;bbbbbb&nbsp;a&nbsp;baaab&nbsp;aaaabb&nbsp;bbabb&nbsp;aba&nbsp;bbb&nbsp;a&nbsp;baba&nbsp;a&nbsp;a&nbsp;ababa&nbsp;babaa&nbsp;abaaab&nbsp;ababab&nbsp;aabb&nbsp;bb&nbsp;bababa&nbsp;ba&nbsp;bab&nbsp;aaaa&nbsp;bab&nbsp;baabb&nbsp;bbbbaa&nbsp;aabab&nbsp;abbba&nbsp;aabbb&nbsp;aaabb&nbsp;baaaa&nbsp;bbb&nbsp;babbaa&nbsp;babaab&nbsp;a&nbsp;abbbaa&nbsp;baabbb&nbsp;a&nbsp;abbab&nbsp;aaaba&nbsp;abbabb&nbsp;abbbba&nbsp;bbaaa&nbsp;aaaba&nbsp;b&nbsp;baaa&nbsp;ba&nbsp;abbbab&nbsp;a&nbsp;bbab&nbsp;bbabaa&nbsp;bbbb&nbsp;abaaab&nbsp;bb&nbsp;abbba&nbsp;bab&nbsp;aba&nbsp;ab&nbsp;b&nbsp;bab&nbsp;bbbaba&nbsp;bba&nbsp;bbbbba&nbsp;bb&nbsp;aababb&nbsp;aaaab&nbsp;aaa&nbsp;bbbbb&nbsp;ab&nbsp;bbb&nbsp;baa&nbsp;a&nbsp;babaa&nbsp;baaab&nbsp;aab&nbsp;b&nbsp;abbab&nbsp;bbbbba&nbsp;b&nbsp;aabab&nbsp;ba&nbsp;bb&nbsp;ab&nbsp;baabbb&nbsp;bab&nbsp;aaaabb&nbsp;abab&nbsp;abbaaa&nbsp;aaabab&nbsp;bbbb&nbsp;baaaa&nbsp;bbbab&nbsp;ba&nbsp;abbba&nbsp;bab&nbsp;b&nbsp;aa&nbsp;bba&nbsp;ba&nbsp;bbaaaa&nbsp;a&nbsp;a&nbsp;aa&nbsp;babbb&nbsp;baa&nbsp;aba&nbsp;baa&nbsp;babba&nbsp;aabba&nbsp;bbbaab&nbsp;babab&nbsp;abaabb&nbsp;ababa&nbsp;abbbab&nbsp;b&nbsp;bb&nbsp;abab&nbsp;abaaab&nbsp;b&nbsp;aabbbb&nbsp;abbab&nbsp;b&nbsp;abbaaa&nbsp;bbb&nbsp;baaa&nbsp;baab&nbsp;aaa&nbsp;aaabb&nbsp;a&nbsp;aab&nbsp;ba&nbsp;aaab&nbsp;aa&nbsp;ba&nbsp;babbaa&nbsp;baa&nbsp;abbaab&nbsp;baaba&nbsp;babba&nbsp;aa&nbsp;aabaab&nbsp;aaa&nbsp;bbbaba&nbsp;bbab&nbsp;ababab&nbsp;b&nbsp;b&nbsp;aaaa&nbsp;bbaabb&nbsp;baab&nbsp;bbaab&nbsp;bab&nbsp;abba&nbsp;aabaab&nbsp;aaa&nbsp;bbb&nbsp;a&nbsp;aaab&nbsp;ba&nbsp;ababb&nbsp;a&nbsp;babaab&nbsp;baaba&nbsp;b&nbsp;baaabb&nbsp;a&nbsp;bba&nbsp;babb&nbsp;a&nbsp;baabbb&nbsp;ba&nbsp;abbab&nbsp;b&nbsp;abbb&nbsp;abb&nbsp;aaaa&nbsp;baaba&nbsp;bbaa&nbsp;baaa&nbsp;a&nbsp;b&nbsp;ababba&nbsp;aaab&nbsp;aa&nbsp;ab&nbsp;bb&nbsp;abab&nbsp;b&nbsp;aaab&nbsp;bba&nbsp;abbaba&nbsp;a&nbsp;aabbb&nbsp;bbab&nbsp;b&nbsp;bb&nbsp;a&nbsp;bbbaba&nbsp;aabaa&nbsp;babba&nbsp;abaa&nbsp;bbbbab&nbsp;bababa&nbsp;bb&nbsp;bbaa&nbsp;a&nbsp;babbbb&nbsp;aabba&nbsp;abab&nbsp;babaa&nbsp;baabba&nbsp;aaab&nbsp;a&nbsp;abbaaa&nbsp;baba&nbsp;abaa&nbsp;bba&nbsp;a&nbsp;babb&nbsp;ababab&nbsp;bbabab&nbsp;abaaab&nbsp;ababb&nbsp;bbb&nbsp;bbba&nbsp;abbaab&nbsp;bbbb&nbsp;aaabb&nbsp;aaabb&nbsp;baa&nbsp;b&nbsp;abab&nbsp;aaaa&nbsp;aabaab&nbsp;aaabbb&nbsp;abaaab&nbsp;bb&nbsp;abbbb&nbsp;b&nbsp;bbaba&nbsp;bba&nbsp;bba&nbsp;a&nbsp;baa&nbsp;aaaa&nbsp;ababb&nbsp;bbbbb&nbsp;aba&nbsp;abbaa&nbsp;abbbbb&nbsp;bbaab&nbsp;aaabb&nbsp;baaaaa&nbsp;ab&nbsp;aaa&nbsp;aaa&nbsp;aa&nbsp;a&nbsp;baabba&nbsp;aa&nbsp;ababaa&nbsp;bbbb&nbsp;aba&nbsp;ba&nbsp;aaa&nbsp;bbba&nbsp;a&nbsp;a&nbsp;ba&nbsp;bb&nbsp;abaa&nbsp;babb&nbsp;baba&nbsp;bab&nbsp;aab&nbsp;aabb&nbsp;abaaab&nbsp;aaba&nbsp;ababba&nbsp;bbabab&nbsp;bab&nbsp;aa&nbsp;abbaaa&nbsp;abbab&nbsp;abaaab&nbsp;b&nbsp;aaabbb&nbsp;aaaaaa&nbsp;aba&nbsp;bbab&nbsp;bb&nbsp;bbaabb&nbsp;b&nbsp;abbbb&nbsp;baa&nbsp;baaa&nbsp;bba&nbsp;bbabb&nbsp;bbabb&nbsp;aab&nbsp;b&nbsp;bbbb&nbsp;b&nbsp;bab&nbsp;b&nbsp;abbaa&nbsp;a&nbsp;aba&nbsp;aab&nbsp;babaab&nbsp;baabaa&nbsp;aaabaa&nbsp;babaa&nbsp;abb&nbsp;bba&nbsp;b&nbsp;a<br/>
+622<br/>
+aa&nbsp;abaabb&nbsp;bb&nbsp;a&nbsp;bb&nbsp;bbbaab&nbsp;baab&nbsp;aba&nbsp;aa&nbsp;b&nbsp;a&nbsp;abbba&nbsp;bb&nbsp;baa&nbsp;babb&nbsp;ba&nbsp;bbabaa&nbsp;babba&nbsp;aba&nbsp;ab&nbsp;aabba&nbsp;a&nbsp;bbb&nbsp;b&nbsp;aaaa&nbsp;bb&nbsp;bba&nbsp;a&nbsp;abbb&nbsp;abaa&nbsp;bbbbb&nbsp;a&nbsp;bbbbb&nbsp;bb&nbsp;baabb&nbsp;bbab&nbsp;bb&nbsp;bb&nbsp;bb&nbsp;bbaa&nbsp;abbaa&nbsp;bbaabb&nbsp;bab&nbsp;baabbb&nbsp;b&nbsp;aaba&nbsp;abbaaa&nbsp;bbbaba&nbsp;bbaaa&nbsp;b&nbsp;aabab&nbsp;bbbbb&nbsp;aabbaa&nbsp;ab&nbsp;b&nbsp;ba&nbsp;abbbb&nbsp;aa&nbsp;bbbb&nbsp;abb&nbsp;aa&nbsp;a&nbsp;aa&nbsp;bba&nbsp;baa&nbsp;bbabba&nbsp;abba&nbsp;bbaa&nbsp;abbaab&nbsp;aaaaaa&nbsp;ba&nbsp;abbab&nbsp;ab&nbsp;aaaaaa&nbsp;aa&nbsp;baa&nbsp;b&nbsp;aaba&nbsp;ab&nbsp;bab&nbsp;aabb&nbsp;abab&nbsp;bbbb&nbsp;abb&nbsp;bbbb&nbsp;aa&nbsp;bb&nbsp;bb&nbsp;abbaab&nbsp;abbab&nbsp;aaaaa&nbsp;aaabba&nbsp;b&nbsp;ba&nbsp;bbbb&nbsp;bb&nbsp;bbbabb&nbsp;bbb&nbsp;babaab&nbsp;abbaa&nbsp;a&nbsp;abb&nbsp;bbab&nbsp;abab&nbsp;ba&nbsp;abbaab&nbsp;aaaa&nbsp;aabbb&nbsp;abbabb&nbsp;ab&nbsp;aa&nbsp;a&nbsp;aba&nbsp;bbbaa&nbsp;aabbaa&nbsp;baaa&nbsp;abaaa&nbsp;ba&nbsp;abba&nbsp;ba&nbsp;a&nbsp;baba&nbsp;bbbbb&nbsp;aaabb&nbsp;ba&nbsp;abb&nbsp;a&nbsp;aababb&nbsp;aab&nbsp;b&nbsp;ab&nbsp;abb&nbsp;aaa&nbsp;baabb&nbsp;aba&nbsp;ba&nbsp;ba&nbsp;a&nbsp;bba&nbsp;baaba&nbsp;ab&nbsp;aaab&nbsp;aabab&nbsp;bbaba&nbsp;aaba&nbsp;babb&nbsp;ba&nbsp;aa&nbsp;aa&nbsp;aabab&nbsp;a&nbsp;a&nbsp;aaaa&nbsp;a&nbsp;aabaa&nbsp;a&nbsp;a&nbsp;aab&nbsp;aa&nbsp;baaab&nbsp;aba&nbsp;bbba&nbsp;aaabab&nbsp;a&nbsp;aabaa&nbsp;aa&nbsp;baab&nbsp;bbbaba&nbsp;bab&nbsp;bbaa&nbsp;bba&nbsp;aabaa&nbsp;baa&nbsp;aaabb&nbsp;babb&nbsp;bbabaa&nbsp;baaaaa&nbsp;a&nbsp;ba&nbsp;aba&nbsp;baa&nbsp;abaa&nbsp;bababb&nbsp;baaa&nbsp;bba&nbsp;bbaba&nbsp;a&nbsp;aaab&nbsp;abaa&nbsp;bbbb&nbsp;a&nbsp;aaab&nbsp;aab&nbsp;ba&nbsp;aab&nbsp;a&nbsp;abb&nbsp;ab&nbsp;bbaba&nbsp;b&nbsp;abbabb&nbsp;aabbaa&nbsp;abbaab&nbsp;bb&nbsp;a&nbsp;aabbb&nbsp;aaab&nbsp;babb&nbsp;abbab&nbsp;abbbb&nbsp;abab&nbsp;aabbaa&nbsp;aab&nbsp;ba&nbsp;aabbba&nbsp;abba&nbsp;a&nbsp;abaaa&nbsp;aabab&nbsp;bab&nbsp;baaa&nbsp;abab&nbsp;abb&nbsp;b&nbsp;abaa&nbsp;b&nbsp;b&nbsp;bababb&nbsp;aaba&nbsp;bba&nbsp;b&nbsp;aabbb&nbsp;b&nbsp;abba&nbsp;aaaa&nbsp;aba&nbsp;bbaaaa&nbsp;bbbbb&nbsp;bab&nbsp;bbaabb&nbsp;a&nbsp;aa&nbsp;bbaa&nbsp;b&nbsp;bbbb&nbsp;a&nbsp;abb&nbsp;abaab&nbsp;abaa&nbsp;babab&nbsp;aba&nbsp;bbab&nbsp;a&nbsp;ba&nbsp;baba&nbsp;ab&nbsp;bbbba&nbsp;bb&nbsp;aabaa&nbsp;a&nbsp;b&nbsp;a&nbsp;bbbabb&nbsp;ab&nbsp;b&nbsp;bbaab&nbsp;aa&nbsp;a&nbsp;bb&nbsp;ababa&nbsp;bbaab&nbsp;bbbabb&nbsp;aa&nbsp;abbaa&nbsp;b&nbsp;bb&nbsp;aabb&nbsp;aaa&nbsp;bab&nbsp;a&nbsp;aabbab&nbsp;baaabb&nbsp;aaaaab&nbsp;aa&nbsp;aabbb&nbsp;baba&nbsp;bbbaba&nbsp;aabaab&nbsp;ba&nbsp;b&nbsp;aaa&nbsp;aa&nbsp;a&nbsp;a&nbsp;aa&nbsp;ba&nbsp;a&nbsp;aaa&nbsp;aa&nbsp;abb&nbsp;aa&nbsp;bb&nbsp;a&nbsp;abbaa&nbsp;ab&nbsp;b&nbsp;b&nbsp;abbaa&nbsp;abbbb&nbsp;a&nbsp;aaabbb&nbsp;bbba&nbsp;abba&nbsp;aba&nbsp;baba&nbsp;bab&nbsp;bab&nbsp;abaabb&nbsp;abaa&nbsp;baaabb&nbsp;ab&nbsp;aba&nbsp;ab&nbsp;ab&nbsp;aabb&nbsp;bbb&nbsp;bbbbbb&nbsp;aaabb&nbsp;ab&nbsp;ba&nbsp;a&nbsp;aabb&nbsp;aabaa&nbsp;baabb&nbsp;a&nbsp;aba&nbsp;aab&nbsp;abbab&nbsp;baa&nbsp;bbbba&nbsp;aabba&nbsp;ba&nbsp;babbbb&nbsp;b&nbsp;aab&nbsp;abb&nbsp;bbabb&nbsp;b&nbsp;ab&nbsp;ba&nbsp;aabaaa&nbsp;babb&nbsp;abaabb&nbsp;bbbaab&nbsp;aaabb&nbsp;b&nbsp;bab&nbsp;aabba&nbsp;baaa&nbsp;bbba&nbsp;baaa&nbsp;aabba&nbsp;babba&nbsp;abbbb&nbsp;abbabb&nbsp;bab&nbsp;aa&nbsp;abaab&nbsp;b&nbsp;bbaaa&nbsp;baa&nbsp;a&nbsp;abaa&nbsp;abaab&nbsp;abaaba&nbsp;a&nbsp;ab&nbsp;ba&nbsp;b&nbsp;aa&nbsp;aab&nbsp;b&nbsp;bbbbb&nbsp;bbba&nbsp;ba&nbsp;baaaa&nbsp;ababab&nbsp;bbba&nbsp;aaba&nbsp;aaab&nbsp;bab&nbsp;abaa&nbsp;bb&nbsp;b&nbsp;aabb&nbsp;a&nbsp;a&nbsp;babbba&nbsp;bbbaa&nbsp;baabaa&nbsp;b&nbsp;bbbbbb&nbsp;ab&nbsp;aabab&nbsp;ab&nbsp;aa&nbsp;abbbb&nbsp;bbba&nbsp;abbaab&nbsp;a&nbsp;babaa&nbsp;bbba&nbsp;baa&nbsp;aaab&nbsp;abbbba&nbsp;bbaa&nbsp;abba&nbsp;aaaa&nbsp;bbabba&nbsp;baa&nbsp;bba&nbsp;baab&nbsp;b&nbsp;b&nbsp;ababbb&nbsp;a&nbsp;ba&nbsp;a&nbsp;bbbba&nbsp;ba&nbsp;a&nbsp;baaba&nbsp;bb&nbsp;bbbbbb&nbsp;aabba&nbsp;baa&nbsp;ba&nbsp;bbba&nbsp;babba&nbsp;ababb&nbsp;ab&nbsp;a&nbsp;a&nbsp;baaba&nbsp;ba&nbsp;bb&nbsp;bb&nbsp;baabb&nbsp;aa&nbsp;ab&nbsp;abbaa&nbsp;baab&nbsp;aa&nbsp;bababa&nbsp;b&nbsp;abbab&nbsp;a&nbsp;aabbb&nbsp;aaaba&nbsp;bab&nbsp;baa&nbsp;aa&nbsp;aba&nbsp;bbaaa&nbsp;a&nbsp;aaaaa&nbsp;bb&nbsp;bbb&nbsp;b&nbsp;a&nbsp;bba&nbsp;b&nbsp;b&nbsp;aa&nbsp;b&nbsp;baa&nbsp;babbb&nbsp;ababab&nbsp;bb&nbsp;bbaaab&nbsp;ababba&nbsp;bba&nbsp;aaaa&nbsp;bbba&nbsp;baaab&nbsp;ba&nbsp;abba&nbsp;aaaba&nbsp;baaab&nbsp;aabaaa&nbsp;babba&nbsp;ab&nbsp;bbbaba&nbsp;abaaaa&nbsp;bab&nbsp;baabba&nbsp;bbaa&nbsp;bbbb&nbsp;bbaaab&nbsp;ababb&nbsp;aabba&nbsp;b&nbsp;a&nbsp;aaa&nbsp;aaabbb&nbsp;aaaab&nbsp;babbb&nbsp;aba&nbsp;ab&nbsp;a&nbsp;aaabbb&nbsp;b&nbsp;aaaba&nbsp;baaaa&nbsp;ba&nbsp;abbbb&nbsp;b&nbsp;bbaabb&nbsp;bbab&nbsp;bababa&nbsp;baba&nbsp;aabab&nbsp;aaaaa&nbsp;b&nbsp;b&nbsp;a&nbsp;baab&nbsp;baaa&nbsp;aabbaa&nbsp;a&nbsp;aba&nbsp;baabb&nbsp;baaaa&nbsp;bb&nbsp;babab&nbsp;bbbaa&nbsp;aab&nbsp;abbba&nbsp;aa&nbsp;baabbb&nbsp;baaab&nbsp;ba&nbsp;b&nbsp;babba&nbsp;baaaaa&nbsp;baaa&nbsp;bba&nbsp;bbab&nbsp;abbb&nbsp;abaa&nbsp;a&nbsp;b&nbsp;aa&nbsp;bab&nbsp;aaaba&nbsp;aaa&nbsp;baaaba&nbsp;aaabba&nbsp;aaaba&nbsp;aaab&nbsp;baabb&nbsp;bbb&nbsp;b&nbsp;bba&nbsp;bbb&nbsp;ababba&nbsp;aabbaa&nbsp;bbbba&nbsp;a&nbsp;b&nbsp;bbb&nbsp;aaaab&nbsp;aa&nbsp;b&nbsp;abbab&nbsp;baaaaa&nbsp;baaba&nbsp;b&nbsp;ab&nbsp;babab&nbsp;aa&nbsp;b&nbsp;ab&nbsp;bbab&nbsp;aaaba&nbsp;bbaabb&nbsp;b&nbsp;aba&nbsp;b&nbsp;bbaaa&nbsp;bbbb&nbsp;abb&nbsp;a&nbsp;bbbab&nbsp;b&nbsp;bb&nbsp;aa&nbsp;a&nbsp;bbb&nbsp;ab&nbsp;abaa&nbsp;bbbaab&nbsp;a&nbsp;bb&nbsp;bbabba&nbsp;ba&nbsp;b&nbsp;aaa&nbsp;aaa&nbsp;aaaaa&nbsp;baaaab&nbsp;aaba&nbsp;b&nbsp;bbaa&nbsp;ababb&nbsp;aa&nbsp;aabb&nbsp;ba&nbsp;babb&nbsp;ab&nbsp;a&nbsp;babaa<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            aaaabb<br/>aaabaa<br/>aababa<br/>aabbbb<br/>abaaab<br/>ababaa<br/>abbaba<br/>abbbaa<br/>abbbab<br/>abbbbb<br/>baabab<br/>babbaa<br/>babbab<br/>bbabab<br/>bbabbb<br/>bbbbaa<br/>bbbbab<br/>bbbbba<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase8"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 8</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            564<br/>
+b&nbsp;bba&nbsp;bbba&nbsp;baa&nbsp;aa&nbsp;aab&nbsp;baaaa&nbsp;bb&nbsp;abaaaa&nbsp;abaab&nbsp;bbabb&nbsp;a&nbsp;a&nbsp;bbbba&nbsp;aba&nbsp;baaba&nbsp;aaaaaa&nbsp;bb&nbsp;bbaaba&nbsp;aababa&nbsp;aab&nbsp;a&nbsp;aa&nbsp;aaba&nbsp;abaa&nbsp;babba&nbsp;ababab&nbsp;a&nbsp;baaaaa&nbsp;b&nbsp;baaa&nbsp;aab&nbsp;a&nbsp;abba&nbsp;bababb&nbsp;aabbb&nbsp;aba&nbsp;bbabb&nbsp;baa&nbsp;aa&nbsp;baa&nbsp;bbbbbb&nbsp;a&nbsp;b&nbsp;ab&nbsp;bbb&nbsp;baa&nbsp;abb&nbsp;bbaa&nbsp;b&nbsp;aaabb&nbsp;bbbaa&nbsp;ababa&nbsp;aabab&nbsp;aa&nbsp;ab&nbsp;bab&nbsp;baa&nbsp;aababa&nbsp;aaabab&nbsp;abaaaa&nbsp;bb&nbsp;abbaa&nbsp;ba&nbsp;babb&nbsp;bbba&nbsp;bbba&nbsp;baab&nbsp;aaaaba&nbsp;bbbbbb&nbsp;ba&nbsp;aabaab&nbsp;aaabab&nbsp;abba&nbsp;bb&nbsp;abbaba&nbsp;b&nbsp;ababa&nbsp;a&nbsp;aabbba&nbsp;aaabbb&nbsp;aaaa&nbsp;ab&nbsp;ba&nbsp;aab&nbsp;abbbab&nbsp;baaba&nbsp;bb&nbsp;babaaa&nbsp;baba&nbsp;bbba&nbsp;aab&nbsp;ba&nbsp;baba&nbsp;bba&nbsp;b&nbsp;baaa&nbsp;baaaa&nbsp;bb&nbsp;baaa&nbsp;abaab&nbsp;aabba&nbsp;abb&nbsp;aba&nbsp;ab&nbsp;aa&nbsp;aaa&nbsp;b&nbsp;aa&nbsp;babb&nbsp;b&nbsp;bbbaab&nbsp;bbabbb&nbsp;a&nbsp;baaab&nbsp;aaaa&nbsp;aaabbb&nbsp;aba&nbsp;babaab&nbsp;a&nbsp;abbbb&nbsp;a&nbsp;aa&nbsp;bab&nbsp;b&nbsp;bba&nbsp;bbaab&nbsp;b&nbsp;abbbab&nbsp;abbbbb&nbsp;baaabb&nbsp;aabbba&nbsp;aaba&nbsp;b&nbsp;abab&nbsp;ababba&nbsp;bababb&nbsp;aa&nbsp;abaa&nbsp;bababb&nbsp;b&nbsp;bba&nbsp;b&nbsp;bba&nbsp;abaaab&nbsp;bbbb&nbsp;aabbb&nbsp;aa&nbsp;ba&nbsp;a&nbsp;bb&nbsp;b&nbsp;b&nbsp;abb&nbsp;baa&nbsp;aaab&nbsp;baabbb&nbsp;abaab&nbsp;ab&nbsp;ab&nbsp;b&nbsp;abbaba&nbsp;bbbbba&nbsp;aaa&nbsp;ababaa&nbsp;abaabb&nbsp;aabbba&nbsp;babb&nbsp;bb&nbsp;ababba&nbsp;abab&nbsp;aabaa&nbsp;aabb&nbsp;aabaab&nbsp;ab&nbsp;abbb&nbsp;aa&nbsp;bbbbb&nbsp;aabb&nbsp;bbbbba&nbsp;bb&nbsp;bbab&nbsp;abab&nbsp;bababa&nbsp;aaaa&nbsp;baa&nbsp;ababa&nbsp;baab&nbsp;babab&nbsp;babab&nbsp;aa&nbsp;abbab&nbsp;baaaab&nbsp;b&nbsp;abaa&nbsp;bbba&nbsp;bbb&nbsp;abb&nbsp;aabb&nbsp;aa&nbsp;aba&nbsp;abaa&nbsp;baaaaa&nbsp;aabbbb&nbsp;abbbb&nbsp;bbb&nbsp;aaab&nbsp;bbaaab&nbsp;bbbbaa&nbsp;bab&nbsp;abaa&nbsp;bbbab&nbsp;baab&nbsp;aab&nbsp;a&nbsp;aaabb&nbsp;bbbb&nbsp;bbb&nbsp;bbabaa&nbsp;b&nbsp;abb&nbsp;abaaa&nbsp;abbabb&nbsp;abba&nbsp;baaa&nbsp;bbbaaa&nbsp;baabaa&nbsp;aab&nbsp;aaa&nbsp;a&nbsp;aa&nbsp;baaab&nbsp;abbb&nbsp;aa&nbsp;aaab&nbsp;b&nbsp;a&nbsp;a&nbsp;abbbbb&nbsp;bbab&nbsp;b&nbsp;aabbaa&nbsp;baabb&nbsp;b&nbsp;ab&nbsp;aaa&nbsp;baa&nbsp;bab&nbsp;bab&nbsp;aa&nbsp;ba&nbsp;abbb&nbsp;bbaa&nbsp;ab&nbsp;aaa&nbsp;aa&nbsp;bba&nbsp;baaaab&nbsp;baabab&nbsp;a&nbsp;baa&nbsp;bbba&nbsp;aabbbb&nbsp;babbbb&nbsp;aaabba&nbsp;baaa&nbsp;b&nbsp;aabb&nbsp;bbab&nbsp;aaa&nbsp;aaa&nbsp;ab&nbsp;b&nbsp;ba&nbsp;baabb&nbsp;aaaabb&nbsp;babaa&nbsp;aa&nbsp;b&nbsp;bb&nbsp;baaaba&nbsp;ab&nbsp;aababa&nbsp;bbbb&nbsp;a&nbsp;bbb&nbsp;bbabba&nbsp;baa&nbsp;b&nbsp;aababa&nbsp;b&nbsp;aa&nbsp;bba&nbsp;b&nbsp;ab&nbsp;bbb&nbsp;aba&nbsp;aaba&nbsp;ababab&nbsp;aaa&nbsp;aaaab&nbsp;b&nbsp;aaabbb&nbsp;b&nbsp;baabb&nbsp;baaaab&nbsp;baa&nbsp;b&nbsp;bbbb&nbsp;aaaab&nbsp;baaaa&nbsp;abbaa&nbsp;aa&nbsp;baaa&nbsp;bbaba&nbsp;b&nbsp;abb&nbsp;babb&nbsp;abbb&nbsp;aabaab&nbsp;bbabaa&nbsp;bbaaa&nbsp;babaa&nbsp;aab&nbsp;aabb&nbsp;ab&nbsp;abbab&nbsp;aaa&nbsp;ababb&nbsp;bb&nbsp;babaaa&nbsp;ab&nbsp;ba&nbsp;bbbbb&nbsp;aaaaa&nbsp;bab&nbsp;aaaa&nbsp;baab&nbsp;aabbba&nbsp;ababb&nbsp;aaaaa&nbsp;bbbbb&nbsp;baabb&nbsp;aa&nbsp;baa&nbsp;abbbbb&nbsp;aabbaa&nbsp;a&nbsp;abab&nbsp;abab&nbsp;b&nbsp;aabba&nbsp;babb&nbsp;baa&nbsp;a&nbsp;ab&nbsp;aabbab&nbsp;abba&nbsp;ababaa&nbsp;abbbb&nbsp;a&nbsp;aa&nbsp;abbb&nbsp;bbaba&nbsp;a&nbsp;a&nbsp;aaa&nbsp;baba&nbsp;abaaa&nbsp;baba&nbsp;a&nbsp;abaa&nbsp;a&nbsp;abaa&nbsp;bbaaaa&nbsp;bbbb&nbsp;aaa&nbsp;abab&nbsp;bbbabb&nbsp;b&nbsp;aa&nbsp;aba&nbsp;aa&nbsp;aaabaa&nbsp;abbbb&nbsp;aaa&nbsp;bababa&nbsp;abbbaa&nbsp;aabb&nbsp;aaa&nbsp;abbbb&nbsp;aa&nbsp;bb&nbsp;b&nbsp;bab&nbsp;bbbaa&nbsp;a&nbsp;bab&nbsp;abbab&nbsp;bbaa&nbsp;a&nbsp;a&nbsp;a&nbsp;bbbbb&nbsp;baa&nbsp;aaba&nbsp;abbaab&nbsp;bbaa&nbsp;bbb&nbsp;aa&nbsp;aba&nbsp;babaab&nbsp;babbb&nbsp;baaaba&nbsp;aaaab&nbsp;babba&nbsp;aaa&nbsp;b&nbsp;b&nbsp;a&nbsp;bba&nbsp;abbaa&nbsp;aabbb&nbsp;bbaab&nbsp;babab&nbsp;ba&nbsp;abbbbb&nbsp;b&nbsp;aa&nbsp;aaaba&nbsp;bb&nbsp;a&nbsp;a&nbsp;aabbaa&nbsp;baaa&nbsp;a&nbsp;aabaab&nbsp;ab&nbsp;bab&nbsp;baa&nbsp;bbaa&nbsp;abaa&nbsp;abbb&nbsp;abbbaa&nbsp;b&nbsp;aaa&nbsp;bbbaa&nbsp;aa&nbsp;babbbb&nbsp;ab&nbsp;aa&nbsp;bbba&nbsp;aaa&nbsp;b&nbsp;aaaaaa&nbsp;baaba&nbsp;aa&nbsp;aaa&nbsp;abba&nbsp;bb&nbsp;aba&nbsp;bbb&nbsp;bab&nbsp;ab&nbsp;abbab&nbsp;bba&nbsp;babbb&nbsp;babaa&nbsp;abab&nbsp;a&nbsp;aaab&nbsp;a&nbsp;aaaab&nbsp;aabbb&nbsp;aaabbb&nbsp;abaab&nbsp;ab&nbsp;b&nbsp;abbbab&nbsp;ba&nbsp;babaab&nbsp;bbab&nbsp;aaab&nbsp;b&nbsp;abbaa&nbsp;ba&nbsp;b&nbsp;aabab&nbsp;baba&nbsp;b&nbsp;abab&nbsp;aaaa&nbsp;abab&nbsp;aabbab&nbsp;abaaa&nbsp;abaa&nbsp;abb&nbsp;aabbbb&nbsp;aaa&nbsp;bbbbab&nbsp;aaaabb&nbsp;bab&nbsp;aaabbb&nbsp;abba&nbsp;bbbbb&nbsp;b&nbsp;aa&nbsp;ba&nbsp;bab&nbsp;bb&nbsp;bab&nbsp;baabb&nbsp;bbbbbb&nbsp;b&nbsp;abbba&nbsp;abbb&nbsp;aaaaab&nbsp;b&nbsp;a&nbsp;aaa&nbsp;abaab&nbsp;a&nbsp;bbb&nbsp;babb&nbsp;a&nbsp;a&nbsp;ba&nbsp;abaa&nbsp;abaaa&nbsp;ababa&nbsp;bbab&nbsp;abab&nbsp;ba&nbsp;b&nbsp;b&nbsp;a&nbsp;a&nbsp;aaabaa&nbsp;bbbbaa&nbsp;abaabb&nbsp;aababb&nbsp;aa&nbsp;b&nbsp;babaaa&nbsp;aaabbb&nbsp;aaba&nbsp;aaa&nbsp;aaa&nbsp;abbbb&nbsp;bb&nbsp;ababba&nbsp;baab&nbsp;baabb&nbsp;b&nbsp;baaa&nbsp;aaaba&nbsp;b&nbsp;ba&nbsp;baab&nbsp;abaaaa&nbsp;bb&nbsp;ab&nbsp;abbb&nbsp;abb<br/>
+238<br/>
+aaabb&nbsp;abb&nbsp;abbab&nbsp;aa&nbsp;bba&nbsp;ba&nbsp;aaaab&nbsp;bb&nbsp;aabb&nbsp;ababba&nbsp;ab&nbsp;aab&nbsp;abb&nbsp;bbab&nbsp;abbb&nbsp;bbbbb&nbsp;ab&nbsp;bab&nbsp;a&nbsp;aabb&nbsp;b&nbsp;aa&nbsp;baaaa&nbsp;bbaa&nbsp;abbbb&nbsp;baaaa&nbsp;a&nbsp;aaa&nbsp;baab&nbsp;b&nbsp;a&nbsp;ab&nbsp;abbaa&nbsp;bba&nbsp;bb&nbsp;baaab&nbsp;b&nbsp;aa&nbsp;baba&nbsp;bbbbba&nbsp;ababa&nbsp;b&nbsp;bab&nbsp;aa&nbsp;bbab&nbsp;aaaba&nbsp;ab&nbsp;bbaa&nbsp;b&nbsp;ba&nbsp;aaa&nbsp;aaaab&nbsp;abaa&nbsp;baabaa&nbsp;baa&nbsp;b&nbsp;bba&nbsp;abab&nbsp;baaabb&nbsp;a&nbsp;ba&nbsp;b&nbsp;abbb&nbsp;bba&nbsp;b&nbsp;aa&nbsp;aa&nbsp;bba&nbsp;aaa&nbsp;aa&nbsp;bbaab&nbsp;aa&nbsp;bbb&nbsp;ab&nbsp;bbaaaa&nbsp;bba&nbsp;aababa&nbsp;b&nbsp;abaabb&nbsp;baa&nbsp;aa&nbsp;baabab&nbsp;abbbab&nbsp;ababab&nbsp;aaabb&nbsp;b&nbsp;b&nbsp;bbbba&nbsp;b&nbsp;aba&nbsp;abb&nbsp;bbbab&nbsp;bbbbbb&nbsp;bb&nbsp;babb&nbsp;abaaba&nbsp;a&nbsp;aa&nbsp;aab&nbsp;b&nbsp;baa&nbsp;b&nbsp;baba&nbsp;a&nbsp;ba&nbsp;aaba&nbsp;bbabb&nbsp;b&nbsp;bbabb&nbsp;abb&nbsp;bbab&nbsp;bb&nbsp;ba&nbsp;bbb&nbsp;ababaa&nbsp;babba&nbsp;babb&nbsp;ba&nbsp;aaabb&nbsp;aabb&nbsp;b&nbsp;abbbba&nbsp;ababba&nbsp;baaaba&nbsp;b&nbsp;b&nbsp;bbabbb&nbsp;baaaaa&nbsp;abbaba&nbsp;ababb&nbsp;bbabb&nbsp;babb&nbsp;b&nbsp;ab&nbsp;b&nbsp;ba&nbsp;a&nbsp;aaab&nbsp;aba&nbsp;aab&nbsp;abbab&nbsp;bb&nbsp;babaa&nbsp;b&nbsp;aa&nbsp;aa&nbsp;b&nbsp;bbbaa&nbsp;b&nbsp;aabb&nbsp;bbaab&nbsp;bb&nbsp;babb&nbsp;aabaab&nbsp;ba&nbsp;bb&nbsp;babaa&nbsp;b&nbsp;abaab&nbsp;bbaaaa&nbsp;bba&nbsp;babb&nbsp;baaaab&nbsp;abaabb&nbsp;aab&nbsp;abb&nbsp;ab&nbsp;bbaa&nbsp;bb&nbsp;aabb&nbsp;bb&nbsp;baba&nbsp;aabbba&nbsp;a&nbsp;b&nbsp;b&nbsp;abbaa&nbsp;baabb&nbsp;ba&nbsp;a&nbsp;aaaab&nbsp;abb&nbsp;abaa&nbsp;aa&nbsp;abb&nbsp;aba&nbsp;ba&nbsp;aaaa&nbsp;ab&nbsp;bab&nbsp;ba&nbsp;bbb&nbsp;baaa&nbsp;aab&nbsp;bb&nbsp;b&nbsp;baab&nbsp;aaabab&nbsp;ab&nbsp;aabaa&nbsp;aaaaa&nbsp;baab&nbsp;bbb&nbsp;ba&nbsp;bbbaa&nbsp;abab&nbsp;aabb&nbsp;a&nbsp;bbbbb&nbsp;abbbb&nbsp;aabba&nbsp;bbaabb&nbsp;b&nbsp;aabaa&nbsp;aba&nbsp;aab&nbsp;bababb&nbsp;aabbbb&nbsp;aabbb&nbsp;bbbaa&nbsp;abaab&nbsp;abaab&nbsp;bba&nbsp;bba&nbsp;aaa&nbsp;bb&nbsp;baa&nbsp;a&nbsp;aabbbb&nbsp;aaaaaa&nbsp;abab&nbsp;a&nbsp;aabb&nbsp;abbbaa&nbsp;abbbb&nbsp;a&nbsp;aaa&nbsp;ab<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            aaaaab<br/>aaaaba<br/>aaaabb<br/>aaabaa<br/>aaabba<br/>aaabbb<br/>aabab<br/>aababb<br/>aabbaa<br/>aabbab<br/>abaaa<br/>abaaaa<br/>abaaab<br/>abba<br/>abbaab<br/>abbabb<br/>abbba<br/>abbbbb<br/>baaba<br/>baabbb<br/>babaaa<br/>babaab<br/>babab<br/>bababa<br/>babbb<br/>babbbb<br/>bbaaa<br/>bbaaab<br/>bbaaba<br/>bbaba<br/>bbabaa<br/>bbabba<br/>bbba<br/>bbbaaa<br/>bbbaab<br/>bbbabb<br/>bbbb<br/>bbbbaa<br/>bbbbab<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase9"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 9</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            809<br/>
+aaabb&nbsp;aabbaa&nbsp;aabaab&nbsp;aaa&nbsp;bbb&nbsp;aa&nbsp;ab&nbsp;bbbaaa&nbsp;aaabb&nbsp;b&nbsp;a&nbsp;babaa&nbsp;ba&nbsp;abab&nbsp;aaaaaa&nbsp;b&nbsp;babb&nbsp;b&nbsp;ab&nbsp;bb&nbsp;aabbab&nbsp;bba&nbsp;aba&nbsp;bb&nbsp;bbba&nbsp;abaaab&nbsp;a&nbsp;a&nbsp;b&nbsp;a&nbsp;ab&nbsp;bba&nbsp;bb&nbsp;bba&nbsp;bb&nbsp;ab&nbsp;abaa&nbsp;bb&nbsp;baabaa&nbsp;baabb&nbsp;a&nbsp;bbab&nbsp;a&nbsp;ab&nbsp;bbabb&nbsp;b&nbsp;aaaba&nbsp;ab&nbsp;abba&nbsp;bb&nbsp;baa&nbsp;aab&nbsp;aaab&nbsp;bb&nbsp;abbaab&nbsp;bb&nbsp;baaaab&nbsp;b&nbsp;ab&nbsp;bb&nbsp;bbab&nbsp;aaabb&nbsp;bba&nbsp;bbaa&nbsp;b&nbsp;bbb&nbsp;aabbaa&nbsp;bba&nbsp;aaa&nbsp;aab&nbsp;bb&nbsp;baaba&nbsp;bbaabb&nbsp;ab&nbsp;bb&nbsp;bb&nbsp;a&nbsp;babbba&nbsp;baabb&nbsp;a&nbsp;aabb&nbsp;aaaaa&nbsp;babb&nbsp;bbabb&nbsp;bbaa&nbsp;bbabba&nbsp;babaab&nbsp;bbbbb&nbsp;baa&nbsp;a&nbsp;bbbb&nbsp;baa&nbsp;bbb&nbsp;abaaa&nbsp;abaab&nbsp;aa&nbsp;bbab&nbsp;babaa&nbsp;baaa&nbsp;baaabb&nbsp;babbbb&nbsp;b&nbsp;aa&nbsp;aaab&nbsp;aab&nbsp;bab&nbsp;aa&nbsp;b&nbsp;a&nbsp;ab&nbsp;abb&nbsp;aabbab&nbsp;abbabb&nbsp;a&nbsp;aa&nbsp;aabbbb&nbsp;ab&nbsp;aa&nbsp;abbb&nbsp;a&nbsp;abb&nbsp;aabb&nbsp;abbbba&nbsp;a&nbsp;ba&nbsp;ab&nbsp;aabb&nbsp;abba&nbsp;abbaaa&nbsp;abb&nbsp;babbb&nbsp;a&nbsp;a&nbsp;aab&nbsp;ab&nbsp;bbaaab&nbsp;bb&nbsp;aaa&nbsp;baaaab&nbsp;aba&nbsp;bbaaaa&nbsp;abaab&nbsp;bb&nbsp;bba&nbsp;aba&nbsp;aa&nbsp;abbbbb&nbsp;bbbaab&nbsp;ba&nbsp;abbb&nbsp;a&nbsp;baaaab&nbsp;aabbbb&nbsp;ababb&nbsp;baaab&nbsp;ab&nbsp;a&nbsp;baaa&nbsp;baa&nbsp;a&nbsp;baaba&nbsp;abaa&nbsp;abb&nbsp;baba&nbsp;baba&nbsp;ba&nbsp;bb&nbsp;a&nbsp;abb&nbsp;b&nbsp;abbab&nbsp;bbabb&nbsp;bbbaba&nbsp;a&nbsp;aba&nbsp;baaabb&nbsp;a&nbsp;aa&nbsp;abab&nbsp;ab&nbsp;bbbba&nbsp;aababa&nbsp;aa&nbsp;bbab&nbsp;ababba&nbsp;abba&nbsp;bbbb&nbsp;aabbba&nbsp;aaba&nbsp;abb&nbsp;aabaab&nbsp;ba&nbsp;aa&nbsp;a&nbsp;bb&nbsp;abba&nbsp;baa&nbsp;b&nbsp;aaaa&nbsp;a&nbsp;aaabb&nbsp;a&nbsp;aaab&nbsp;baaaa&nbsp;bbb&nbsp;bbb&nbsp;bbaaab&nbsp;bab&nbsp;aa&nbsp;baaa&nbsp;aaaaaa&nbsp;aaba&nbsp;b&nbsp;bba&nbsp;bbaa&nbsp;bbabbb&nbsp;aa&nbsp;baab&nbsp;ab&nbsp;abbbab&nbsp;ba&nbsp;abbbbb&nbsp;aaaaa&nbsp;bba&nbsp;a&nbsp;bbab&nbsp;abbab&nbsp;aaa&nbsp;bbbb&nbsp;abbbbb&nbsp;bab&nbsp;bba&nbsp;ab&nbsp;bb&nbsp;baaab&nbsp;babab&nbsp;baaa&nbsp;aaba&nbsp;bbb&nbsp;aba&nbsp;abab&nbsp;bbbaa&nbsp;aaa&nbsp;aa&nbsp;baa&nbsp;babb&nbsp;baabba&nbsp;bbbbb&nbsp;aa&nbsp;aa&nbsp;aa&nbsp;bbbabb&nbsp;abba&nbsp;bba&nbsp;aaabb&nbsp;ab&nbsp;aaaaa&nbsp;bbbba&nbsp;babbba&nbsp;baaaba&nbsp;abba&nbsp;bb&nbsp;bab&nbsp;bbba&nbsp;bab&nbsp;babba&nbsp;a&nbsp;baba&nbsp;baaba&nbsp;bba&nbsp;aabaab&nbsp;a&nbsp;bbaa&nbsp;bbaabb&nbsp;aab&nbsp;aaabba&nbsp;b&nbsp;bbb&nbsp;abbb&nbsp;bbbabb&nbsp;baaaaa&nbsp;a&nbsp;aab&nbsp;bb&nbsp;bbaaa&nbsp;a&nbsp;baaa&nbsp;abbba&nbsp;a&nbsp;bbaab&nbsp;bbbb&nbsp;ba&nbsp;abb&nbsp;babb&nbsp;a&nbsp;baaba&nbsp;abb&nbsp;bbaaba&nbsp;baaaaa&nbsp;a&nbsp;babb&nbsp;abbbbb&nbsp;baa&nbsp;ba&nbsp;b&nbsp;aabab&nbsp;ba&nbsp;bb&nbsp;ba&nbsp;aabaa&nbsp;ab&nbsp;ba&nbsp;ababba&nbsp;aaab&nbsp;baabb&nbsp;a&nbsp;aabb&nbsp;aab&nbsp;bb&nbsp;baa&nbsp;babbbb&nbsp;aaaba&nbsp;a&nbsp;ababbb&nbsp;bababb&nbsp;abaa&nbsp;abba&nbsp;bbb&nbsp;aabbb&nbsp;abbb&nbsp;baabab&nbsp;aabab&nbsp;bbbaa&nbsp;a&nbsp;aab&nbsp;baa&nbsp;abbaa&nbsp;aaa&nbsp;ababbb&nbsp;aa&nbsp;aabba&nbsp;bbaab&nbsp;abaab&nbsp;babaa&nbsp;abbab&nbsp;a&nbsp;bbab&nbsp;a&nbsp;aababa&nbsp;bbab&nbsp;ab&nbsp;ba&nbsp;a&nbsp;babab&nbsp;aaabab&nbsp;aaaaa&nbsp;abbb&nbsp;b&nbsp;bbba&nbsp;aaabba&nbsp;b&nbsp;b&nbsp;aa&nbsp;b&nbsp;baaaa&nbsp;baab&nbsp;a&nbsp;aaaa&nbsp;a&nbsp;aabaa&nbsp;ab&nbsp;a&nbsp;aaabb&nbsp;bbaaba&nbsp;ba&nbsp;bba&nbsp;bbabaa&nbsp;b&nbsp;abba&nbsp;a&nbsp;bb&nbsp;aa&nbsp;abbb&nbsp;aaab&nbsp;b&nbsp;aaaba&nbsp;abb&nbsp;bb&nbsp;aaab&nbsp;babbbb&nbsp;abbbbb&nbsp;b&nbsp;a&nbsp;abbbab&nbsp;aba&nbsp;bb&nbsp;aaa&nbsp;ababb&nbsp;aaaa&nbsp;babaab&nbsp;bb&nbsp;baaab&nbsp;bb&nbsp;bbaab&nbsp;aabaab&nbsp;bbbb&nbsp;aa&nbsp;bababa&nbsp;bab&nbsp;aab&nbsp;babba&nbsp;b&nbsp;ababa&nbsp;abb&nbsp;bbbb&nbsp;aabbaa&nbsp;aaabb&nbsp;bbaba&nbsp;bbaaba&nbsp;bbb&nbsp;babba&nbsp;aa&nbsp;aba&nbsp;bbabbb&nbsp;bbaba&nbsp;a&nbsp;a&nbsp;aa&nbsp;ab&nbsp;aa&nbsp;aa&nbsp;abbabb&nbsp;bba&nbsp;bb&nbsp;b&nbsp;b&nbsp;babbb&nbsp;baa&nbsp;ab&nbsp;abaaba&nbsp;a&nbsp;bb&nbsp;ababb&nbsp;aab&nbsp;abbaaa&nbsp;a&nbsp;b&nbsp;aabbb&nbsp;aaa&nbsp;b&nbsp;aaa&nbsp;bbbaa&nbsp;ab&nbsp;aa&nbsp;ba&nbsp;b&nbsp;baaa&nbsp;abb&nbsp;baaa&nbsp;a&nbsp;aaaa&nbsp;a&nbsp;b&nbsp;aababa&nbsp;bba&nbsp;b&nbsp;a&nbsp;bba&nbsp;bbbaa&nbsp;bbbb&nbsp;ba&nbsp;ababa&nbsp;aba&nbsp;abba&nbsp;bbbaaa&nbsp;baa&nbsp;bbaa&nbsp;aaa&nbsp;a&nbsp;baabb&nbsp;abab&nbsp;bbaa&nbsp;b&nbsp;bba&nbsp;bbbab&nbsp;aaba&nbsp;bbabaa&nbsp;baab&nbsp;aa&nbsp;a&nbsp;bbab&nbsp;baaaa&nbsp;abb&nbsp;baaaab&nbsp;aba&nbsp;aa&nbsp;ba&nbsp;ba&nbsp;baaa&nbsp;ab&nbsp;aaa&nbsp;bba&nbsp;abab&nbsp;abbaa&nbsp;b&nbsp;aaab&nbsp;aaab&nbsp;abaa&nbsp;aa&nbsp;bbaa&nbsp;abbbab&nbsp;bbb&nbsp;a&nbsp;abaab&nbsp;aba&nbsp;baaaaa&nbsp;a&nbsp;aa&nbsp;aaabab&nbsp;aa&nbsp;baba&nbsp;ab&nbsp;aa&nbsp;bba&nbsp;b&nbsp;babbb&nbsp;bababb&nbsp;baa&nbsp;a&nbsp;aa&nbsp;abbba&nbsp;b&nbsp;baab&nbsp;bbb&nbsp;a&nbsp;aaaa&nbsp;aa&nbsp;babb&nbsp;ba&nbsp;baaaab&nbsp;a&nbsp;aabb&nbsp;aba&nbsp;abbaaa&nbsp;b&nbsp;a&nbsp;a&nbsp;baab&nbsp;abbb&nbsp;b&nbsp;ba&nbsp;aa&nbsp;aaab&nbsp;aa&nbsp;babb&nbsp;b&nbsp;aab&nbsp;aabbb&nbsp;ba&nbsp;aabbaa&nbsp;aabab&nbsp;aab&nbsp;bbabb&nbsp;aaabb&nbsp;bbaaaa&nbsp;aababb&nbsp;abbbba&nbsp;abbbbb&nbsp;aaa&nbsp;babbb&nbsp;bbb&nbsp;baabb&nbsp;aaaaa&nbsp;bba&nbsp;bbbbab&nbsp;baaaa&nbsp;abb&nbsp;a&nbsp;ab&nbsp;abbb&nbsp;b&nbsp;aba&nbsp;ab&nbsp;babb&nbsp;ab&nbsp;baaaa&nbsp;abaa&nbsp;b&nbsp;bbb&nbsp;bb&nbsp;aab&nbsp;aaaab&nbsp;abbaa&nbsp;aaa&nbsp;b&nbsp;aaab&nbsp;b&nbsp;bbbaa&nbsp;b&nbsp;aaa&nbsp;bbaa&nbsp;a&nbsp;baa&nbsp;bbbab&nbsp;aa&nbsp;abbab&nbsp;b&nbsp;aaaaab&nbsp;abba&nbsp;bba&nbsp;bbba&nbsp;b&nbsp;bb&nbsp;baaabb&nbsp;aaaa&nbsp;bbba&nbsp;baaabb&nbsp;aabbaa&nbsp;ba&nbsp;b&nbsp;bba&nbsp;bab&nbsp;baa&nbsp;bababa&nbsp;abbb&nbsp;abb&nbsp;abbba&nbsp;ab&nbsp;ababaa&nbsp;a&nbsp;bbbba&nbsp;aab&nbsp;aaaabb&nbsp;babab&nbsp;abba&nbsp;a&nbsp;bbbb&nbsp;bbba&nbsp;a&nbsp;aaaba&nbsp;ab&nbsp;a&nbsp;abba&nbsp;abbb&nbsp;abb&nbsp;bba&nbsp;aabaab&nbsp;b&nbsp;bbaa&nbsp;aabb&nbsp;bbbab&nbsp;bba&nbsp;aa&nbsp;a&nbsp;abbaba&nbsp;a&nbsp;aa&nbsp;babba&nbsp;b&nbsp;aaabb&nbsp;baa&nbsp;abbb&nbsp;babab&nbsp;baba&nbsp;ab&nbsp;bbb&nbsp;b&nbsp;aa&nbsp;baa&nbsp;bbbaa&nbsp;a&nbsp;aab&nbsp;aaabab&nbsp;bbbbab&nbsp;aabb&nbsp;bab&nbsp;a&nbsp;abbaaa&nbsp;bbaaa&nbsp;b&nbsp;aabbb&nbsp;bb&nbsp;bbbb&nbsp;aabbba&nbsp;aaa&nbsp;aba&nbsp;baab&nbsp;ba&nbsp;aaa&nbsp;aabab&nbsp;babb&nbsp;aa&nbsp;b&nbsp;b&nbsp;b&nbsp;ab&nbsp;b&nbsp;b&nbsp;baa&nbsp;abba&nbsp;bbb&nbsp;ba&nbsp;aaab&nbsp;babb&nbsp;bab&nbsp;bbbb&nbsp;abbbab&nbsp;b&nbsp;abb&nbsp;a&nbsp;aa&nbsp;babaaa&nbsp;b&nbsp;aaab&nbsp;ba&nbsp;bb&nbsp;bbbba&nbsp;baab&nbsp;b&nbsp;b&nbsp;aba&nbsp;aaabab&nbsp;aabb&nbsp;b&nbsp;babba&nbsp;baaab&nbsp;a&nbsp;a&nbsp;aabbab&nbsp;baaaab&nbsp;aabbba&nbsp;abbb&nbsp;a&nbsp;ab&nbsp;abbaa&nbsp;baaa&nbsp;baba&nbsp;aa&nbsp;ab&nbsp;aa&nbsp;bba&nbsp;a&nbsp;baab&nbsp;baaaab&nbsp;aba&nbsp;bbaa&nbsp;baaaa&nbsp;a&nbsp;bbaa&nbsp;babb&nbsp;aaabb&nbsp;a&nbsp;abbba&nbsp;bbbaba&nbsp;aaabba&nbsp;ba&nbsp;baa&nbsp;bbba&nbsp;b&nbsp;b&nbsp;bbbbab&nbsp;a&nbsp;bbbbb&nbsp;ba&nbsp;a&nbsp;aaa&nbsp;b&nbsp;abbaa&nbsp;bb&nbsp;bbaba&nbsp;bbbab&nbsp;aa&nbsp;a&nbsp;aaaba&nbsp;bb&nbsp;b&nbsp;ab&nbsp;bb&nbsp;aaa&nbsp;baaabb&nbsp;bbb&nbsp;abb&nbsp;aababb&nbsp;bb&nbsp;bbbab&nbsp;bbbaab&nbsp;abb&nbsp;aabbaa&nbsp;baabbb&nbsp;bbbabb&nbsp;bababb&nbsp;baaaa&nbsp;ba&nbsp;babbaa&nbsp;bbba&nbsp;a&nbsp;a&nbsp;abbbaa&nbsp;b&nbsp;ab&nbsp;aba&nbsp;aaaa&nbsp;bbbbbb&nbsp;abaaba&nbsp;baaa&nbsp;bbaab&nbsp;aa&nbsp;abbaa&nbsp;abb<br/>
+740<br/>
+baabab&nbsp;b&nbsp;aab&nbsp;ababa&nbsp;a&nbsp;aaab&nbsp;b&nbsp;aaabab&nbsp;aabbb&nbsp;bbab&nbsp;babbaa&nbsp;aabbbb&nbsp;abaab&nbsp;bb&nbsp;baa&nbsp;abab&nbsp;bab&nbsp;bbbb&nbsp;bb&nbsp;abba&nbsp;bab&nbsp;a&nbsp;bbb&nbsp;bbab&nbsp;bbaab&nbsp;a&nbsp;aaaaaa&nbsp;bbab&nbsp;abaa&nbsp;bab&nbsp;bab&nbsp;aa&nbsp;baaa&nbsp;abbb&nbsp;bbb&nbsp;baabba&nbsp;aa&nbsp;ab&nbsp;bbabb&nbsp;aba&nbsp;ba&nbsp;babbba&nbsp;aab&nbsp;a&nbsp;bbbaa&nbsp;baa&nbsp;ab&nbsp;bab&nbsp;bbaaa&nbsp;bbab&nbsp;abba&nbsp;aaaba&nbsp;abaaab&nbsp;abaaa&nbsp;babbb&nbsp;abbbab&nbsp;ababaa&nbsp;bbb&nbsp;bab&nbsp;b&nbsp;ba&nbsp;ba&nbsp;aabbba&nbsp;abbab&nbsp;ab&nbsp;ba&nbsp;aba&nbsp;baba&nbsp;bbbba&nbsp;bbbb&nbsp;aba&nbsp;abb&nbsp;a&nbsp;aa&nbsp;baaa&nbsp;bb&nbsp;babaa&nbsp;aaa&nbsp;ab&nbsp;bbabb&nbsp;abba&nbsp;babab&nbsp;b&nbsp;a&nbsp;ab&nbsp;a&nbsp;aa&nbsp;ab&nbsp;baaa&nbsp;baa&nbsp;bb&nbsp;bba&nbsp;baa&nbsp;bbab&nbsp;baabb&nbsp;bba&nbsp;bb&nbsp;abbba&nbsp;aabab&nbsp;aab&nbsp;aababa&nbsp;b&nbsp;abb&nbsp;baaa&nbsp;aa&nbsp;aba&nbsp;b&nbsp;b&nbsp;bbbaaa&nbsp;a&nbsp;aabaab&nbsp;ababa&nbsp;ab&nbsp;babb&nbsp;baaaa&nbsp;bb&nbsp;b&nbsp;abb&nbsp;bbab&nbsp;a&nbsp;ababba&nbsp;abbab&nbsp;aa&nbsp;aabb&nbsp;bb&nbsp;a&nbsp;aab&nbsp;a&nbsp;a&nbsp;b&nbsp;ba&nbsp;bba&nbsp;bbbaaa&nbsp;abb&nbsp;a&nbsp;bbb&nbsp;a&nbsp;bbaaaa&nbsp;ab&nbsp;abbb&nbsp;ba&nbsp;babaa&nbsp;abaab&nbsp;bb&nbsp;baabbb&nbsp;bbbaa&nbsp;bbaaaa&nbsp;aabb&nbsp;babab&nbsp;aab&nbsp;bb&nbsp;aaa&nbsp;baa&nbsp;ab&nbsp;aabb&nbsp;aaaaba&nbsp;bbbbab&nbsp;ababbb&nbsp;b&nbsp;aa&nbsp;abbb&nbsp;baaabb&nbsp;bb&nbsp;bbbbb&nbsp;bbbbab&nbsp;bababa&nbsp;baabbb&nbsp;a&nbsp;abb&nbsp;ba&nbsp;ababb&nbsp;aaba&nbsp;aaaabb&nbsp;bbaba&nbsp;abbbbb&nbsp;bbbbbb&nbsp;bb&nbsp;abbbb&nbsp;aaaabb&nbsp;abaa&nbsp;baaba&nbsp;a&nbsp;aaaa&nbsp;aaaaa&nbsp;ab&nbsp;b&nbsp;b&nbsp;aabb&nbsp;baab&nbsp;babbba&nbsp;bbaab&nbsp;baa&nbsp;baa&nbsp;bbaab&nbsp;bba&nbsp;aab&nbsp;baba&nbsp;aaba&nbsp;bbaa&nbsp;aaa&nbsp;b&nbsp;bbbb&nbsp;abbbaa&nbsp;aba&nbsp;aaaab&nbsp;ababb&nbsp;aaabb&nbsp;bbbaab&nbsp;abbbb&nbsp;bab&nbsp;bbbab&nbsp;aa&nbsp;bbb&nbsp;ab&nbsp;aa&nbsp;bbb&nbsp;b&nbsp;bab&nbsp;a&nbsp;bbb&nbsp;aa&nbsp;a&nbsp;bb&nbsp;a&nbsp;babbab&nbsp;bbbb&nbsp;ababb&nbsp;bbbaa&nbsp;bb&nbsp;abbb&nbsp;babab&nbsp;b&nbsp;aa&nbsp;abab&nbsp;bbba&nbsp;abbba&nbsp;bbbaaa&nbsp;bb&nbsp;ababb&nbsp;a&nbsp;bbbb&nbsp;bbb&nbsp;abb&nbsp;aab&nbsp;ba&nbsp;b&nbsp;bbbaba&nbsp;aba&nbsp;b&nbsp;b&nbsp;baba&nbsp;aaa&nbsp;baa&nbsp;b&nbsp;ba&nbsp;aaba&nbsp;aabaab&nbsp;bbabab&nbsp;aa&nbsp;aa&nbsp;a&nbsp;aa&nbsp;b&nbsp;ab&nbsp;ab&nbsp;bab&nbsp;aaab&nbsp;bb&nbsp;aaaabb&nbsp;aaaba&nbsp;bbbab&nbsp;abaa&nbsp;bbaa&nbsp;abb&nbsp;ab&nbsp;baabba&nbsp;bbaa&nbsp;b&nbsp;bb&nbsp;baaa&nbsp;ab&nbsp;aaa&nbsp;aaa&nbsp;abb&nbsp;aabba&nbsp;aa&nbsp;aba&nbsp;b&nbsp;ba&nbsp;babb&nbsp;aaaab&nbsp;b&nbsp;bb&nbsp;babbb&nbsp;aaab&nbsp;aaaaa&nbsp;abbbaa&nbsp;aab&nbsp;babaa&nbsp;babba&nbsp;bb&nbsp;b&nbsp;baba&nbsp;baa&nbsp;bbaa&nbsp;baaaa&nbsp;babbb&nbsp;baab&nbsp;aaba&nbsp;bab&nbsp;ba&nbsp;aaabbb&nbsp;aa&nbsp;abaab&nbsp;aa&nbsp;aba&nbsp;bbabaa&nbsp;bbaab&nbsp;b&nbsp;b&nbsp;aabbb&nbsp;babb&nbsp;abab&nbsp;b&nbsp;ab&nbsp;bbabbb&nbsp;aababb&nbsp;bbbaaa&nbsp;bbaa&nbsp;baabaa&nbsp;aaaa&nbsp;aa&nbsp;bbaa&nbsp;bb&nbsp;a&nbsp;bb&nbsp;bbbaba&nbsp;ba&nbsp;aabab&nbsp;a&nbsp;aaa&nbsp;b&nbsp;a&nbsp;bbb&nbsp;ab&nbsp;babba&nbsp;aa&nbsp;aabbb&nbsp;b&nbsp;babaa&nbsp;bbbaab&nbsp;aaa&nbsp;aabb&nbsp;a&nbsp;bb&nbsp;aaaa&nbsp;bbaabb&nbsp;abab&nbsp;b&nbsp;bab&nbsp;ab&nbsp;abaaab&nbsp;a&nbsp;bbbb&nbsp;b&nbsp;aaa&nbsp;bbab&nbsp;b&nbsp;bbaa&nbsp;bbaaa&nbsp;aba&nbsp;bbbaa&nbsp;bbabbb&nbsp;aa&nbsp;aa&nbsp;baaaa&nbsp;bbba&nbsp;babaa&nbsp;abb&nbsp;bbab&nbsp;ba&nbsp;bbaa&nbsp;bbaab&nbsp;bbaba&nbsp;aaabba&nbsp;aabaab&nbsp;aaaa&nbsp;aabb&nbsp;aba&nbsp;a&nbsp;bab&nbsp;aabbba&nbsp;aaaaaa&nbsp;abaaab&nbsp;ba&nbsp;bb&nbsp;bbaa&nbsp;baaaab&nbsp;aaabaa&nbsp;bbaa&nbsp;bbaba&nbsp;bbaa&nbsp;a&nbsp;ab&nbsp;aabaaa&nbsp;a&nbsp;b&nbsp;bbb&nbsp;abbaa&nbsp;baa&nbsp;b&nbsp;bbbab&nbsp;baaa&nbsp;bb&nbsp;aabb&nbsp;baba&nbsp;babb&nbsp;baaaba&nbsp;abaaaa&nbsp;aaaa&nbsp;ababa&nbsp;aa&nbsp;a&nbsp;aa&nbsp;baa&nbsp;bbb&nbsp;baab&nbsp;b&nbsp;a&nbsp;bba&nbsp;bbb&nbsp;babba&nbsp;ba&nbsp;aabaab&nbsp;aaa&nbsp;a&nbsp;ba&nbsp;baabba&nbsp;b&nbsp;ba&nbsp;aa&nbsp;baaaaa&nbsp;abba&nbsp;ab&nbsp;bbbba&nbsp;aaba&nbsp;ab&nbsp;abb&nbsp;bbaabb&nbsp;aabaa&nbsp;b&nbsp;baaaab&nbsp;bbb&nbsp;ab&nbsp;aaaa&nbsp;bbaaab&nbsp;aabb&nbsp;baaba&nbsp;babb&nbsp;bba&nbsp;b&nbsp;aa&nbsp;aaaa&nbsp;aa&nbsp;a&nbsp;ab&nbsp;aaab&nbsp;baaaab&nbsp;aba&nbsp;bab&nbsp;bbb&nbsp;aabab&nbsp;bb&nbsp;abbab&nbsp;a&nbsp;aaa&nbsp;aaaba&nbsp;baabab&nbsp;abab&nbsp;baba&nbsp;aaa&nbsp;abbbab&nbsp;bbabbb&nbsp;aa&nbsp;bbaab&nbsp;ab&nbsp;ab&nbsp;bbab&nbsp;aa&nbsp;bb&nbsp;baba&nbsp;a&nbsp;baabab&nbsp;b&nbsp;bba&nbsp;bbb&nbsp;baabab&nbsp;bba&nbsp;aabaaa&nbsp;aaab&nbsp;bba&nbsp;bbb&nbsp;bbab&nbsp;b&nbsp;babaab&nbsp;abbbb&nbsp;bbbbb&nbsp;bbb&nbsp;aaba&nbsp;a&nbsp;b&nbsp;abbb&nbsp;abbb&nbsp;aabbbb&nbsp;bbaaa&nbsp;aaab&nbsp;abbabb&nbsp;babaab&nbsp;ab&nbsp;babbb&nbsp;aaaab&nbsp;ba&nbsp;abbaba&nbsp;bbbaa&nbsp;aba&nbsp;bbbb&nbsp;babaa&nbsp;b&nbsp;a&nbsp;bab&nbsp;bb&nbsp;babbba&nbsp;aabb&nbsp;bb&nbsp;b&nbsp;abaaaa&nbsp;aba&nbsp;aa&nbsp;ba&nbsp;abbba&nbsp;aa&nbsp;aaabba&nbsp;aaa&nbsp;b&nbsp;b&nbsp;aaaabb&nbsp;abbb&nbsp;baabb&nbsp;babbab&nbsp;baabbb&nbsp;bbbbab&nbsp;abbaa&nbsp;aa&nbsp;bb&nbsp;bbbaaa&nbsp;b&nbsp;b&nbsp;b&nbsp;aabbba&nbsp;ba&nbsp;abbaa&nbsp;aabb&nbsp;aaa&nbsp;bab&nbsp;baa&nbsp;aabaab&nbsp;aaaba&nbsp;baabaa&nbsp;ab&nbsp;a&nbsp;abb&nbsp;a&nbsp;b&nbsp;a&nbsp;abbba&nbsp;aa&nbsp;aba&nbsp;abbaab&nbsp;bbbba&nbsp;aa&nbsp;b&nbsp;a&nbsp;b&nbsp;aaaa&nbsp;bbbabb&nbsp;aba&nbsp;aa&nbsp;bbabaa&nbsp;abb&nbsp;babab&nbsp;ba&nbsp;aaabbb&nbsp;aabb&nbsp;abbb&nbsp;abb&nbsp;ba&nbsp;bbbbbb&nbsp;aaa&nbsp;baabaa&nbsp;a&nbsp;babba&nbsp;aaaba&nbsp;abaaa&nbsp;a&nbsp;aabb&nbsp;bba&nbsp;b&nbsp;ababa&nbsp;baaba&nbsp;babba&nbsp;b&nbsp;abbba&nbsp;a&nbsp;ba&nbsp;aababb&nbsp;bbab&nbsp;ba&nbsp;ab&nbsp;aababa&nbsp;aababb&nbsp;baaa&nbsp;ababbb&nbsp;aaaba&nbsp;bba&nbsp;bba&nbsp;bbaa&nbsp;a&nbsp;bba&nbsp;ababa&nbsp;baa&nbsp;ab&nbsp;bba&nbsp;abbbbb&nbsp;baaba&nbsp;abbaa&nbsp;b&nbsp;bbab&nbsp;b&nbsp;aa&nbsp;b&nbsp;abbaa&nbsp;bbaaaa&nbsp;abbaaa&nbsp;baaa&nbsp;a&nbsp;aba&nbsp;bba&nbsp;aaaa&nbsp;babba&nbsp;bbbaa&nbsp;baa&nbsp;aabaab&nbsp;abaab&nbsp;bbabb&nbsp;abb&nbsp;aab&nbsp;aa&nbsp;aabaaa&nbsp;aba&nbsp;bbaaba&nbsp;aaaa&nbsp;b&nbsp;b&nbsp;a&nbsp;aabaab&nbsp;abbaba&nbsp;a&nbsp;abb&nbsp;bab&nbsp;abba&nbsp;abbaa&nbsp;aa&nbsp;abaaa&nbsp;ba&nbsp;abbabb&nbsp;ba&nbsp;bbbbb&nbsp;abaab&nbsp;abb&nbsp;bbba&nbsp;bbba&nbsp;ab&nbsp;a&nbsp;bba&nbsp;bbabba&nbsp;bbabba&nbsp;baaa&nbsp;b&nbsp;aabaa&nbsp;a&nbsp;aa&nbsp;ababa&nbsp;b&nbsp;abb&nbsp;abaa&nbsp;abbaa&nbsp;b&nbsp;b&nbsp;a&nbsp;aa&nbsp;ab&nbsp;abaab&nbsp;abbaba&nbsp;ababa&nbsp;abb&nbsp;abbbb&nbsp;aaabb&nbsp;bb&nbsp;babbb&nbsp;abab&nbsp;abbb&nbsp;babbba&nbsp;bb&nbsp;bab&nbsp;aaabb&nbsp;ababba&nbsp;bbaba&nbsp;aaaaba&nbsp;abb&nbsp;b&nbsp;abaaa&nbsp;aa&nbsp;aab&nbsp;babaaa&nbsp;bab&nbsp;abaa&nbsp;aabab&nbsp;baa&nbsp;b&nbsp;bababa&nbsp;a&nbsp;bba&nbsp;ab&nbsp;bbbba&nbsp;aaba&nbsp;bab&nbsp;a&nbsp;aab&nbsp;b&nbsp;aa<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            aaaaab<br/>aabbaa<br/>aabbab<br/>abaaba<br/>abbbba<br/>baaab<br/>bababb<br/>babbbb<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase10"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 10</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            895<br/>
+bab&nbsp;b&nbsp;babbb&nbsp;babaaa&nbsp;abbb&nbsp;baaab&nbsp;bba&nbsp;aba&nbsp;aaa&nbsp;bbba&nbsp;baabbb&nbsp;abaabb&nbsp;aa&nbsp;aaabb&nbsp;babb&nbsp;bbbaab&nbsp;a&nbsp;a&nbsp;a&nbsp;babbb&nbsp;bbba&nbsp;ba&nbsp;abaabb&nbsp;a&nbsp;b&nbsp;babba&nbsp;bbbab&nbsp;bbbb&nbsp;a&nbsp;abb&nbsp;abba&nbsp;bb&nbsp;aa&nbsp;a&nbsp;baa&nbsp;babbba&nbsp;b&nbsp;baba&nbsp;aabbba&nbsp;baaabb&nbsp;ba&nbsp;ababb&nbsp;bbaaba&nbsp;aabab&nbsp;abb&nbsp;b&nbsp;abbbab&nbsp;bbbb&nbsp;aaaa&nbsp;aaabab&nbsp;bab&nbsp;aa&nbsp;b&nbsp;ba&nbsp;bbaaab&nbsp;a&nbsp;bab&nbsp;bba&nbsp;abaaab&nbsp;bbbbaa&nbsp;aabab&nbsp;bbbaa&nbsp;babab&nbsp;abbbb&nbsp;aab&nbsp;aabaaa&nbsp;baa&nbsp;abbbb&nbsp;bbabbb&nbsp;babaab&nbsp;abaaaa&nbsp;bb&nbsp;bbaaba&nbsp;bbbbab&nbsp;ababba&nbsp;bababa&nbsp;a&nbsp;abbaa&nbsp;ba&nbsp;baba&nbsp;aab&nbsp;a&nbsp;ba&nbsp;abb&nbsp;bab&nbsp;bbb&nbsp;bbbbb&nbsp;ba&nbsp;ababb&nbsp;aaabab&nbsp;b&nbsp;baa&nbsp;b&nbsp;aa&nbsp;aaabaa&nbsp;bbba&nbsp;bbab&nbsp;a&nbsp;ab&nbsp;aaabb&nbsp;bba&nbsp;abbbba&nbsp;b&nbsp;a&nbsp;aa&nbsp;bb&nbsp;aaaabb&nbsp;bbbb&nbsp;a&nbsp;babab&nbsp;ba&nbsp;ba&nbsp;bbbb&nbsp;aa&nbsp;aabbaa&nbsp;abb&nbsp;abb&nbsp;bab&nbsp;bbaaaa&nbsp;aab&nbsp;baabbb&nbsp;ab&nbsp;bbba&nbsp;aba&nbsp;ba&nbsp;baab&nbsp;b&nbsp;baaabb&nbsp;abba&nbsp;bb&nbsp;aabaab&nbsp;aaa&nbsp;abbaa&nbsp;b&nbsp;ab&nbsp;abaaa&nbsp;aabb&nbsp;bbaa&nbsp;babba&nbsp;aaab&nbsp;bbaaba&nbsp;bbbbaa&nbsp;b&nbsp;babab&nbsp;aba&nbsp;ba&nbsp;ba&nbsp;bbaab&nbsp;aa&nbsp;aba&nbsp;baaab&nbsp;aabab&nbsp;abaa&nbsp;babbb&nbsp;aa&nbsp;a&nbsp;a&nbsp;a&nbsp;bb&nbsp;ba&nbsp;b&nbsp;bababa&nbsp;ab&nbsp;b&nbsp;bb&nbsp;b&nbsp;aa&nbsp;bbbba&nbsp;baba&nbsp;aaabb&nbsp;baa&nbsp;aabb&nbsp;b&nbsp;aa&nbsp;baabb&nbsp;abab&nbsp;aab&nbsp;bbaab&nbsp;aa&nbsp;baba&nbsp;aabb&nbsp;bbbbb&nbsp;babbb&nbsp;abaa&nbsp;aabb&nbsp;bbbaba&nbsp;abba&nbsp;baa&nbsp;b&nbsp;babbaa&nbsp;a&nbsp;ab&nbsp;a&nbsp;aab&nbsp;aaabaa&nbsp;bbbb&nbsp;aaa&nbsp;babab&nbsp;ba&nbsp;aaaab&nbsp;baaa&nbsp;bba&nbsp;babbba&nbsp;b&nbsp;aa&nbsp;aaba&nbsp;bbabbb&nbsp;aabb&nbsp;baaaa&nbsp;bbbbb&nbsp;abb&nbsp;a&nbsp;bbaba&nbsp;aba&nbsp;baa&nbsp;aabaaa&nbsp;abba&nbsp;aab&nbsp;aaa&nbsp;bbaa&nbsp;b&nbsp;a&nbsp;abbabb&nbsp;b&nbsp;aaabbb&nbsp;ba&nbsp;b&nbsp;abaab&nbsp;bbb&nbsp;b&nbsp;babbb&nbsp;bbbabb&nbsp;bbaaba&nbsp;bbb&nbsp;a&nbsp;b&nbsp;ab&nbsp;baabb&nbsp;a&nbsp;abbaa&nbsp;aa&nbsp;bbaab&nbsp;bb&nbsp;bbab&nbsp;a&nbsp;aa&nbsp;bbb&nbsp;b&nbsp;aabaaa&nbsp;abbab&nbsp;ababba&nbsp;baa&nbsp;b&nbsp;abbaa&nbsp;babbba&nbsp;abbaaa&nbsp;a&nbsp;bbab&nbsp;bb&nbsp;bbbaa&nbsp;bbaaba&nbsp;baaab&nbsp;abbb&nbsp;baa&nbsp;bba&nbsp;ababab&nbsp;aab&nbsp;abbba&nbsp;a&nbsp;b&nbsp;aba&nbsp;a&nbsp;b&nbsp;ababbb&nbsp;aaab&nbsp;b&nbsp;aaabba&nbsp;aa&nbsp;aaba&nbsp;b&nbsp;bbabbb&nbsp;bbaab&nbsp;bb&nbsp;bab&nbsp;b&nbsp;ba&nbsp;babbb&nbsp;aaa&nbsp;abb&nbsp;abbaa&nbsp;a&nbsp;bbaba&nbsp;abab&nbsp;bbb&nbsp;bbaa&nbsp;aaaba&nbsp;a&nbsp;aaaa&nbsp;aa&nbsp;aabb&nbsp;ababa&nbsp;abaaba&nbsp;baaa&nbsp;b&nbsp;bbbbbb&nbsp;ababa&nbsp;aaaba&nbsp;abaa&nbsp;aab&nbsp;baaab&nbsp;babaa&nbsp;b&nbsp;aba&nbsp;abaaa&nbsp;b&nbsp;aa&nbsp;aa&nbsp;bbbbbb&nbsp;a&nbsp;aba&nbsp;a&nbsp;a&nbsp;a&nbsp;ab&nbsp;bbba&nbsp;bbaabb&nbsp;abbbab&nbsp;baaab&nbsp;bbbaa&nbsp;baaa&nbsp;a&nbsp;aaabab&nbsp;aaabbb&nbsp;aaa&nbsp;bababa&nbsp;ab&nbsp;bbbb&nbsp;abaabb&nbsp;b&nbsp;aabbab&nbsp;abbbaa&nbsp;aa&nbsp;bba&nbsp;aaba&nbsp;aab&nbsp;bbbbba&nbsp;baa&nbsp;b&nbsp;bbbbaa&nbsp;b&nbsp;bb&nbsp;aa&nbsp;bbba&nbsp;baba&nbsp;aaab&nbsp;b&nbsp;abba&nbsp;bb&nbsp;b&nbsp;aa&nbsp;baaa&nbsp;aba&nbsp;aa&nbsp;aabab&nbsp;aab&nbsp;aba&nbsp;ba&nbsp;baaab&nbsp;a&nbsp;bb&nbsp;ba&nbsp;bb&nbsp;baab&nbsp;bb&nbsp;bbb&nbsp;bbaba&nbsp;baabb&nbsp;aaa&nbsp;ab&nbsp;babb&nbsp;b&nbsp;abaab&nbsp;aab&nbsp;aaaba&nbsp;bbbaba&nbsp;aaaa&nbsp;baa&nbsp;baab&nbsp;abaaaa&nbsp;ab&nbsp;abaa&nbsp;baaaba&nbsp;bbaa&nbsp;baabba&nbsp;babbaa&nbsp;aaaabb&nbsp;bbb&nbsp;bbb&nbsp;bbaba&nbsp;baa&nbsp;ababbb&nbsp;a&nbsp;ba&nbsp;ab&nbsp;baaaab&nbsp;ab&nbsp;bbaaa&nbsp;bbbaa&nbsp;aa&nbsp;b&nbsp;b&nbsp;babbba&nbsp;bbbb&nbsp;a&nbsp;babab&nbsp;aababa&nbsp;ab&nbsp;bbaab&nbsp;a&nbsp;abaaab&nbsp;b&nbsp;ab&nbsp;a&nbsp;ababbb&nbsp;baaba&nbsp;aaabbb&nbsp;aabab&nbsp;baaa&nbsp;aaa&nbsp;bba&nbsp;b&nbsp;aa&nbsp;babb&nbsp;ba&nbsp;bbaaaa&nbsp;a&nbsp;a&nbsp;aabaa&nbsp;baabb&nbsp;a&nbsp;aaab&nbsp;babaab&nbsp;aaabb&nbsp;bbbbbb&nbsp;abaa&nbsp;bbb&nbsp;abbbba&nbsp;bbabbb&nbsp;b&nbsp;ba&nbsp;abbaa&nbsp;abab&nbsp;abb&nbsp;bbb&nbsp;aaba&nbsp;baabaa&nbsp;bb&nbsp;abbba&nbsp;ba&nbsp;bbaba&nbsp;bbbaba&nbsp;aaabaa&nbsp;ba&nbsp;bbaaab&nbsp;bba&nbsp;babaa&nbsp;aabab&nbsp;bb&nbsp;aabab&nbsp;baba&nbsp;ababa&nbsp;baaaa&nbsp;baabb&nbsp;aabbbb&nbsp;aabb&nbsp;baa&nbsp;baa&nbsp;baaaaa&nbsp;aabba&nbsp;baa&nbsp;a&nbsp;bbaaab&nbsp;baaba&nbsp;b&nbsp;baab&nbsp;bba&nbsp;abbaa&nbsp;babba&nbsp;abbaaa&nbsp;a&nbsp;bb&nbsp;ab&nbsp;babab&nbsp;ab&nbsp;aaba&nbsp;bbaaba&nbsp;bbabbb&nbsp;bab&nbsp;baaaab&nbsp;abaaba&nbsp;a&nbsp;aabbb&nbsp;baba&nbsp;bbb&nbsp;aabba&nbsp;aaabba&nbsp;ab&nbsp;bbbb&nbsp;ba&nbsp;bbab&nbsp;abbb&nbsp;aabb&nbsp;babbaa&nbsp;aabaa&nbsp;aba&nbsp;bbab&nbsp;abb&nbsp;aa&nbsp;aaabba&nbsp;bbabba&nbsp;bbbb&nbsp;baa&nbsp;ababb&nbsp;ba&nbsp;babab&nbsp;b&nbsp;abaa&nbsp;baba&nbsp;abbba&nbsp;aabbab&nbsp;ba&nbsp;babaab&nbsp;aa&nbsp;baba&nbsp;abaaa&nbsp;aabb&nbsp;bbbabb&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;bbaa&nbsp;babb&nbsp;ab&nbsp;aaa&nbsp;aaab&nbsp;aabbb&nbsp;abaaa&nbsp;baa&nbsp;aa&nbsp;ba&nbsp;aaa&nbsp;abaab&nbsp;a&nbsp;a&nbsp;bab&nbsp;bbabb&nbsp;bbbab&nbsp;babb&nbsp;a&nbsp;baa&nbsp;bbb&nbsp;bbb&nbsp;aba&nbsp;b&nbsp;babbab&nbsp;bbbaba&nbsp;ba&nbsp;bba&nbsp;abbbaa&nbsp;aa&nbsp;aaabab&nbsp;b&nbsp;abb&nbsp;babaa&nbsp;aba&nbsp;bababb&nbsp;a&nbsp;bba&nbsp;b&nbsp;bb&nbsp;babaa&nbsp;bbaab&nbsp;bbabaa&nbsp;bbb&nbsp;abab&nbsp;babab&nbsp;aabb&nbsp;b&nbsp;babaa&nbsp;abaa&nbsp;aab&nbsp;bbabaa&nbsp;aababa&nbsp;ab&nbsp;a&nbsp;bbaaab&nbsp;b&nbsp;bab&nbsp;aabba&nbsp;bb&nbsp;a&nbsp;abb&nbsp;aaabb&nbsp;ba&nbsp;ba&nbsp;b&nbsp;bbbb&nbsp;abaa&nbsp;baabab&nbsp;aaaba&nbsp;aabaab&nbsp;bbaaa&nbsp;b&nbsp;ba&nbsp;a&nbsp;a&nbsp;abaab&nbsp;a&nbsp;bbaabb&nbsp;aaa&nbsp;baabab&nbsp;bbaa&nbsp;baaab&nbsp;a&nbsp;ba&nbsp;aba&nbsp;a&nbsp;abbab&nbsp;ba&nbsp;baa&nbsp;baabba&nbsp;aab&nbsp;bab&nbsp;baaaba&nbsp;bbbbab&nbsp;a&nbsp;abbb&nbsp;bab&nbsp;abaaa&nbsp;ababa&nbsp;aaabaa&nbsp;baaba&nbsp;ab&nbsp;abbba&nbsp;baaaba&nbsp;babba&nbsp;a&nbsp;aaaa&nbsp;ba&nbsp;aa&nbsp;ba&nbsp;abab&nbsp;abbba&nbsp;abb&nbsp;abbaba&nbsp;aab&nbsp;b&nbsp;a&nbsp;abaaab&nbsp;aabaa&nbsp;abb&nbsp;bba&nbsp;bbaa&nbsp;ba&nbsp;abaaa&nbsp;ab&nbsp;bba&nbsp;baabbb&nbsp;bbb&nbsp;bbb&nbsp;aaabaa&nbsp;b&nbsp;baa&nbsp;aaa&nbsp;b&nbsp;b&nbsp;aababa&nbsp;baa&nbsp;bab&nbsp;a&nbsp;ab&nbsp;abbba&nbsp;abaab&nbsp;bbbaa&nbsp;bb&nbsp;ba&nbsp;abaa&nbsp;ababbb&nbsp;aaaa&nbsp;baaab&nbsp;abbab&nbsp;bbb&nbsp;aaa&nbsp;bbab&nbsp;ababa&nbsp;ab&nbsp;bbbb&nbsp;aab&nbsp;baba&nbsp;bb&nbsp;abbb&nbsp;aab&nbsp;baa&nbsp;ab&nbsp;aabb&nbsp;a&nbsp;ab&nbsp;aba&nbsp;aa&nbsp;baba&nbsp;aabb&nbsp;aab&nbsp;bbabb&nbsp;bbaaa&nbsp;ba&nbsp;a&nbsp;a&nbsp;baaa&nbsp;baabb&nbsp;bba&nbsp;aaaa&nbsp;baaa&nbsp;a&nbsp;aba&nbsp;abba&nbsp;ab&nbsp;a&nbsp;bbaaa&nbsp;ababab&nbsp;abbaa&nbsp;babbaa&nbsp;aaabb&nbsp;bbaa&nbsp;bbba&nbsp;b&nbsp;a&nbsp;b&nbsp;ab&nbsp;aabb&nbsp;a&nbsp;aab&nbsp;baaa&nbsp;babaaa&nbsp;a&nbsp;b&nbsp;bab&nbsp;a&nbsp;bbabb&nbsp;aaaa&nbsp;a&nbsp;bba&nbsp;bbbbba&nbsp;ab&nbsp;abbb&nbsp;aab&nbsp;bbabaa&nbsp;baaa&nbsp;bb&nbsp;bb&nbsp;a&nbsp;ab&nbsp;aaa&nbsp;b&nbsp;abbaa&nbsp;aaaaba&nbsp;aabb&nbsp;a&nbsp;aaaaab&nbsp;aa&nbsp;abb&nbsp;ab&nbsp;bb&nbsp;abaa&nbsp;aa&nbsp;b&nbsp;b&nbsp;ababb&nbsp;aabab&nbsp;babba&nbsp;bbb&nbsp;abbbbb&nbsp;baa&nbsp;bbbb&nbsp;baabbb&nbsp;abba&nbsp;aaab&nbsp;bba&nbsp;aba&nbsp;abbab&nbsp;baabbb&nbsp;b&nbsp;aaab&nbsp;ab&nbsp;bbbaaa&nbsp;b&nbsp;abbb&nbsp;babb&nbsp;bbb&nbsp;bb&nbsp;a&nbsp;babbb&nbsp;babbaa&nbsp;aaab&nbsp;bba&nbsp;aaaa&nbsp;aaabb&nbsp;a&nbsp;b&nbsp;aaabb&nbsp;bbaaab&nbsp;bbb&nbsp;abb&nbsp;bbb&nbsp;baaaa&nbsp;aba&nbsp;abbbab&nbsp;abbaab&nbsp;aabb&nbsp;aab&nbsp;ab&nbsp;bab&nbsp;baaba&nbsp;baaa&nbsp;bbaab&nbsp;bb&nbsp;aa&nbsp;baa&nbsp;baa&nbsp;a&nbsp;b&nbsp;bbbba&nbsp;aba&nbsp;aaaab&nbsp;ababbb&nbsp;bbb&nbsp;a&nbsp;ababb&nbsp;bbab&nbsp;abab&nbsp;baa&nbsp;ba&nbsp;aabaa&nbsp;abb&nbsp;a&nbsp;bb&nbsp;baaaba&nbsp;bbabba&nbsp;bbbaba&nbsp;abaaa&nbsp;ababaa&nbsp;aaa&nbsp;b&nbsp;ba&nbsp;ab&nbsp;abb&nbsp;aba&nbsp;bba&nbsp;babbbb&nbsp;abbbab&nbsp;b&nbsp;bbbaaa&nbsp;aba&nbsp;bbbba&nbsp;a&nbsp;a&nbsp;aaa&nbsp;bbaaa&nbsp;bbb&nbsp;bbaab&nbsp;abb&nbsp;ba&nbsp;aa&nbsp;ab&nbsp;bab&nbsp;abaaba&nbsp;aaab&nbsp;abbb&nbsp;bbb&nbsp;abba&nbsp;aaaba&nbsp;a&nbsp;abbabb&nbsp;bbaab&nbsp;bbabb&nbsp;aa&nbsp;aa&nbsp;a&nbsp;baabb&nbsp;bbbb&nbsp;aabaa&nbsp;aabaaa&nbsp;bbbaa&nbsp;ab&nbsp;abb<br/>
+184<br/>
+a&nbsp;a&nbsp;baba&nbsp;aaba&nbsp;ababba&nbsp;bbbbab&nbsp;b&nbsp;baab&nbsp;baabab&nbsp;abaabb&nbsp;aa&nbsp;baabb&nbsp;bbb&nbsp;b&nbsp;bbbaab&nbsp;bb&nbsp;aaaa&nbsp;abbbaa&nbsp;abaab&nbsp;abba&nbsp;aaba&nbsp;bb&nbsp;a&nbsp;ab&nbsp;ab&nbsp;ba&nbsp;baa&nbsp;bbbaa&nbsp;bbbbb&nbsp;baa&nbsp;bbaabb&nbsp;bbbbab&nbsp;aba&nbsp;aab&nbsp;aba&nbsp;b&nbsp;bb&nbsp;a&nbsp;b&nbsp;aaaa&nbsp;b&nbsp;abab&nbsp;abab&nbsp;abbb&nbsp;ab&nbsp;ab&nbsp;abbaaa&nbsp;ab&nbsp;b&nbsp;aabb&nbsp;ba&nbsp;aaaaba&nbsp;baba&nbsp;aaaa&nbsp;ab&nbsp;ababab&nbsp;abaaa&nbsp;bab&nbsp;ba&nbsp;aabbaa&nbsp;bbbaab&nbsp;babaa&nbsp;abb&nbsp;b&nbsp;a&nbsp;aab&nbsp;ba&nbsp;ab&nbsp;bb&nbsp;b&nbsp;bb&nbsp;babb&nbsp;aab&nbsp;bbabba&nbsp;aa&nbsp;bb&nbsp;aabab&nbsp;b&nbsp;bbbaaa&nbsp;a&nbsp;b&nbsp;baaaaa&nbsp;b&nbsp;abb&nbsp;a&nbsp;aa&nbsp;bbab&nbsp;aa&nbsp;abbab&nbsp;babbbb&nbsp;abbba&nbsp;aabab&nbsp;bbaa&nbsp;aaa&nbsp;a&nbsp;bbbbba&nbsp;bba&nbsp;aaa&nbsp;baaba&nbsp;abb&nbsp;a&nbsp;a&nbsp;bbbbab&nbsp;bba&nbsp;b&nbsp;aa&nbsp;abbb&nbsp;bbaa&nbsp;bb&nbsp;a&nbsp;bbbbbb&nbsp;a&nbsp;abb&nbsp;bb&nbsp;baaaab&nbsp;aa&nbsp;b&nbsp;abbbaa&nbsp;ab&nbsp;abab&nbsp;bbbbaa&nbsp;ab&nbsp;bb&nbsp;bbaba&nbsp;ab&nbsp;bbbb&nbsp;baabaa&nbsp;b&nbsp;bb&nbsp;abaa&nbsp;b&nbsp;baba&nbsp;aa&nbsp;baaa&nbsp;aaa&nbsp;aab&nbsp;ba&nbsp;bbbab&nbsp;aa&nbsp;ba&nbsp;bbbaab&nbsp;abaabb&nbsp;baaa&nbsp;abb&nbsp;bbbb&nbsp;baa&nbsp;b&nbsp;bb&nbsp;bbbb&nbsp;abaab&nbsp;abbbbb&nbsp;baba&nbsp;abbba&nbsp;baaaa&nbsp;ab&nbsp;bbab&nbsp;aa&nbsp;bbbbbb&nbsp;b&nbsp;bb&nbsp;bbaab&nbsp;bbab&nbsp;baa&nbsp;abab&nbsp;b&nbsp;aaaab&nbsp;baa&nbsp;bba&nbsp;bb&nbsp;bb&nbsp;aa&nbsp;a&nbsp;aabab&nbsp;abb&nbsp;abab&nbsp;b&nbsp;b&nbsp;b&nbsp;baaaaa&nbsp;aabaaa&nbsp;bab&nbsp;b&nbsp;aa&nbsp;bbb<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            aaaaab<br/>aaaabb<br/>aaab<br/>aaaba<br/>aaabaa<br/>aaabab<br/>aaabb<br/>aaabba<br/>aaabbb<br/>aabaa<br/>aabaab<br/>aababa<br/>aabba<br/>aabbab<br/>aabbb<br/>aabbba<br/>aabbbb<br/>abaaaa<br/>abaaab<br/>abaaba<br/>ababa<br/>ababaa<br/>ababb<br/>ababbb<br/>abbaa<br/>abbaab<br/>abbaba<br/>abbabb<br/>abbbab<br/>abbbb<br/>abbbba<br/>baaab<br/>baaaba<br/>baaabb<br/>baabba<br/>baabbb<br/>babaaa<br/>babaab<br/>babab<br/>bababa<br/>bababb<br/>babba<br/>babbaa<br/>babbab<br/>babbb<br/>babbba<br/>bbaaa<br/>bbaaaa<br/>bbaaab<br/>bbaaba<br/>bbabaa<br/>bbabb<br/>bbabbb<br/>bbba<br/>bbbaba<br/>bbbabb<br/>bbbba<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+
+        <div style="height: 30px"></div>
+
+        <table id="grad1" class="tableLegend tableSummary"
+          <tbody>
+            <tr>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #9F9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">ok</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FFBF00; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FF9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka med izvajanjem</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #C00000; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">se ne prevede</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #B9F; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">timeout (1000 ms)</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #D0E0F0; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">rezultat izrisa</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a name="bottom"></a>
+        </div>
+    </body>
+    <!-- java class tester version "1.5.8" -->
+    <!-- 3.9.2022 17:5.54 -->
+    <!-- DESKTOP-LT7IA9J, fe80::897e:e7c7:cf31:e91c%9 -->
+</html>

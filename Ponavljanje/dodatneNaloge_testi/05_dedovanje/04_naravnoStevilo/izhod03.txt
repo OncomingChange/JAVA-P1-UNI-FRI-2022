@@ -1,0 +1,4 @@
+izjema
+true
+false
+true

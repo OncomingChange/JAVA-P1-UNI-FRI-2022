@@ -1,0 +1,28 @@
+true
+true
+true
+false
+false
+Anja Antolinc -> 1
+Bojan Bevk -> 1
+Cvetka Cirnik -> 1
+Denis Divjak -> 0
+Eva Erlah -> 0
+sah -> 3
+--------------------
+true
+true
+true
+Anja Antolinc -> 0
+Bojan Bevk -> 0
+Cvetka Cirnik -> 1
+Denis Divjak -> 1
+Eva Erlah -> 1
+sah -> 3
+--------------------
+Anja Antolinc -> 0
+Bojan Bevk -> 0
+Cvetka Cirnik -> 0
+Denis Divjak -> 0
+Eva Erlah -> 0
+sah -> 0

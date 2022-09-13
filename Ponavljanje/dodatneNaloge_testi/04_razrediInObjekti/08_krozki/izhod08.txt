@@ -1,0 +1,61 @@
+true
+false
+true
+true
+false
+true
+--------------------
+true
+true
+true
+--------------------
+true
+false
+true
+--------------------
+true
+false
+true
+--------------------
+true
+false
+true
+--------------------
+Anja Antolinc -> 3
+Bojan Bevk -> 3
+Cvetka Cirnik -> 2
+Denis Divjak -> 2
+Eva Erlah -> 2
+matematika -> 2
+sah -> 3
+dramatika -> 2
+ples -> 4
+nogomet -> 1
+--------------------
+Anja Antolinc -> 2
+Bojan Bevk -> 2
+Cvetka Cirnik -> 1
+Denis Divjak -> 1
+Eva Erlah -> 2
+matematika -> 1
+sah -> 2
+dramatika -> 2
+ples -> 3
+nogomet -> 0
+--------------------
+false
+true
+true
+false
+true
+--------------------
+Anja Antolinc -> 3
+Bojan Bevk -> 2
+Cvetka Cirnik -> 2
+Denis Divjak -> 1
+Eva Erlah -> 3
+matematika -> 1
+sah -> 3
+dramatika -> 2
+ples -> 3
+nogomet -> 2

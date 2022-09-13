@@ -1,0 +1,6 @@
+aj (5)
+marko (2)
+po (2)
+skace (2)
+trati (2)
+zeleni (2)

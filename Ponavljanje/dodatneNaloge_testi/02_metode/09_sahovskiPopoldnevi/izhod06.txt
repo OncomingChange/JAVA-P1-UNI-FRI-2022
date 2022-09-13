@@ -1,0 +1,5 @@
+1. dan: ABBAArABrBBBBrrBBArA (20)
+2. dan: rBABrBrrrAABBABBrABB (20)
+3. dan: BrrArrBABArAArBBABAr (20)
+4. dan: BBAABAAArArrrBrrrrBr (20)
+5. dan: ArrBrrrrArBABrrrBBrB (20)

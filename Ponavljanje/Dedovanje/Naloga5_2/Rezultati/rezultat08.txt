@@ -1,0 +1,1074 @@
+krogla
+r = 20
+V = 33510
+P = 5027
+======
+krogla
+r = 20
+V = 33510
+P = 5027
+======
+krogla
+r = 17
+V = 20580
+P = 3632
+======
+kocka
+a = 20
+V = 8000
+P = 2400
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + + + + +
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        * * * * * * * * * * * * * * * * * * * *
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+                                        o o o o o o o o o o o o o o o o o o o o
+======
+krogla
+r = 11
+V = 5575
+P = 1521
+======
+kocka
+a = 17
+V = 4913
+P = 1734
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + + +
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  * * * * * * * * * * * * * * * * *
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+                                  o o o o o o o o o o o o o o o o o
+======
+krogla
+r = 10
+V = 4189
+P = 1257
+======
+kocka
+a = 16
+V = 4096
+P = 1536
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + + + +
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                * * * * * * * * * * * * * * * *
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+                                o o o o o o o o o o o o o o o o
+======
+kvader
+a = 16
+b = 16
+c = 14
+V = 3584
+P = 1408
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o o o o o o o o o + + + + + + + + + + + + + +
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            * * * * * * * * * * * * * * * *
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+                            o o o o o o o o o o o o o o o o
+======
+krogla
+r = 9
+V = 3054
+P = 1018
+======
+kvader
+a = 17
+b = 19
+c = 9
+V = 2907
+P = 1294
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o o o o o o o o + + + + + + + + +
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  * * * * * * * * * * * * * * * * * * *
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+                  o o o o o o o o o o o o o o o o o o o
+======
+kvader
+a = 18
+b = 12
+c = 13
+V = 2808
+P = 1212
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
++ + + + + + + + + + + + + o o o o o o o o o o o o + + + + + + + + + + + + +
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          * * * * * * * * * * * *
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+                          o o o o o o o o o o o o
+======
+kvader
+a = 20
+b = 12
+c = 9
+V = 2160
+P = 1056
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
++ + + + + + + + + o o o o o o o o o o o o + + + + + + + + +
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  * * * * * * * * * * * *
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+                  o o o o o o o o o o o o
+======
+krogla
+r = 8
+V = 2145
+P = 804
+======
+kvader
+a = 17
+b = 17
+c = 6
+V = 1734
+P = 986
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
++ + + + + + o o o o o o o o o o o o o o o o o + + + + + +
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            * * * * * * * * * * * * * * * * *
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+            o o o o o o o o o o o o o o o o o
+======
+kvader
+a = 14
+b = 8
+c = 14
+V = 1568
+P = 840
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
++ + + + + + + + + + + + + + o o o o o o o o + + + + + + + + + + + + + +
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            * * * * * * * *
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+                            o o o o o o o o
+======
+kvader
+a = 19
+b = 10
+c = 8
+V = 1520
+P = 844
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o o o + + + + + + + +
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                * * * * * * * * * *
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+                o o o o o o o o o o
+======
+krogla
+r = 7
+V = 1437
+P = 616
+======
+kocka
+a = 10
+V = 1000
+P = 600
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
++ + + + + + + + + + o o o o o o o o o o + + + + + + + + + +
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    * * * * * * * * * *
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+                    o o o o o o o o o o
+======
+kvader
+a = 4
+b = 20
+c = 12
+V = 960
+P = 736
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
++ + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + +
++ + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + +
++ + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + +
++ + + + + + + + + + + + o o o o o o o o o o o o o o o o o o o o + + + + + + + + + + + +
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        * * * * * * * * * * * * * * * * * * * *
+                        o o o o o o o o o o o o o o o o o o o o
+                        o o o o o o o o o o o o o o o o o o o o
+                        o o o o o o o o o o o o o o o o o o o o
+                        o o o o o o o o o o o o o o o o o o o o
+======
+krogla
+r = 6
+V = 905
+P = 452
+======
+krogla
+r = 5
+V = 524
+P = 314
+======
+kocka
+a = 8
+V = 512
+P = 384
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
++ + + + + + + + o o o o o o o o + + + + + + + +
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                * * * * * * * *
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+                o o o o o o o o
+======
+kocka
+a = 7
+V = 343
+P = 294
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
++ + + + + + + o o o o o o o + + + + + + +
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              * * * * * * *
+              o o o o o o o
+              o o o o o o o
+              o o o o o o o
+              o o o o o o o
+              o o o o o o o
+              o o o o o o o
+              o o o o o o o
+======
+kvader
+a = 6
+b = 14
+c = 4
+V = 336
+P = 328
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
++ + + + o o o o o o o o o o o o o o + + + +
++ + + + o o o o o o o o o o o o o o + + + +
++ + + + o o o o o o o o o o o o o o + + + +
++ + + + o o o o o o o o o o o o o o + + + +
++ + + + o o o o o o o o o o o o o o + + + +
++ + + + o o o o o o o o o o o o o o + + + +
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
+        * * * * * * * * * * * * * *
+        o o o o o o o o o o o o o o
+        o o o o o o o o o o o o o o
+        o o o o o o o o o o o o o o
+        o o o o o o o o o o o o o o
+        o o o o o o o o o o o o o o
+        o o o o o o o o o o o o o o
+======
+kvader
+a = 12
+b = 7
+c = 3
+V = 252
+P = 282
+      * * * * * * *
+      * * * * * * *
+      * * * * * * *
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
++ + + o o o o o o o + + +
+      * * * * * * *
+      * * * * * * *
+      * * * * * * *
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+      o o o o o o o
+======
+kvader
+a = 9
+b = 5
+c = 5
+V = 225
+P = 230
+          * * * * *
+          * * * * *
+          * * * * *
+          * * * * *
+          * * * * *
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
++ + + + + o o o o o + + + + +
+          * * * * *
+          * * * * *
+          * * * * *
+          * * * * *
+          * * * * *
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+          o o o o o
+======
+kocka
+a = 6
+V = 216
+P = 216
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
++ + + + + + o o o o o o + + + + + +
++ + + + + + o o o o o o + + + + + +
++ + + + + + o o o o o o + + + + + +
++ + + + + + o o o o o o + + + + + +
++ + + + + + o o o o o o + + + + + +
++ + + + + + o o o o o o + + + + + +
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            * * * * * *
+            o o o o o o
+            o o o o o o
+            o o o o o o
+            o o o o o o
+            o o o o o o
+            o o o o o o
+======
+kvader
+a = 20
+b = 2
+c = 2
+V = 80
+P = 168
+    * *
+    * *
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
++ + o o + +
+    * *
+    * *
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+    o o
+======
+kvader
+a = 1
+b = 1
+c = 9
+V = 9
+P = 38
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
++ + + + + + + + + o + + + + + + + + +
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  *
+                  o
+======

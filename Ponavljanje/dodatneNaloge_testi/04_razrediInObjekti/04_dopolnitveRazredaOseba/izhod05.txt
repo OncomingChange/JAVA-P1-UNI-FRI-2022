@@ -1,0 +1,3 @@
+this: Zvone Kotnik (M), 1956
+this.oce: France Kotnik (M), 1932
+this.mati: Ivana Kotnik (Z), 1931

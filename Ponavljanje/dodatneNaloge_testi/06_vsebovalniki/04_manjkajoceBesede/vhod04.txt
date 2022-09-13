@@ -1,0 +1,4 @@
+1
+C
+8
+medtem ko je programski jezik java objektno usmerjen

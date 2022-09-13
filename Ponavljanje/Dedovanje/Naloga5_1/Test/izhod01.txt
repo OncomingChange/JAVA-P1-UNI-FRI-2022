@@ -1,0 +1,7 @@
+T | Ana_Antolinc | vsebina_telegrama_1 | 144
+PP | Branko_Bizjak | vsebina_pp_1 | 150 | Cvetka_Cevc | 180
+NP | Danica_Dobravc | vsebina_np_1 | 75 | 40
+T | Eva_Erker | zelo_dolga_VSEBINA_s_5t3v1lk4m1 | 198
+NP | Franci_Furman | vsebina_np_2 | 49 | 30
+NP | Gorazd_Gaber | vsebina_np_2 | 50 | 40
+PP | Hinko_Hojc | vsebina_pp_2 | 50 | Iva_Intihar | 120

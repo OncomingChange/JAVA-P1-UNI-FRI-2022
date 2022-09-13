@@ -1,0 +1,11 @@
+true
+true
+true
+true
+true
+Anja Antolinc -> 5
+ka -> 1
+kb -> 1
+kc -> 1
+kd -> 1
+ke -> 1

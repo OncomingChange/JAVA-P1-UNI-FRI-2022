@@ -1,0 +1,10 @@
+30 50 10 3 9
+7
+telegram Ana_Antolinc vsebina_telegrama_1
+priporocenoPismo Branko_Bizjak vsebina_pp_1 150 Cvetka_Cevc
+navadnoPismo Danica_Dobravc vsebina_np_1 75
+telegram Eva_Erker zelo_dolga_VSEBINA_s_5t3v1lk4m1
+navadnoPismo Franci_Furman vsebina_np_2 49
+navadnoPismo Gorazd_Gaber vsebina_np_2 50
+priporocenoPismo Hinko_Hojc vsebina_pp_2 50 Iva_Intihar
+1

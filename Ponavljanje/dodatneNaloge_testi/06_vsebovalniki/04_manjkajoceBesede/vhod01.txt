@@ -1,0 +1,4 @@
+8
+medtem ko je programski jezik java objektno usmerjen
+6
+je programski jezik C proceduralno usmerjen

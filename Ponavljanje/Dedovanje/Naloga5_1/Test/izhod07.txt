@@ -1,0 +1,50 @@
+PP | naslovnik1 | F | 289 | posiljatelj1 | 770
+T | naslovnik2 | L6pRiH55sMRSg1YD | 144
+NP | naslovnik3 | ElOQ | 109 | 133
+PP | naslovnik4 | UDW1ANznO | 517 | posiljatelj4 | 1274
+T | naslovnik5 | xJoxGawS0CeBecWpN2 | 192
+NP | naslovnik6 | MIanLaDsTiWBk73A | 243 | 322
+PP | naslovnik7 | hlaMCUlZKk5SKEoJ8ym | 234 | posiljatelj7 | 644
+NP | naslovnik8 | g4bur2dAJt | 690 | 826
+NP | naslovnik9 | UedNFhh | 610 | 700
+PP | naslovnik10 | 0q7bblDKzIE | 871 | posiljatelj10 | 2030
+PP | naslovnik11 | l8mooa | 7 | posiljatelj11 | 140
+T | naslovnik12 | g7oGRFmI9lOsn | 132
+NP | naslovnik13 | moyan7T6ruvR | 77 | 133
+PP | naslovnik14 | B9dXByEX4zGrr | 574 | posiljatelj14 | 1400
+T | naslovnik15 | Q6BvXepnpl | 108
+T | naslovnik16 | B3LRmCtuNz265k | 120
+NP | naslovnik17 | cr2A | 891 | 1015
+T | naslovnik18 | Wr6wlWxk8vbELU9EQIkj | 204
+PP | naslovnik19 | Ds50txn | 930 | posiljatelj19 | 2156
+NP | naslovnik20 | LOb | 908 | 1015
+PP | naslovnik21 | 8ISKMIJUQ0fBZyhsEYiL | 638 | posiljatelj21 | 1526
+NP | naslovnik22 | G7ZQ9BuTsPDa7 | 844 | 952
+PP | naslovnik23 | j | 188 | posiljatelj23 | 518
+NP | naslovnik24 | Ab | 178 | 259
+NP | naslovnik25 | F | 130 | 196
+PP | naslovnik26 | nQ2j5pxHO2ktX4x1wl9 | 242 | posiljatelj26 | 644
+NP | naslovnik27 | Xh | 25 | 70
+PP | naslovnik28 | YLrOUWs7nfcUiE9 | 734 | posiljatelj28 | 1652
+PP | naslovnik29 | 2bDPoGTgWBNItSrB8Qq | 792 | posiljatelj29 | 1778
+T | naslovnik30 | LndP5wsXvYuYepJxd | 192
+PP | naslovnik31 | wARK5NQS | 125 | posiljatelj31 | 392
+NP | naslovnik32 | 4I0OIzu0w1iP3 | 670 | 763
+T | naslovnik33 | mXOiuhyQ3yWOo6Yh0 | 168
+PP | naslovnik34 | L6O5P5x | 901 | posiljatelj34 | 2030
+T | naslovnik35 | P8JkwQYje6b9GLTf25 | 156
+NP | naslovnik36 | CDNwaGbXdw3hpHB | 471 | 574
+NP | naslovnik37 | IYsL | 566 | 637
+NP | naslovnik38 | H8YfbXJXjJ6Z | 654 | 763
+PP | naslovnik39 | PdF | 364 | posiljatelj39 | 896
+NP | naslovnik40 | YtnDK0l4P | 642 | 763
+NP | naslovnik41 | g | 422 | 511
+PP | naslovnik42 | 1 | 120 | posiljatelj42 | 392
+PP | naslovnik43 | p | 745 | posiljatelj43 | 1778
+T | naslovnik44 | G0LjVDAGHEC | 120
+PP | naslovnik45 | 3pDdAYv9R65UAOVQNZu | 229 | posiljatelj45 | 644
+NP | naslovnik46 | 4QXnvUBx | 925 | 1078
+PP | naslovnik47 | qjDyWK3DgVMywdXVUn67 | 586 | posiljatelj47 | 1400
+NP | naslovnik48 | Qky51ug6 | 369 | 448
+NP | naslovnik49 | E3lc | 150 | 196
+PP | naslovnik50 | w1Gl | 30 | posiljatelj50 | 140
